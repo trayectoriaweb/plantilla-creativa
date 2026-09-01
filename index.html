@@ -9,24 +9,21 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text y='.72em' x='50%' text-anchor='middle' font-size='50' fill='white' font-family='sans-serif' font-weight='300'>JC</text></svg>" />
 
-  <!-- Google Fonts: Syne (Titular Escultórico Caja Alta en Peso Liviano 400) + Plus Jakarta Sans / Inter (Cuerpo Ligero 300/400) -->
+  <!-- Google Fonts: Syne + Plus Jakarta Sans + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Estilos CSS con versión para forzar recarga -->
-  <link rel="stylesheet" href="css/style.css?v=2026.light.cajaalta.1" />
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="css/style.css?v=2026.drawer.1" />
 </head>
 <body class="editorial-portfolio-body">
 
-  <!-- ==================== HEADER ==================== -->
+  <!-- ==================== HEADER (SOLO TEXTO FOTÓGRAFO SIN FONDO NEGRO) ==================== -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <div class="header-brand-pill">
-        <a href="#hero" class="brand-pill-btn">
-          <span>FOTÓGRAFO</span>
-          <span class="pill-arrow">▾</span>
-        </a>
+      <div class="header-brand-box">
+        <a href="#hero" class="brand-text-label">FOTÓGRAFO</a>
       </div>
 
       <nav class="nav-menu">
@@ -41,10 +38,10 @@
   </header>
 
   <main>
-    <!-- ==================== HERO SPLIT-SCREEN EN CAJA ALTA & PESO LIVIANO ==================== -->
+    <!-- ==================== HERO SPLIT-SCREEN ==================== -->
     <section class="hero-lovers-section" id="hero">
       
-      <!-- Columna Izquierda: Tipografía Masiva en Peso Ligero + Bio -->
+      <!-- Columna Izquierda: Tipografía Masiva + Bio -->
       <div class="hero-left-column">
         <div class="hero-left-content">
           
@@ -68,7 +65,7 @@
         </div>
       </div>
 
-      <!-- Columna Derecha: Retrato Vertical a Borde Completo (Fondo Azul Estudio) -->
+      <!-- Columna Derecha: Retrato Vertical a Borde Completo -->
       <div class="hero-right-column">
         <div class="portrait-container">
           <img 
@@ -82,7 +79,7 @@
 
     </section>
 
-    <!-- ==================== FOTOGRAFÍA PANORÁMICA GIGANTE (100VW) ==================== -->
+    <!-- ==================== FOTOGRAFÍA PANORÁMICA GIGANTE ==================== -->
     <section class="full-bleed-panorama-section">
       <div class="panorama-wrapper">
         <img 
@@ -244,7 +241,7 @@
               <h3 class="s-title">SESIONES FOTOGRÁFICAS</h3>
               <p class="s-desc">Retratos personales, perfiles artísticos y portfolios para creadores y modelos en estudio o exteriores.</p>
             </div>
-            <a href="https://wa.me/5493410000000?text=Hola%20Julián,%20quiero%20consultar%20por%20Sesiones%20Fotográficas." target="_blank" rel="noopener noreferrer" class="s-link">CONSULTAR →</a>
+            <button type="button" class="s-link open-talk-trigger" data-service="Sesiones Fotográficas">CONSULTAR →</button>
           </div>
 
           <div class="service-row">
@@ -253,7 +250,7 @@
               <h3 class="s-title">PRODUCCIÓN DE CAMPAÑAS</h3>
               <p class="s-desc">Dirección de arte, scouting de locación y producción integral de imágenes para marcas.</p>
             </div>
-            <a href="https://wa.me/5493410000000?text=Hola%20Julián,%20quiero%20consultar%20por%20Producción%20de%20Campañas." target="_blank" rel="noopener noreferrer" class="s-link">CONSULTAR →</a>
+            <button type="button" class="s-link open-talk-trigger" data-service="Producción de Campañas">CONSULTAR →</button>
           </div>
 
           <div class="service-row">
@@ -262,7 +259,7 @@
               <h3 class="s-title">FOTOGRAFÍA PARA MARCAS</h3>
               <p class="s-desc">Lookbooks, fotografía de catálogo y banco de imágenes lifestyle exclusivo para presencia digital.</p>
             </div>
-            <a href="https://wa.me/5493410000000?text=Hola%20Julián,%20quiero%20consultar%20por%20Fotografía%20para%20Marcas." target="_blank" rel="noopener noreferrer" class="s-link">CONSULTAR →</a>
+            <button type="button" class="s-link open-talk-trigger" data-service="Fotografía para Marcas">CONSULTAR →</button>
           </div>
 
           <div class="service-row">
@@ -271,7 +268,7 @@
               <h3 class="s-title">COBERTURA DE EVENTOS</h3>
               <p class="s-desc">Registro documental de festivales, desfiles y eventos culturales con enfoque de autor.</p>
             </div>
-            <a href="https://wa.me/5493410000000?text=Hola%20Julián,%20quiero%20consultar%20por%20Cobertura%20de%20Eventos." target="_blank" rel="noopener noreferrer" class="s-link">CONSULTAR →</a>
+            <button type="button" class="s-link open-talk-trigger" data-service="Cobertura de Eventos">CONSULTAR →</button>
           </div>
         </div>
       </div>
@@ -290,9 +287,9 @@
         </div>
 
         <div class="contact-right">
-          <a href="https://wa.me/5493410000000?text=Hola%20Julián,%20tengo%20una%20idea%20para%20fotografiar." target="_blank" rel="noopener noreferrer" class="btn-touch-outline">
-            <span>HABLAR POR WHATSAPP →</span>
-          </a>
+          <button type="button" class="btn-touch-outline open-talk-trigger">
+            <span>HABLEMOS / INICIAR PROYECTO →</span>
+          </button>
         </div>
       </div>
     </section>
@@ -311,6 +308,77 @@
       </div>
     </div>
   </footer>
+
+  <!-- ==================== RECTÁNGULO FLOTANTE BLANCO "HABLEMOS" ==================== -->
+  <div class="floating-talk-wrapper" id="floatingTalkWidget">
+    
+    <!-- Botón / Pestaña Flotante -->
+    <button type="button" class="floating-talk-pill" id="btnOpenTalkModal" aria-label="Abrir formulario de contacto">
+      <span class="talk-pulse-indicator"></span>
+      <span class="talk-pill-text">HABLEMOS</span>
+      <span class="talk-pill-icon">↗</span>
+    </button>
+
+    <!-- Ventana Desplegable / Formulario Flotante -->
+    <div class="floating-talk-panel" id="floatingTalkPanel" aria-hidden="true">
+      <div class="talk-panel-header">
+        <div class="talk-header-titles">
+          <span class="talk-kicker">CONTACTO DIRECTO</span>
+          <h3 class="talk-title">Hablemos sobre tu proyecto</h3>
+        </div>
+        <button type="button" class="talk-close-btn" id="btnCloseTalkModal" aria-label="Cerrar ventana">✕</button>
+      </div>
+
+      <div class="talk-panel-body">
+        <form class="talk-form" id="contactTalkForm">
+          <div class="form-field">
+            <label for="talkName" class="form-label">TU NOMBRE</label>
+            <input type="text" id="talkName" name="name" class="form-input" placeholder="Ej. Valentina Rossi" required />
+          </div>
+
+          <div class="form-field">
+            <label for="talkEmail" class="form-label">EMAIL</label>
+            <input type="email" id="talkEmail" name="email" class="form-input" placeholder="tu@email.com" required />
+          </div>
+
+          <div class="form-field">
+            <label for="talkType" class="form-label">TIPO DE PROYECTO</label>
+            <select id="talkType" name="projectType" class="form-select">
+              <option value="Retratos">Retratos de Autor</option>
+              <option value="Moda">Moda & Lookbook</option>
+              <option value="Fotografía Editorial">Fotografía Editorial</option>
+              <option value="Campañas">Producción de Campañas</option>
+              <option value="Eventos">Cobertura de Eventos</option>
+              <option value="Otro">Otro proyecto</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="talkMessage" class="form-label">MENSAJE</label>
+            <textarea id="talkMessage" name="message" class="form-textarea" rows="3" placeholder="Contame sobre las fechas, locación o ideas..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-send-message">
+            <span>ENVIAR CONSULTA</span>
+          </button>
+        </form>
+
+        <div class="talk-separator">
+          <span class="sep-line"></span>
+          <span class="sep-text">O DIRECTO POR WHATSAPP</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <a href="https://wa.me/5493410000000?text=Hola%20Juli%C3%A1n,%20te%20escribo%20desde%20tu%20web%20para%20consultar%20por%20un%20proyecto." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-direct">
+          <span class="wa-icon">↗</span>
+          <span>HABLARME POR WHATSAPP</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Backdrop sutil para cerrar al hacer clic afuera en móviles -->
+    <div class="talk-backdrop" id="talkBackdrop"></div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

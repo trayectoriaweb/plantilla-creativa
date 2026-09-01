@@ -1,6 +1,7 @@
 /* ==========================================================================
-   JULIÁN COSTA — PORTFOLIO EDITORIAL (CAJA ALTA & PESO LIVIANO ESCULTÓRICO)
+   JULIÁN COSTA — PORTFOLIO EDITORIAL
    Tipografía Syne (Light 400) + Plus Jakarta Sans + Inter 300
+   Header Puro + Ventana Flotante Rectangular "HABLEMOS"
    ========================================================================== */
 
 /* --- 1. Variables de Diseño --- */
@@ -22,26 +23,21 @@
   --font-meta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Layout: Edge-to-Edge */
+  /* Layout */
   --pad-side: clamp(24px, 4.5vw, 64px);
   --header-height: 76px;
   
   /* Transitions */
   --t-fast: 0.2s ease;
-  --t-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --t-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- 2. Reset & Base --- */
+/* --- 2. Reset & Base (0px Border Radius Absoluto) --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   border-radius: 0 !important;
-}
-
-/* Pill badge superior con redondeado */
-.brand-pill-btn {
-  border-radius: 9999px !important;
 }
 
 html {
@@ -80,7 +76,7 @@ button {
   cursor: pointer;
 }
 
-/* --- 3. Header --- */
+/* --- 3. Header Minimalista (Texto Puro FOTÓGRAFO sin caja negra) --- */
 .site-header {
   position: sticky;
   top: 0;
@@ -104,28 +100,19 @@ button {
   justify-content: space-between;
 }
 
-.brand-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #000000;
-  color: #ffffff;
-  padding: 8px 18px;
+.brand-text-label {
   font-family: var(--font-meta);
   font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  color: var(--text-dark);
   text-transform: uppercase;
-  transition: opacity var(--t-fast);
+  display: inline-block;
+  padding: 4px 0;
 }
 
-.brand-pill-btn:hover {
-  opacity: 0.85;
-}
-
-.pill-arrow {
-  font-size: 0.7rem;
-  opacity: 0.8;
+.brand-text-label:hover {
+  opacity: 0.6;
 }
 
 .nav-list {
@@ -145,7 +132,7 @@ button {
 .nav-link {
   font-family: var(--font-meta);
   font-size: 0.8rem;
-  font-weight: 500; /* Peso liviano y nítido */
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-dark);
@@ -156,7 +143,7 @@ button {
   opacity: 0.45;
 }
 
-/* --- 4. Hero Split-Screen (Caja Alta + Escala Masiva + Peso Liviano) --- */
+/* --- 4. Hero Split-Screen --- */
 .hero-lovers-section {
   width: 100%;
   display: grid;
@@ -183,11 +170,10 @@ button {
   max-width: 760px;
 }
 
-/* Titular Masivo en Caja Alta con Peso 400 (Liviano y Escultórico) */
 .hero-giant-name {
   font-family: var(--font-display);
   font-size: clamp(4.8rem, 13vw, 11rem);
-  font-weight: 400; /* PESO LIVIANO */
+  font-weight: 400; /* Peso liviano */
   line-height: 0.9;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -209,7 +195,7 @@ button {
   font-size: clamp(0.92rem, 1.25vw, 1.1rem);
   color: var(--text-body);
   line-height: 1.65;
-  font-weight: 400; /* Peso liviano */
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -226,7 +212,7 @@ button {
   text-transform: uppercase;
 }
 
-/* Columna Derecha: Fotografía Vertical a Borde Completo */
+/* Columna Derecha: Retrato Vertical a Borde Completo */
 .hero-right-column {
   position: relative;
   background-color: var(--bg-blue-studio);
@@ -253,7 +239,7 @@ button {
   transform: scale(1.02);
 }
 
-/* --- 5. Fotografía Panorámica Gigante (100vw Full Bleed) --- */
+/* --- 5. Fotografía Panorámica Gigante (100vw) --- */
 .full-bleed-panorama-section {
   width: 100%;
 }
@@ -390,7 +376,7 @@ button {
 .item-title {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 2.8vw, 2.5rem);
-  font-weight: 400; /* Peso liviano */
+  font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -447,7 +433,7 @@ button {
 .about-giant-quote {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 5vw, 4.6rem);
-  font-weight: 400; /* Peso liviano y escultórico */
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -545,7 +531,7 @@ button {
 .s-title {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 2.2vw, 2rem);
-  font-weight: 400; /* Peso liviano */
+  font-weight: 400;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   margin-bottom: 4px;
@@ -588,7 +574,7 @@ button {
 .contact-giant-title {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 400; /* Peso liviano */
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -655,4 +641,253 @@ button {
 
 .footer-right a:hover {
   opacity: 0.5;
+}
+
+/* ==========================================================================
+   11. RECTÁNGULO FLOTANTE BLANCO "HABLEMOS" & VENTANA EXPANDIBLE
+   ========================================================================== */
+.floating-talk-wrapper {
+  position: fixed;
+  bottom: 28px;
+  right: var(--pad-side);
+  z-index: 2500;
+}
+
+/* Pestaña / Botón Flotante Rectangular Blanco */
+.floating-talk-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 14px 22px;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background-color var(--t-fast), color var(--t-fast);
+}
+
+.floating-talk-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.floating-talk-pill:hover .talk-pill-icon {
+  transform: translate(2px, -2px);
+}
+
+.talk-pill-icon {
+  font-size: 0.85rem;
+  transition: transform var(--t-fast);
+}
+
+.talk-pulse-indicator {
+  width: 6px;
+  height: 6px;
+  background-color: #000000;
+  display: inline-block;
+}
+
+.floating-talk-pill:hover .talk-pulse-indicator {
+  background-color: #ffffff;
+}
+
+/* Ventana Flotante Desplegable */
+.floating-talk-panel {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  right: 0;
+  width: 390px;
+  max-width: calc(100vw - 32px);
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
+  display: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--t-smooth), transform var(--t-smooth);
+  z-index: 2600;
+}
+
+.floating-talk-panel.open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.talk-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.talk-kicker {
+  font-family: var(--font-meta);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.talk-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-dark);
+  text-transform: uppercase;
+}
+
+.talk-close-btn {
+  font-size: 1.1rem;
+  padding: 4px 8px;
+  color: var(--text-dark);
+  transition: opacity var(--t-fast);
+}
+
+.talk-close-btn:hover {
+  opacity: 0.5;
+}
+
+.talk-panel-body {
+  padding: 24px;
+  max-height: calc(85vh - 120px);
+  overflow-y: auto;
+}
+
+.talk-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-family: var(--font-meta);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-dark);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 11px 14px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color var(--t-fast);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #000000;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.btn-send-message {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 15px 20px;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  transition: opacity var(--t-fast);
+}
+
+.btn-send-message:hover {
+  opacity: 0.85;
+}
+
+/* Separator */
+.talk-separator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 16px;
+}
+
+.sep-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-light);
+}
+
+.sep-text {
+  font-family: var(--font-meta);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+}
+
+/* Botón Rectangular WhatsApp Sin Redondeados */
+.btn-whatsapp-direct {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: 1px solid #000000;
+  background-color: transparent;
+  color: #000000;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all var(--t-fast);
+}
+
+.btn-whatsapp-direct:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Backdrop para móviles */
+.talk-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: none;
+  z-index: 2400;
+}
+
+.talk-backdrop.open {
+  display: block;
 }
