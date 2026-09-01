@@ -415,14 +415,15 @@ button {
 }
 
 /* ==========================================================================
-   7. SOBRE MÍ + SERVICIOS — EXPERIENCIA UNVEIL (ROJO QUIETO + INFO POR DETRÁS)
+   7. SOBRE MÍ + SERVICIOS — ANIMACIÓN EXACTA (ROJO QUIETO + INFO POR DETRÁS)
    
-   Comportamiento:
-   1. Llegas al rectángulo rojo: se clava quieto en top: 0 (sticky, z-index: 50).
-   2. La información blanca (franja + servicios) arranca por detrás (z-index: 10).
-   3. Al scrollear, la información va saliendo fluidamente por debajo del rojo.
-   4. Al terminar de salir toda la información, el rojo sube y entra el negro.
-   5. Al scrollear hacia arriba, la información se vuelve a meter detrás del rojo.
+   Mecánica exacta:
+   1. .unveil-stage-wrapper da el recorrido de scroll físico necesario.
+   2. .unveil-sticky-frame se clava en el tope (debajo del header).
+   3. .unveil-red-panel está QUIETO en top: 0 del frame con z-index: 30.
+   4. .unveil-content-tray (z-index: 10) arranca escondida detrás del panel rojo
+      y al scrollear baja/emerge por detrás del borde inferior del rojo.
+   5. Al terminar de emerger toda la información, el frame completo sube al negro.
    ========================================================================== */
 
 .unveil-stage-wrapper {
@@ -430,16 +431,26 @@ button {
   width: 100%;
 }
 
-/* 1. EL RECTÁNGULO ROJO: SE QUEDA QUIETO EN EL TOPE MIENTRAS SCROLLEAS */
-.unveil-red-panel {
+/* El marco sticky que se clava en la pantalla */
+.unveil-sticky-frame {
   position: sticky;
-  top: 0;
-  z-index: 50;
+  top: var(--header-height, 60px);
+  height: calc(100vh - var(--header-height, 60px));
   width: 100%;
+  overflow: hidden; /* Clipa todo lo que suba por arriba del frame */
+}
+
+/* 1. EL RECTÁNGULO ROJO: SE QUEDA QUIETO EN LA PARTE SUPERIOR (Z-INDEX: 30) */
+.unveil-red-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30;
   background-color: var(--red-editorial);
   color: #000000;
   padding: clamp(38px, 4.8vw, 62px) var(--pad-side) clamp(32px, 4vw, 50px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -477,16 +488,15 @@ button {
   text-transform: none;
 }
 
-/* 2. LA INFORMACIÓN QUE EMERGE POR DETRÁS DEL RECTÁNGULO ROJO */
-.unveil-behind-content {
-  position: relative;
-  z-index: 10;
+/* 2. LA BANDEJA DE INFORMACIÓN BLANCA (Z-INDEX: 10, SALE POR DETRÁS) */
+.unveil-content-tray {
+  position: absolute;
+  top: var(--red-panel-height, 350px);
+  left: 0;
   width: 100%;
+  z-index: 10;
   background-color: #ffffff;
-  /* Arranca exactamente detrás del panel rojo */
-  margin-top: calc(-1 * var(--red-panel-height, 360px));
-  /* Espacio inferior para lectura completa antes del despegue */
-  padding-bottom: clamp(60px, 8vw, 100px);
+  will-change: transform;
 }
 
 /* Bloque 1: Franja "Cada disparo" + chips */
@@ -536,7 +546,7 @@ button {
 /* Bloque 2: Tabla de Servicios */
 .behind-services-inner {
   width: 100%;
-  padding: clamp(52px, 7vw, 96px) var(--pad-side) 0;
+  padding: clamp(48px, 6.5vw, 84px) var(--pad-side) clamp(60px, 8vw, 100px);
 }
 
 .services-kicker {
@@ -548,6 +558,7 @@ button {
   margin-bottom: 36px;
   text-transform: none;
 }
+
 
 
 
