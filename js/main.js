@@ -82,57 +82,31 @@ function initDraggableCarousel() {
 }
 
 /* =========================================================================
-   2. Curtain Reveal — Panel rojo que sube al scrollear
-
-   El track mide exactamente 100vh + altura del panel.
-   Así el usuario scrollea SOLO la cantidad necesaria para que el panel
-   salga completamente del viewport. Sin espacio muerto.
+   2. Experiencia Unveil: Calibración dinámica del Rectángulo Rojo
+   
+   Mide la altura exacta del rectángulo rojo para que la información blanca
+   arranque perfectamente escondida por detrás y emerja con el scroll.
    ========================================================================= */
 function initCurtainRevealAnimation() {
-  const track   = document.getElementById('sobre-mi');
-  const panel   = document.getElementById('redCurtainPanel');
+  const redPanel = document.querySelector('.unveil-red-panel');
 
-  if (!track || !panel) return;
+  if (!redPanel) return;
 
-  // Medir el panel y ajustar la altura del track dinámicamente
   function calibrate() {
-    const panelH = panel.offsetHeight;
-    document.documentElement.style.setProperty('--panel-height', panelH + 'px');
+    const panelHeight = redPanel.offsetHeight;
+    document.documentElement.style.setProperty('--red-panel-height', `${panelHeight}px`);
   }
 
   calibrate();
   window.addEventListener('resize', calibrate, { passive: true });
+  window.addEventListener('load', calibrate);
 
-  // Animar el panel en cada frame de scroll
-  let ticking = false;
-
-  function updateCurtain() {
-    const scrollY   = window.scrollY;
-    const trackTop  = track.offsetTop;
-    const panelH    = panel.offsetHeight;
-    const scrolled  = scrollY - trackTop;  // cuánto avanzamos dentro del track
-
-    if (scrolled <= 0) {
-      panel.style.transform = 'translateY(0px)';
-    } else {
-      // progress va de 0 (empezamos a scrollear el track) a 1 (panel salió completamente)
-      const progress = Math.min(scrolled / panelH, 1);
-      const lift = progress * panelH;
-      panel.style.transform = `translateY(-${lift.toFixed(1)}px)`;
-    }
-
-    ticking = false;
+  // Re-calibrar tras carga de fuentes
+  if (document.fonts) {
+    document.fonts.ready.then(calibrate);
   }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateCurtain);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  updateCurtain(); // estado inicial
 }
+
 
 
 /* =========================================================================
