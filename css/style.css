@@ -415,18 +415,57 @@ button {
 }
 
 /* ==========================================================================
-   7. SOBRE MÍ — BLOQUE ROJO COMPACTO (STICKY CURTAIN REVEAL)
+   7. SOBRE MÍ + SERVICIOS — CURTAIN REVEAL
+   
+   El track tiene altura = 100vh (viewport) + altura del panel rojo.
+   Así el usuario scrollea EXACTAMENTE lo que mide el panel para que
+   salga del viewport, sin ningún espacio muerto extra.
    ========================================================================== */
-.about-red-curtain-layer {
+
+/* Track: 100vh del sticky + la altura del panel rojo (≈ 380-520px según pantalla) */
+.curtain-track {
+  /* JS actualiza esta variable después de medir el panel */
+  height: calc(100vh + var(--panel-height, 480px));
+  position: relative;
+}
+
+/* Viewport sticky: se queda en su lugar mientras el track scrollea */
+.curtain-sticky {
   position: sticky;
   top: 0;
-  z-index: 5;
+  height: 100vh;
+  overflow: hidden;
   width: 100%;
+}
+
+/* Fondo blanco: ocupa todo el viewport, siempre en su lugar */
+.curtain-floor {
+  position: absolute;
+  inset: 0;
+  background-color: #ffffff;
+  overflow-y: auto;
+  border-top: 1px solid var(--border-light);
+}
+
+.curtain-floor-scroll {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panel rojo: absolute, arranca tapando el floor, JS lo sube al scrollear */
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   background-color: var(--red-editorial);
   color: #000000;
-  padding: clamp(42px, 5.5vw, 68px) var(--pad-side) clamp(36px, 4.8vw, 56px);
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+  padding: clamp(48px, 6vw, 80px) var(--pad-side) clamp(40px, 5.5vw, 68px);
+  will-change: transform;
+  transform: translateY(0);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 .red-stage-inner {
@@ -435,50 +474,37 @@ button {
   flex-direction: column;
 }
 
-/* Párrafo Superior Comprimido */
 .red-intro-prose {
-  max-width: 540px;
-  margin-bottom: clamp(22px, 3.2vw, 34px);
+  max-width: 560px;
+  margin-bottom: clamp(28px, 4vw, 44px);
 }
 
 .red-intro-prose p {
   font-family: var(--font-body);
-  font-size: clamp(1.02rem, 1.28vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.52;
   color: #000000;
 }
 
-/* Gran Manifiesto Ajustado y Fino */
 .red-quote-wrapper {
   will-change: transform;
 }
 
 .red-giant-manifesto {
   font-family: var(--font-headline);
-  font-size: clamp(2.4rem, 4.6vw, 4.4rem);
+  font-size: clamp(2.6rem, 5.2vw, 5rem);
   font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  line-height: 1.0;
+  letter-spacing: -0.032em;
   color: #000000;
-  max-width: 1180px;
+  max-width: 1200px;
   text-transform: none;
 }
 
 /* ==========================================================================
-   8. SECCIÓN BLANCA REVELADA (CADA DISPARO + SERVICIOS)
-   Se desliza por encima del rojo con sombra profunda simulando telón
+   8. FLOOR — Franja "Cada disparo" + Servicios (dentro del viewport sticky)
    ========================================================================== */
-.revealed-white-stage {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 -18px 48px rgba(0, 0, 0, 0.12);
-  border-top: 1px solid var(--border-light);
-}
-
-/* Sub-franja superior: "Cada disparo" + chips */
 .floor-intro-strip {
   width: 100%;
   padding: clamp(38px, 4.8vw, 56px) var(--pad-side);
@@ -522,11 +548,9 @@ button {
   color: #ffffff;
 }
 
-/* Tabla de Servicios dentro del escenario blanco */
-.services-inner {
+.floor-services {
   width: 100%;
-  padding: clamp(60px, 8vw, 110px) var(--pad-side);
-  border-bottom: 1px solid var(--border-light);
+  padding: clamp(52px, 7vw, 96px) var(--pad-side);
 }
 
 .services-kicker {
@@ -538,6 +562,7 @@ button {
   margin-bottom: 36px;
   text-transform: none;
 }
+
 
 .services-table {
   display: flex;

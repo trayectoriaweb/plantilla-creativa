@@ -82,25 +82,43 @@ function initDraggableCarousel() {
 }
 
 /* =========================================================================
-   2. Efecto Telón Editorial — Parallax suave en el bloque rojo comprimido
+   2. Curtain Reveal — Panel rojo que sube al scrollear
+
+   El track mide exactamente 100vh + altura del panel.
+   Así el usuario scrollea SOLO la cantidad necesaria para que el panel
+   salga completamente del viewport. Sin espacio muerto.
    ========================================================================= */
 function initCurtainRevealAnimation() {
-  const redSection = document.getElementById('sobre-mi');
-  const quoteWrapper = document.getElementById('redParallaxQuote');
+  const track   = document.getElementById('sobre-mi');
+  const panel   = document.getElementById('redCurtainPanel');
 
-  if (!redSection || !quoteWrapper) return;
+  if (!track || !panel) return;
 
+  // Medir el panel y ajustar la altura del track dinámicamente
+  function calibrate() {
+    const panelH = panel.offsetHeight;
+    document.documentElement.style.setProperty('--panel-height', panelH + 'px');
+  }
+
+  calibrate();
+  window.addEventListener('resize', calibrate, { passive: true });
+
+  // Animar el panel en cada frame de scroll
   let ticking = false;
 
-  function updateParallax() {
-    const rect = redSection.getBoundingClientRect();
-    const winH = window.innerHeight;
+  function updateCurtain() {
+    const scrollY   = window.scrollY;
+    const trackTop  = track.offsetTop;
+    const panelH    = panel.offsetHeight;
+    const scrolled  = scrollY - trackTop;  // cuánto avanzamos dentro del track
 
-    if (rect.top < winH && rect.bottom > 0) {
-      // Progreso mientras la sección está en viewport
-      const progress = (winH - rect.top) / (winH + rect.height);
-      const offset = (progress - 0.5) * 24;
-      quoteWrapper.style.transform = `translateY(${offset.toFixed(1)}px)`;
+    if (scrolled <= 0) {
+      panel.style.transform = 'translateY(0px)';
+    } else {
+      // progress va de 0 (empezamos a scrollear el track) a 1 (panel salió completamente)
+      const progress = Math.min(scrolled / panelH, 1);
+      const lift = progress * panelH;
+      panel.style.transform = `translateY(-${lift.toFixed(1)}px)`;
     }
 
     ticking = false;
@@ -108,13 +126,14 @@ function initCurtainRevealAnimation() {
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      requestAnimationFrame(updateParallax);
+      requestAnimationFrame(updateCurtain);
       ticking = true;
     }
   }, { passive: true });
 
-  updateParallax();
+  updateCurtain(); // estado inicial
 }
+
 
 /* =========================================================================
    3. Ventana Flotante Rectangular "HABLEMOS"
