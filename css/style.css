@@ -415,19 +415,18 @@ button {
 }
 
 /* ==========================================================================
-   7. SOBRE MÍ — CURTAIN REVEAL REAL
+   7. SOBRE MÍ + SERVICIOS — CURTAIN REVEAL
    
    Arquitectura:
-   .curtain-track       → div alto (180vh) que da espacio físico al scroll
-   .curtain-sticky      → viewport 100vh sticky que "clipa" la animación
-   .curtain-floor       → fondo blanco con texto, siempre en su lugar
-   .curtain-panel       → panel rojo absolute que arranca cubriendo todo
-                          JS lo translateY hacia arriba al scrollear
+   .curtain-track       → div alto (300vh) — espacio físico de scroll
+   .curtain-sticky      → viewport 100vh sticky, clipa la animación
+   .curtain-floor       → fondo blanco scrolleable con todo el contenido
+   .curtain-panel       → rojo absolute encima, JS lo sube al scrollear
    ========================================================================== */
 
-/* Track alto: le da al usuario espacio para scrollear y disparar la animación */
+/* Track extendido para dar más recorrido al panel rojo */
 .curtain-track {
-  height: 180vh;
+  height: 300vh;
   position: relative;
 }
 
@@ -436,30 +435,44 @@ button {
   position: sticky;
   top: 0;
   height: 100vh;
-  overflow: hidden;        /* Clipa el panel rojo cuando sube por encima */
+  overflow: hidden;
   width: 100%;
 }
 
-/* Fondo blanco: siempre en su lugar dentro del viewport sticky */
+/* Fondo blanco: scrolleable para cuando el contenido supera 100vh */
 .curtain-floor {
   position: absolute;
   inset: 0;
   background-color: #ffffff;
-  display: flex;
-  align-items: center;
+  overflow-y: auto;          /* Scroll interno para servicios */
   border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
 }
 
-.floor-inner {
+/* Scroll interno del floor */
+.curtain-floor-scroll {
   width: 100%;
-  padding: 0 var(--pad-side);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sub-franja superior: "Cada disparo" + chips */
+.floor-intro-strip {
+  width: 100%;
+  padding: clamp(44px, 5.5vw, 68px) var(--pad-side);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 32px;
   flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-light);
 }
+
+/* Servicios dentro del floor */
+.floor-services {
+  width: 100%;
+  padding: clamp(56px, 7vw, 100px) var(--pad-side);
+}
+
 
 /* Panel rojo: position absolute, cubre todo al inicio, JS lo mueve hacia arriba */
 .curtain-panel {
@@ -625,13 +638,13 @@ button {
   text-decoration: underline;
 }
 
-/* --- 9. Banner de Contacto (Pleno de Rojo Editorial) --- */
+/* --- 9. Banner de Contacto (Negro con letra blanca) --- */
 .contact-banner-section {
   width: 100%;
   padding: clamp(90px, 12vw, 160px) var(--pad-side);
-  background-color: var(--red-editorial);
-  color: #000000;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #000000;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .contact-banner-inner {
@@ -649,14 +662,14 @@ button {
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: 16px;
-  color: #000000;
+  color: #ffffff;
   text-transform: none;
 }
 
 .contact-sub-text {
   font-family: var(--font-body);
   font-size: 1.02rem;
-  color: rgba(0, 0, 0, 0.82);
+  color: rgba(255, 255, 255, 0.65);
   text-transform: none;
 }
 
@@ -664,31 +677,30 @@ button {
   display: inline-flex;
   align-items: center;
   padding: 18px 36px;
-  border: 1px solid #000000;
+  border: 1px solid #ffffff;
   font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 500;
-  color: #000000;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: transparent;
   text-transform: none;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   transition: all var(--t-fast);
 }
 
 .btn-touch-outline:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
-/* --- 10. Footer (Continuación del Pleno de Rojo) --- */
+/* --- 10. Footer (Negro, continuación del banner) --- */
 .site-footer {
   width: 100%;
   padding: 40px var(--pad-side);
-  background-color: var(--red-editorial);
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-family: var(--font-body);
   font-size: 0.88rem;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(255, 255, 255, 0.5);
   text-transform: none;
 }
 
@@ -707,11 +719,12 @@ button {
 
 .footer-right a {
   font-weight: 500;
-  color: #000000;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .footer-right a:hover {
-  opacity: 0.6;
+  color: #ffffff;
+  opacity: 1;
 }
 
 /* ==========================================================================
