@@ -415,79 +415,18 @@ button {
 }
 
 /* ==========================================================================
-   7. SOBRE MÍ + SERVICIOS — CURTAIN REVEAL
-   
-   Arquitectura:
-   .curtain-track       → div alto (300vh) — espacio físico de scroll
-   .curtain-sticky      → viewport 100vh sticky, clipa la animación
-   .curtain-floor       → fondo blanco scrolleable con todo el contenido
-   .curtain-panel       → rojo absolute encima, JS lo sube al scrollear
+   7. SOBRE MÍ — BLOQUE ROJO COMPACTO (STICKY CURTAIN REVEAL)
    ========================================================================== */
-
-/* Track extendido para dar más recorrido al panel rojo */
-.curtain-track {
-  height: 300vh;
-  position: relative;
-}
-
-/* Viewport sticky: se queda fijo mientras el track scrollea */
-.curtain-sticky {
+.about-red-curtain-layer {
   position: sticky;
   top: 0;
-  height: 100vh;
-  overflow: hidden;
+  z-index: 5;
   width: 100%;
-}
-
-/* Fondo blanco: scrolleable para cuando el contenido supera 100vh */
-.curtain-floor {
-  position: absolute;
-  inset: 0;
-  background-color: #ffffff;
-  overflow-y: auto;          /* Scroll interno para servicios */
-  border-top: 1px solid var(--border-light);
-}
-
-/* Scroll interno del floor */
-.curtain-floor-scroll {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Sub-franja superior: "Cada disparo" + chips */
-.floor-intro-strip {
-  width: 100%;
-  padding: clamp(44px, 5.5vw, 68px) var(--pad-side);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--border-light);
-}
-
-/* Servicios dentro del floor */
-.floor-services {
-  width: 100%;
-  padding: clamp(56px, 7vw, 100px) var(--pad-side);
-}
-
-
-/* Panel rojo: position absolute, cubre todo al inicio, JS lo mueve hacia arriba */
-.curtain-panel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  min-height: 100%;
-  z-index: 10;
   background-color: var(--red-editorial);
   color: #000000;
-  padding: clamp(56px, 7.5vw, 96px) var(--pad-side) clamp(48px, 6.5vw, 84px);
-  will-change: transform;
-  transform: translateY(0);
-  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.25);
+  padding: clamp(42px, 5.5vw, 68px) var(--pad-side) clamp(36px, 4.8vw, 56px);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
 }
 
 .red-stage-inner {
@@ -496,41 +435,65 @@ button {
   flex-direction: column;
 }
 
-/* Párrafo Superior */
+/* Párrafo Superior Comprimido */
 .red-intro-prose {
-  max-width: 580px;
-  margin-bottom: clamp(36px, 5vw, 56px);
+  max-width: 540px;
+  margin-bottom: clamp(22px, 3.2vw, 34px);
 }
 
 .red-intro-prose p {
   font-family: var(--font-body);
-  font-size: clamp(1.08rem, 1.45vw, 1.3rem);
+  font-size: clamp(1.02rem, 1.28vw, 1.2rem);
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.5;
   color: #000000;
 }
 
-/* Gran Manifiesto */
+/* Gran Manifiesto Ajustado y Fino */
 .red-quote-wrapper {
   will-change: transform;
 }
 
 .red-giant-manifesto {
   font-family: var(--font-headline);
-  font-size: clamp(2.8rem, 6.2vw, 5.8rem);
+  font-size: clamp(2.4rem, 4.6vw, 4.4rem);
   font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
   color: #000000;
-  max-width: 1240px;
+  max-width: 1180px;
   text-transform: none;
 }
 
-/* Chips en el piso blanco */
+/* ==========================================================================
+   8. SECCIÓN BLANCA REVELADA (CADA DISPARO + SERVICIOS)
+   Se desliza por encima del rojo con sombra profunda simulando telón
+   ========================================================================== */
+.revealed-white-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 -18px 48px rgba(0, 0, 0, 0.12);
+  border-top: 1px solid var(--border-light);
+}
+
+/* Sub-franja superior: "Cada disparo" + chips */
+.floor-intro-strip {
+  width: 100%;
+  padding: clamp(38px, 4.8vw, 56px) var(--pad-side);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-light);
+}
+
 .revealed-subtext {
   max-width: 500px;
   font-family: var(--font-body);
-  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
   line-height: 1.55;
   color: var(--text-dark);
   font-weight: 400;
@@ -559,10 +522,10 @@ button {
   color: #ffffff;
 }
 
-/* --- 8. Servicios --- */
-.services-section {
+/* Tabla de Servicios dentro del escenario blanco */
+.services-inner {
   width: 100%;
-  padding: clamp(80px, 10vw, 140px) var(--pad-side);
+  padding: clamp(60px, 8vw, 110px) var(--pad-side);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -572,7 +535,7 @@ button {
   font-weight: 500;
   color: var(--text-light);
   display: block;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   text-transform: none;
 }
 

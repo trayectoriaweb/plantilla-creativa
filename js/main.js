@@ -82,47 +82,25 @@ function initDraggableCarousel() {
 }
 
 /* =========================================================================
-   2. Curtain Reveal — Panel Rojo que se levanta al scrollear
-   
-   Lógica:
-   - .curtain-track tiene height: 180vh (espacio físico para scrollear)
-   - .curtain-sticky es viewport 100vh con overflow:hidden (se queda fijo)
-   - .curtain-panel es el rojo absolute (translateY(0) al inicio = cubre todo)
-   - JS calcula cuánto scrolleó el usuario dentro del track y
-     mueve el panel rojo hacia arriba con translateY negativo
-   - Al scrollear 100%: el panel se fue del viewport → fondo blanco visible
+   2. Efecto Telón Editorial — Parallax suave en el bloque rojo comprimido
    ========================================================================= */
 function initCurtainRevealAnimation() {
-  const track = document.getElementById('sobre-mi');
-  const panel = document.getElementById('redCurtainPanel');
+  const redSection = document.getElementById('sobre-mi');
+  const quoteWrapper = document.getElementById('redParallaxQuote');
 
-  if (!track || !panel) return;
+  if (!redSection || !quoteWrapper) return;
 
   let ticking = false;
 
-  function updateCurtain() {
-    const scrollY = window.scrollY;
-    const trackTop = track.offsetTop;
-    const trackHeight = track.offsetHeight;   // 180vh
-    const winH = window.innerHeight;          // 100vh
+  function updateParallax() {
+    const rect = redSection.getBoundingClientRect();
+    const winH = window.innerHeight;
 
-    // scrolled: cuántos px avanzamos desde el inicio del track
-    const scrolled = scrollY - trackTop;
-
-    if (scrolled <= 0) {
-      // Antes del track: panel cubriendo todo
-      panel.style.transform = 'translateY(0px)';
-    } else {
-      // Dentro del track: mover panel hacia arriba
-      // El track tiene (180vh - 100vh) = 80vh de recorrido efectivo
-      const travel = trackHeight - winH;
-      const progress = Math.min(scrolled / travel, 1);
-
-      // Panel sube hasta su altura completa (ej: 500px) → sale del viewport por arriba
-      const panelHeight = panel.offsetHeight;
-      const lift = progress * panelHeight;
-
-      panel.style.transform = `translateY(-${lift}px)`;
+    if (rect.top < winH && rect.bottom > 0) {
+      // Progreso mientras la sección está en viewport
+      const progress = (winH - rect.top) / (winH + rect.height);
+      const offset = (progress - 0.5) * 24;
+      quoteWrapper.style.transform = `translateY(${offset.toFixed(1)}px)`;
     }
 
     ticking = false;
@@ -130,13 +108,12 @@ function initCurtainRevealAnimation() {
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      requestAnimationFrame(updateCurtain);
+      requestAnimationFrame(updateParallax);
       ticking = true;
     }
   }, { passive: true });
 
-  // Correr una vez al init para setear estado correcto
-  updateCurtain();
+  updateParallax();
 }
 
 /* =========================================================================
