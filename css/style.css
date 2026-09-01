@@ -1,7 +1,7 @@
 /* ==========================================================================
    JULIÁN COSTA — PORTFOLIO EDITORIAL
-   Tipografía Syne (Light 400) + Plus Jakarta Sans + Inter 300
-   Header Puro + Ventana Flotante Rectangular "HABLEMOS"
+   Tipografía DM SANS (Titulares & Prioridades) + INSTRUMENT SANS (Textos & Menú)
+   Inicial mayúscula, resto minúscula en navegación y metadatos
    ========================================================================== */
 
 /* --- 1. Variables de Diseño --- */
@@ -11,28 +11,27 @@
   --bg-blue-studio: #0b3d7d;
   
   --text-dark: #000000;
-  --text-body: #3a3a3c;
-  --text-muted: #666668;
-  --text-light: #99999c;
+  --text-body: #333336;
+  --text-muted: #555558;
+  --text-light: #88888c;
   
-  --border-light: #ebebeb;
+  --border-light: #e5e5e5;
   --border-dark: #000000;
   
   /* Typography */
-  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-meta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-headline: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Layout */
   --pad-side: clamp(24px, 4.5vw, 64px);
   --header-height: 76px;
   
   /* Transitions */
-  --t-fast: 0.2s ease;
+  --t-fast: 0.18s ease;
   --t-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- 2. Reset & Base (0px Border Radius Absoluto) --- */
+/* --- 2. Reset & Base (0px Border Radius) --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -76,7 +75,7 @@ button {
   cursor: pointer;
 }
 
-/* --- 3. Header Minimalista (Texto Puro FOTÓGRAFO sin caja negra) --- */
+/* --- 3. Header (Inicial mayúscula, texto limpio sin caja negra) --- */
 .site-header {
   position: sticky;
   top: 0;
@@ -101,12 +100,12 @@ button {
 }
 
 .brand-text-label {
-  font-family: var(--font-meta);
+  font-family: var(--font-headline);
   font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
   color: var(--text-dark);
-  text-transform: uppercase;
+  text-transform: none; /* Inicial mayúscula */
   display: inline-block;
   padding: 4px 0;
 }
@@ -130,20 +129,20 @@ button {
 }
 
 .nav-link {
-  font-family: var(--font-meta);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400; /* Peso fino y limpio */
+  letter-spacing: 0.01em;
+  text-transform: none; /* Inicial mayúscula, resto minúscula */
   color: var(--text-dark);
   transition: opacity var(--t-fast);
 }
 
 .nav-link:hover {
-  opacity: 0.45;
+  opacity: 0.5;
 }
 
-/* --- 4. Hero Split-Screen --- */
+/* --- 4. Hero Split-Screen (DM SANS MASIVO) --- */
 .hero-lovers-section {
   width: 100%;
   display: grid;
@@ -170,15 +169,16 @@ button {
   max-width: 760px;
 }
 
+/* Titular Masivo en DM Sans */
 .hero-giant-name {
-  font-family: var(--font-display);
-  font-size: clamp(4.8rem, 13vw, 11rem);
-  font-weight: 400; /* Peso liviano */
-  line-height: 0.9;
-  letter-spacing: 0.02em;
+  font-family: var(--font-headline);
+  font-size: clamp(4.8rem, 13vw, 10.5rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: clamp(36px, 5vw, 52px);
+  margin-bottom: clamp(32px, 5vw, 48px);
 }
 
 .name-row {
@@ -186,30 +186,28 @@ button {
 }
 
 .hero-bio-card {
-  max-width: 620px;
-  margin-bottom: 36px;
+  max-width: 600px;
+  margin-bottom: 32px;
 }
 
 .hero-bio-text {
-  font-family: var(--font-meta);
-  font-size: clamp(0.92rem, 1.25vw, 1.1rem);
-  color: var(--text-body);
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--text-dark);
+  line-height: 1.55;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .hero-location-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
-  color: var(--text-light);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: none;
 }
 
 /* Columna Derecha: Retrato Vertical a Borde Completo */
@@ -269,13 +267,12 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
   color: var(--text-muted);
   border-bottom: 1px solid var(--border-light);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* --- 6. Trabajos Seleccionados --- */
@@ -290,11 +287,10 @@ button {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-light);
-  font-family: var(--font-meta);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: none;
 }
 
 .filter-left {
@@ -306,16 +302,18 @@ button {
   color: var(--text-light);
   transition: color var(--t-fast);
   padding: 4px 0;
+  text-transform: none;
 }
 
 .filter-btn.active, .filter-btn:hover {
   color: var(--text-dark);
   font-weight: 600;
-  border-bottom: 1px solid var(--text-dark);
+  border-bottom: 2px solid var(--text-dark);
 }
 
 .series-count {
   color: var(--text-light);
+  text-transform: none;
 }
 
 /* 2-Column Full Bleed Gallery Grid */
@@ -339,12 +337,11 @@ button {
 }
 
 .item-category-tag {
-  font-family: var(--font-meta);
-  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
   color: var(--text-light);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .item-img-box {
@@ -374,29 +371,28 @@ button {
 }
 
 .item-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
-  font-weight: 400;
+  font-family: var(--font-headline);
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 700;
   line-height: 1.1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.03em;
   margin-bottom: 4px;
+  text-transform: none;
 }
 
 .item-genre {
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  color: var(--text-muted);
   display: block;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .item-index {
-  font-family: var(--font-meta);
-  font-size: 0.85rem;
+  font-family: var(--font-headline);
+  font-size: 0.95rem;
   color: var(--text-light);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* --- 7. Sobre Mí --- */
@@ -408,14 +404,13 @@ button {
 }
 
 .about-kicker {
-  font-family: var(--font-meta);
-  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
   color: var(--text-light);
   display: block;
   margin-bottom: 32px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .about-split-grid {
@@ -431,12 +426,12 @@ button {
 }
 
 .about-giant-quote {
-  font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5vw, 4.6rem);
-  font-weight: 400;
+  font-family: var(--font-headline);
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  font-weight: 700;
   line-height: 1.05;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  text-transform: none;
 }
 
 .about-right-prose {
@@ -446,17 +441,19 @@ button {
 }
 
 .about-p-lead {
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   line-height: 1.65;
-  color: var(--text-body);
-  font-weight: 300;
+  color: var(--text-dark);
+  font-weight: 400;
 }
 
 .about-p-secondary {
-  font-size: 0.98rem;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
   color: var(--text-muted);
   line-height: 1.65;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .specialties-chips-row {
@@ -469,13 +466,12 @@ button {
 }
 
 .spec-chip {
-  font-family: var(--font-meta);
-  font-size: 0.76rem;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   padding: 8px 16px;
   border: 1px solid var(--border-light);
+  text-transform: none;
 }
 
 /* --- 8. Servicios --- */
@@ -486,14 +482,13 @@ button {
 }
 
 .services-kicker {
-  font-family: var(--font-meta);
-  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
   color: var(--text-light);
   display: block;
   margin-bottom: 40px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .services-table {
@@ -522,34 +517,35 @@ button {
 }
 
 .s-num {
-  font-family: var(--font-meta);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-family: var(--font-headline);
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-light);
 }
 
 .s-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.2vw, 2rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-family: var(--font-headline);
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: 4px;
+  text-transform: none;
 }
 
 .s-desc {
-  font-size: 0.95rem;
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 400;
   color: var(--text-muted);
   max-width: 600px;
 }
 
 .s-link {
-  font-family: var(--font-meta);
-  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-transform: none;
   white-space: nowrap;
 }
 
@@ -572,21 +568,20 @@ button {
 }
 
 .contact-giant-title {
-  font-family: var(--font-display);
+  font-family: var(--font-headline);
   font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.05;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.03em;
   margin-bottom: 16px;
+  text-transform: none;
 }
 
 .contact-sub-text {
-  font-family: var(--font-meta);
-  font-size: 0.88rem;
-  letter-spacing: 0.08em;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
   color: var(--text-muted);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .btn-touch-outline {
@@ -594,13 +589,12 @@ button {
   align-items: center;
   padding: 18px 36px;
   border: 1px solid var(--border-dark);
-  font-family: var(--font-meta);
-  font-size: 0.82rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--text-dark);
   background-color: transparent;
+  text-transform: none;
   transition: all var(--t-fast);
 }
 
@@ -614,11 +608,10 @@ button {
   width: 100%;
   padding: 40px var(--pad-side);
   border-top: 1px solid var(--border-light);
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
-  color: var(--text-light);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-transform: none;
 }
 
 .footer-inner {
@@ -635,7 +628,7 @@ button {
 }
 
 .footer-right a {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-dark);
 }
 
@@ -644,7 +637,7 @@ button {
 }
 
 /* ==========================================================================
-   11. RECTÁNGULO FLOTANTE BLANCO "HABLEMOS" & VENTANA EXPANDIBLE
+   11. RECTÁNGULO FLOTANTE BLANCO "HABLEMOS"
    ========================================================================== */
 .floating-talk-wrapper {
   position: fixed;
@@ -653,7 +646,6 @@ button {
   z-index: 2500;
 }
 
-/* Pestaña / Botón Flotante Rectangular Blanco */
 .floating-talk-pill {
   display: inline-flex;
   align-items: center;
@@ -662,11 +654,11 @@ button {
   color: #000000;
   border: 1px solid #000000;
   padding: 14px 22px;
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-transform: none; /* Inicial mayúscula */
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform var(--t-fast), box-shadow var(--t-fast), background-color var(--t-fast), color var(--t-fast);
@@ -684,7 +676,7 @@ button {
 }
 
 .talk-pill-icon {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   transition: transform var(--t-fast);
 }
 
@@ -731,22 +723,22 @@ button {
 }
 
 .talk-kicker {
-  font-family: var(--font-meta);
-  font-size: 0.68rem;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
   color: var(--text-light);
   display: block;
   margin-bottom: 4px;
+  text-transform: none;
 }
 
 .talk-title {
-  font-family: var(--font-display);
+  font-family: var(--font-headline);
   font-size: 1.35rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text-dark);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .talk-close-btn {
@@ -779,11 +771,11 @@ button {
 }
 
 .form-label {
-  font-family: var(--font-meta);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
   color: var(--text-dark);
+  text-transform: none;
 }
 
 .form-input,
@@ -794,7 +786,7 @@ button {
   background-color: #ffffff;
   border: 1px solid var(--border-light);
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--text-dark);
   outline: none;
   transition: border-color var(--t-fast);
@@ -816,11 +808,10 @@ button {
   background-color: #000000;
   color: #ffffff;
   padding: 15px 20px;
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  text-transform: none;
   margin-top: 6px;
   transition: opacity var(--t-fast);
 }
@@ -829,7 +820,6 @@ button {
   opacity: 0.85;
 }
 
-/* Separator */
 .talk-separator {
   display: flex;
   align-items: center;
@@ -844,14 +834,13 @@ button {
 }
 
 .sep-text {
-  font-family: var(--font-meta);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--text-light);
+  text-transform: none;
 }
 
-/* Botón Rectangular WhatsApp Sin Redondeados */
 .btn-whatsapp-direct {
   width: 100%;
   display: flex;
@@ -862,11 +851,10 @@ button {
   border: 1px solid #000000;
   background-color: transparent;
   color: #000000;
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  text-transform: none;
   transition: all var(--t-fast);
 }
 
@@ -875,7 +863,6 @@ button {
   color: #ffffff;
 }
 
-/* Backdrop para móviles */
 .talk-backdrop {
   position: fixed;
   top: 0;
