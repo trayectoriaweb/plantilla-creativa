@@ -259,17 +259,23 @@
 
     </section>
 
-    <!-- ==================== SOBRE MÍ (EFECTO TELÓN STICKY + SUBCAPA REVELADA) ==================== -->
-    <div class="about-curtain-reveal-container" id="sobre-mi">
-      <div class="about-curtain-sticky-track">
+    <!-- ==================== SOBRE MÍ (CURTAIN REVEAL REAL) ==================== -->
+    <!--
+      Cómo funciona:
+      1. .curtain-track es un div alto (180vh) que da espacio físico al scroll
+      2. .curtain-sticky es un viewport sticky de 100vh que no se mueve
+      3. .curtain-floor es el fondo blanco con el texto debajo
+      4. .curtain-panel es el bloque rojo que JS mueve hacia arriba según el scroll
+    -->
+    <div class="curtain-track" id="sobre-mi">
+      <div class="curtain-sticky">
 
-        <!-- Capa Inferior PRIMERO en el DOM: Sección que queda debajo del telón rojo -->
-        <div class="about-underneath-strip" id="aboutUnderneathStrip">
-          <div class="revealed-strip-inner">
+        <!-- Fondo blanco: siempre en su lugar, el rojo lo tapa al inicio -->
+        <div class="curtain-floor">
+          <div class="floor-inner">
             <p class="revealed-subtext">
               Cada disparo es una búsqueda de carácter, honestidad gestual y composición pura sin artificios.
             </p>
-
             <div class="revealed-chips-cloud">
               <span class="red-chip">Retratos</span>
               <span class="red-chip">Moda</span>
@@ -280,24 +286,24 @@
           </div>
         </div>
 
-        <!-- Capa Superior STICKY: Bloque Rojo que cubre la sección de abajo -->
-        <section class="about-red-curtain-layer">
+        <!-- Panel rojo: arranca cubriendo todo, JS lo mueve hacia arriba al scrollear -->
+        <div class="curtain-panel" id="redCurtainPanel">
           <div class="red-stage-inner">
-            
+
             <div class="red-intro-prose">
               <p>
                 Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad propia, lejos de las modas pasajeras.
               </p>
             </div>
 
-            <div class="red-quote-wrapper" id="redParallaxQuote">
+            <div class="red-quote-wrapper">
               <h2 class="red-giant-manifesto">
                 Historias que empiezan cuando apretás el obturador.
               </h2>
             </div>
 
           </div>
-        </section>
+        </div>
 
       </div>
     </div>

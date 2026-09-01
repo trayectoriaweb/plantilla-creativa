@@ -415,49 +415,75 @@ button {
 }
 
 /* ==========================================================================
-   7. SOBRE MÍ — EFECTO TELÓN ROJO (STICKY CURTAIN) CON SUBCAPA REVELADA
-
-   Cómo funciona:
-   - .about-curtain-sticky-track tiene altura extra para dar espacio al scroll
-   - .about-red-curtain-layer es STICKY: se pega mientras el contenedor scrollea,
-     creando la ilusión de que el rojo "se sube" y deja ver lo de abajo
-   - .about-underneath-strip está en el flujo normal y va apareciendo naturalmente
+   7. SOBRE MÍ — CURTAIN REVEAL REAL
+   
+   Arquitectura:
+   .curtain-track       → div alto (180vh) que da espacio físico al scroll
+   .curtain-sticky      → viewport 100vh sticky que "clipa" la animación
+   .curtain-floor       → fondo blanco con texto, siempre en su lugar
+   .curtain-panel       → panel rojo absolute que arranca cubriendo todo
+                          JS lo translateY hacia arriba al scrollear
    ========================================================================== */
-.about-curtain-reveal-container {
+
+/* Track alto: le da al usuario espacio para scrollear y disparar la animación */
+.curtain-track {
+  height: 180vh;
   position: relative;
-  width: 100%;
 }
 
-/* Track con altura suficiente para que el sticky tenga recorrido */
-.about-curtain-sticky-track {
-  position: relative;
-  width: 100%;
-}
-
-/* Capa 1: Bloque Rojo STICKY — cubre la sección blanca al inicio */
-.about-red-curtain-layer {
+/* Viewport sticky: se queda fijo mientras el track scrollea */
+.curtain-sticky {
   position: sticky;
   top: 0;
-  z-index: 10;
+  height: 100vh;
+  overflow: hidden;        /* Clipa el panel rojo cuando sube por encima */
   width: 100%;
+}
+
+/* Fondo blanco: siempre en su lugar dentro del viewport sticky */
+.curtain-floor {
+  position: absolute;
+  inset: 0;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.floor-inner {
+  width: 100%;
+  padding: 0 var(--pad-side);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* Panel rojo: position absolute, cubre todo al inicio, JS lo mueve hacia arriba */
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  z-index: 10;
   background-color: var(--red-editorial);
   color: #000000;
   padding: clamp(56px, 7.5vw, 96px) var(--pad-side) clamp(48px, 6.5vw, 84px);
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
-  /* Tira hacia arriba para cubrir la sección blanca que está antes en el DOM */
-  margin-top: calc(-1 * var(--underneath-height, 200px));
+  will-change: transform;
+  transform: translateY(0);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.25);
 }
 
 .red-stage-inner {
   width: 100%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 2;
 }
 
-/* Párrafo Superior Asimétrico */
+/* Párrafo Superior */
 .red-intro-prose {
   max-width: 580px;
   margin-bottom: clamp(36px, 5vw, 56px);
@@ -487,24 +513,7 @@ button {
   text-transform: none;
 }
 
-/* Capa 2: Sección visible debajo — el sticky rojo la cubre inicialmente */
-.about-underneath-strip {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  background-color: #ffffff;
-  padding: clamp(44px, 5.5vw, 68px) var(--pad-side);
-  border-bottom: 1px solid var(--border-light);
-}
-
-.revealed-strip-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
+/* Chips en el piso blanco */
 .revealed-subtext {
   max-width: 500px;
   font-family: var(--font-body);
