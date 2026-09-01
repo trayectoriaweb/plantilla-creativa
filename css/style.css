@@ -287,37 +287,12 @@ button {
 
 .carousel-section-header {
   padding: 0 var(--pad-side);
-  margin-bottom: 36px;
+  margin-bottom: 28px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-
-.carousel-kicker {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text-light);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.carousel-heading {
-  font-family: var(--font-headline);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  color: #000000;
-  line-height: 1.05;
-}
-
-.carousel-controls-meta {
-  display: flex;
   align-items: center;
-  gap: 32px;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .filter-pills-row {
