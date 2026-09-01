@@ -82,10 +82,10 @@ function initDraggableCarousel() {
 }
 
 /* =========================================================================
-   2. Efecto de Movimiento Parallax al Scrollear (Sobre Mí Naranja)
+   2. Efecto de Movimiento Parallax al Scrollear (Sobre Mí Rojo)
    ========================================================================= */
 function initScrollParallax() {
-  const quoteWrapper = document.getElementById('orangeParallaxQuote');
+  const quoteWrapper = document.getElementById('redParallaxQuote') || document.getElementById('orangeParallaxQuote');
   const section = document.getElementById('sobre-mi');
 
   if (!quoteWrapper || !section) return;
