@@ -82,39 +82,26 @@ function initDraggableCarousel() {
 }
 
 /* =========================================================================
-   2. Efecto Telón Rojo (Curtain Reveal / Capa Subyacente al Deslizar)
+   2. Efecto Telón Rojo (Sticky Curtain Reveal)
+   
+   Lógica: el bloque rojo tiene position:sticky y margin-top negativo
+   igual a la altura de la sección blanca. Esto lo hace arrancar
+   CUBRIENDO la sección blanca. Al scrollear, el rojo se queda pegado
+   al top y el scroll natural va descubriendo la sección blanca de abajo.
    ========================================================================= */
 function initCurtainRevealAnimation() {
-  const container = document.getElementById('sobre-mi');
   const underneathStrip = document.getElementById('aboutUnderneathStrip');
-  const quoteWrapper = document.getElementById('redParallaxQuote');
+  const curtainLayer = document.querySelector('.about-red-curtain-layer');
 
-  if (!container || !underneathStrip) return;
+  if (!underneathStrip || !curtainLayer) return;
 
-  window.addEventListener('scroll', () => {
-    const rect = container.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+  function applyHeight() {
+    const stripHeight = underneathStrip.offsetHeight;
+    document.documentElement.style.setProperty('--underneath-height', `${stripHeight}px`);
+  }
 
-    // Cuando el contenedor entra en pantalla
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      // Progreso de scroll sobre la sección (0 = entrando, 1 = completamente en foco)
-      const progress = Math.min(Math.max((windowHeight - rect.top) / (windowHeight * 0.75), 0), 1);
-      
-      // La sub-sección blanca emerge desde abajo del telón rojo (-35px -> 0px)
-      const translateY = (1 - progress) * -35;
-      const opacity = 0.2 + (progress * 0.8);
-
-      underneathStrip.style.transform = `translateY(${translateY}px)`;
-      underneathStrip.style.opacity = `${opacity}`;
-
-      // Parallax sutil del titular principal
-      if (quoteWrapper) {
-        const quoteProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
-        const quoteOffset = (quoteProgress - 0.5) * 30;
-        quoteWrapper.style.transform = `translateY(${quoteOffset}px)`;
-      }
-    }
-  }, { passive: true });
+  applyHeight();
+  window.addEventListener('resize', applyHeight, { passive: true });
 }
 
 /* =========================================================================

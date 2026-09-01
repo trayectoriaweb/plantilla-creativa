@@ -259,45 +259,47 @@
 
     </section>
 
-    <!-- ==================== SOBRE MÍ (ESTRUCTURA DE CAPAS CON EFECTO TELÓN / CURTAIN REVEAL) ==================== -->
+    <!-- ==================== SOBRE MÍ (EFECTO TELÓN STICKY + SUBCAPA REVELADA) ==================== -->
     <div class="about-curtain-reveal-container" id="sobre-mi">
-      
-      <!-- Capa Superior (Z-INDEX: 10): Bloque Rojo Sólido y Comprimido -->
-      <section class="about-red-curtain-layer">
-        <div class="red-stage-inner">
-          
-          <div class="red-intro-prose">
-            <p>
-              Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad propia, lejos de las modas pasajeras.
+      <div class="about-curtain-sticky-track">
+
+        <!-- Capa Inferior PRIMERO en el DOM: Sección que queda debajo del telón rojo -->
+        <div class="about-underneath-strip" id="aboutUnderneathStrip">
+          <div class="revealed-strip-inner">
+            <p class="revealed-subtext">
+              Cada disparo es una búsqueda de carácter, honestidad gestual y composición pura sin artificios.
             </p>
-          </div>
 
-          <div class="red-quote-wrapper" id="redParallaxQuote">
-            <h2 class="red-giant-manifesto">
-              Historias que empiezan cuando apretás el obturador.
-            </h2>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Capa Inferior (Z-INDEX: 5): Sub-Sección Oculta por Debajo que se Descubre al Scrollear -->
-      <div class="about-underneath-strip" id="aboutUnderneathStrip">
-        <div class="revealed-strip-inner">
-          <p class="revealed-subtext">
-            Cada disparo es una búsqueda de carácter, honestidad gestual y composición pura sin artificios.
-          </p>
-
-          <div class="revealed-chips-cloud">
-            <span class="red-chip">Retratos</span>
-            <span class="red-chip">Moda</span>
-            <span class="red-chip">Fotografía editorial</span>
-            <span class="red-chip">Campañas</span>
-            <span class="red-chip">Eventos</span>
+            <div class="revealed-chips-cloud">
+              <span class="red-chip">Retratos</span>
+              <span class="red-chip">Moda</span>
+              <span class="red-chip">Fotografía editorial</span>
+              <span class="red-chip">Campañas</span>
+              <span class="red-chip">Eventos</span>
+            </div>
           </div>
         </div>
+
+        <!-- Capa Superior STICKY: Bloque Rojo que cubre la sección de abajo -->
+        <section class="about-red-curtain-layer">
+          <div class="red-stage-inner">
+            
+            <div class="red-intro-prose">
+              <p>
+                Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad propia, lejos de las modas pasajeras.
+              </p>
+            </div>
+
+            <div class="red-quote-wrapper" id="redParallaxQuote">
+              <h2 class="red-giant-manifesto">
+                Historias que empiezan cuando apretás el obturador.
+              </h2>
+            </div>
+
+          </div>
+        </section>
+
       </div>
-
     </div>
 
     <!-- ==================== SERVICIOS ==================== -->
