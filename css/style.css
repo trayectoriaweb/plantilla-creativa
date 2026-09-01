@@ -1,8 +1,8 @@
 /* ==========================================================================
    JULIÁN COSTA — PORTFOLIO EDITORIAL
-   Tipografía DM SANS (Titulares & Prioridades en Peso Liviano 400/500)
-   INSTRUMENT SANS (Textos & Menú en Peso Liviano 400)
-   Inicial mayúscula, resto minúscula en navegación y metadatos
+   Tipografía DM SANS + INSTRUMENT SANS
+   Carrusel Deslizable Interactivo (Drag-to-Scroll) de Obras
+   Header Puro con Fotógrafo Naranja + Pleno Naranja al Final
    ========================================================================== */
 
 /* --- 1. Variables de Diseño --- */
@@ -10,7 +10,7 @@
   --bg-main: #ffffff;
   --bg-subtle: #fafafa;
   --bg-blue-studio: #0b3d7d;
-  --orange-warm: #ea5b26; /* Naranja editorial cálido y acogedor */
+  --orange-warm: #ea5b26; /* Naranja cálido y acogedor */
   
   --text-dark: #000000;
   --text-body: #333336;
@@ -33,7 +33,7 @@
   --t-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- 2. Reset & Base (0px Border Radius) --- */
+/* --- 2. Reset & Base --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -133,7 +133,7 @@ button {
 .nav-link {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 400; /* Peso fino y limpio */
+  font-weight: 400;
   letter-spacing: 0.01em;
   text-transform: none;
   color: var(--text-dark);
@@ -144,7 +144,7 @@ button {
   opacity: 0.5;
 }
 
-/* --- 4. Hero Split-Screen (DM SANS EN PESO LIVIANO 400) --- */
+/* --- 4. Hero Split-Screen (DM SANS MASIVO LIVIANO) --- */
 .hero-lovers-section {
   width: 100%;
   display: grid;
@@ -171,11 +171,10 @@ button {
   max-width: 760px;
 }
 
-/* Titular Masivo en DM Sans con PESO LIVIANO (400) */
 .hero-giant-name {
   font-family: var(--font-headline);
   font-size: clamp(4.8rem, 13vw, 10.5rem);
-  font-weight: 400; /* PESO LIVIANO / NO BOLD */
+  font-weight: 400; /* Peso liviano */
   line-height: 0.88;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -277,34 +276,62 @@ button {
   text-transform: none;
 }
 
-/* --- 6. Trabajos Seleccionados --- */
-.works-section {
+/* ==========================================================================
+   6. CARRUSEL DESLIZABLE DE TRABAJOS (DRAGGABLE / HORIZONTAL SCROLL)
+   ========================================================================== */
+.works-carousel-section {
   width: 100%;
-  padding-top: clamp(60px, 8vw, 100px);
+  padding: clamp(80px, 10vw, 120px) 0 clamp(40px, 6vw, 70px);
+  border-bottom: 1px solid var(--border-light);
 }
 
-.works-filter-bar {
-  padding: 20px var(--pad-side);
+.carousel-section-header {
+  padding: 0 var(--pad-side);
+  margin-bottom: 36px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-light);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 400;
-  text-transform: none;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-.filter-left {
+.carousel-kicker {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.carousel-heading {
+  font-family: var(--font-headline);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #000000;
+  line-height: 1.05;
+}
+
+.carousel-controls-meta {
   display: flex;
-  gap: 28px;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.filter-pills-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
   color: var(--text-light);
-  transition: color var(--t-fast);
   padding: 4px 0;
-  text-transform: none;
+  transition: color var(--t-fast);
 }
 
 .filter-btn.active, .filter-btn:hover {
@@ -313,95 +340,109 @@ button {
   border-bottom: 1px solid var(--text-dark);
 }
 
-.series-count {
+.drag-hint-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
   color: var(--text-light);
-  text-transform: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* 2-Column Full Bleed Gallery Grid */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 56px);
-  padding: clamp(40px, 6vw, 80px) var(--pad-side);
+/* Viewport Deslizable con Mouse y Touch */
+.carousel-viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px var(--pad-side) 30px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
+.carousel-viewport::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
-.gallery-item {
+.carousel-viewport.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.carousel-track {
+  display: flex;
+  gap: clamp(24px, 3.5vw, 40px);
+  width: max-content;
+}
+
+/* Tarjetas Individuales del Carrusel */
+.carousel-card {
+  flex: 0 0 clamp(290px, 25vw, 360px);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  pointer-events: auto;
+  transition: opacity var(--t-fast);
 }
 
-.item-category-tag {
+.carousel-card.is-hidden {
+  display: none;
+}
+
+.card-date {
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 400;
+  font-size: 0.82rem;
   color: var(--text-light);
-  text-transform: none;
+  display: block;
 }
 
-.item-img-box {
+.card-media-box {
   width: 100%;
-  aspect-ratio: 16 / 12;
+  aspect-ratio: 1 / 1; /* Cuadrado fotográfico perfecto */
   overflow: hidden;
   background-color: var(--bg-subtle);
 }
 
-.item-img {
+.card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gallery-item:hover .item-img {
-  transform: scale(1.03);
+.carousel-card:hover .card-img {
+  transform: scale(1.04);
 }
 
-.item-footer {
+.card-body {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-light);
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 4px;
 }
 
-.item-title {
+.card-title {
   font-family: var(--font-headline);
-  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-  font-weight: 400; /* Peso liviano */
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-  text-transform: none;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
 }
 
-.item-genre {
+.card-desc {
   font-family: var(--font-body);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  display: block;
-  text-transform: none;
-}
-
-.item-index {
-  font-family: var(--font-headline);
-  font-size: 0.95rem;
-  color: var(--text-light);
-  font-weight: 400;
+  line-height: 1.5;
 }
 
 /* --- 7. Sobre Mí --- */
 .about-section {
   width: 100%;
   padding: clamp(80px, 10vw, 140px) var(--pad-side);
-  border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -528,7 +569,7 @@ button {
 .s-title {
   font-family: var(--font-headline);
   font-size: clamp(1.5rem, 2.2vw, 1.9rem);
-  font-weight: 400; /* Peso liviano */
+  font-weight: 400;
   letter-spacing: -0.02em;
   margin-bottom: 4px;
   text-transform: none;
@@ -575,7 +616,7 @@ button {
 .contact-giant-title {
   font-family: var(--font-headline);
   font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 400; /* Peso liviano */
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: 16px;
@@ -691,7 +732,7 @@ button {
 .talk-pulse-indicator {
   width: 6px;
   height: 6px;
-  background-color: #000000;
+  background-color: var(--orange-warm);
   display: inline-block;
 }
 
@@ -743,7 +784,7 @@ button {
 .talk-title {
   font-family: var(--font-headline);
   font-size: 1.35rem;
-  font-weight: 500; /* Peso liviano */
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text-dark);
   text-transform: none;

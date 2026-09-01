@@ -1,23 +1,67 @@
 /**
  * JULIÁN COSTA — PORTFOLIO EDITORIAL
- * Controladores: Ventana Flotante "HABLEMOS" + Filtros de Obras
+ * Controladores: Carrusel Deslizable Horizontal (Drag-to-Scroll) + Ventana "HABLEMOS"
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initGalleryFilters();
+  initDraggableCarousel();
   initFloatingTalkWidget();
 });
 
 /* =========================================================================
-   1. Filtro Dinámico de Series
+   1. Carrusel Deslizable Horizontal (Drag to Scroll con Mouse & Touch)
    ========================================================================= */
-function initGalleryFilters() {
+function initDraggableCarousel() {
+  const viewport = document.getElementById('worksCarouselViewport');
+  const track = document.getElementById('worksCarouselTrack');
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.gallery-item');
-  const countEl = document.querySelector('.series-count');
+  const cards = document.querySelectorAll('.carousel-card');
 
-  if (!filterBtns.length || !items.length) return;
+  if (!viewport || !track) return;
 
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let isDragging = false;
+
+  // --- Mouse Drag Events ---
+  viewport.addEventListener('mousedown', (e) => {
+    isDown = true;
+    isDragging = false;
+    viewport.classList.add('is-dragging');
+    startX = e.pageX - viewport.offsetLeft;
+    scrollLeft = viewport.scrollLeft;
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    isDown = false;
+    viewport.classList.remove('is-dragging');
+  });
+
+  viewport.addEventListener('mouseup', () => {
+    isDown = false;
+    viewport.classList.remove('is-dragging');
+  });
+
+  viewport.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    isDragging = true;
+    const x = e.pageX - viewport.offsetLeft;
+    const walk = (x - startX) * 1.8; // Multiplicador de velocidad suave
+    viewport.scrollLeft = scrollLeft - walk;
+  });
+
+  // Evitar clicks accidentales durante el arrastre
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (isDragging) {
+        e.preventDefault();
+      }
+    });
+  });
+
+  // --- Filtros por Categoría ---
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.getAttribute('data-filter');
@@ -25,21 +69,17 @@ function initGalleryFilters() {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      let visibleCount = 0;
-
-      items.forEach(item => {
-        const cat = item.getAttribute('data-category');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
         if (filter === 'all' || cat === filter) {
-          item.style.display = 'flex';
-          visibleCount++;
+          card.classList.remove('is-hidden');
         } else {
-          item.style.display = 'none';
+          card.classList.add('is-hidden');
         }
       });
 
-      if (countEl) {
-        countEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'SERIE' : 'SERIES'}`;
-      }
+      // Reset scroll al inicio suavemente
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
     });
   });
 }
@@ -98,7 +138,6 @@ function initFloatingTalkWidget() {
 
   backdrop?.addEventListener('click', closePanel);
 
-  // Triggers adicionales en la web
   extraTriggers.forEach(t => {
     t.addEventListener('click', () => {
       const service = t.getAttribute('data-service') || '';
@@ -106,14 +145,12 @@ function initFloatingTalkWidget() {
     });
   });
 
-  // Cerrar con Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && panel.classList.contains('open')) {
       closePanel();
     }
   });
 
-  // Envío del formulario
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('talkName')?.value || '';
@@ -121,7 +158,6 @@ function initFloatingTalkWidget() {
     const type = document.getElementById('talkType')?.value || '';
     const message = document.getElementById('talkMessage')?.value || '';
 
-    // Enviar a WhatsApp preconfigurado
     const text = encodeURIComponent(
       `Hola Julián, mi nombre es ${name} (${email}). Te escribo para consultar por un proyecto de ${type}:\n\n"${message}"`
     );

@@ -7,19 +7,19 @@
   <meta name="description" content="Portfolio de Julián Costa. Fotógrafo especializado en retratos, moda y fotografía editorial. Historias que empiezan cuando apretás el obturador." />
   
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text y='.72em' x='50%' text-anchor='middle' font-size='50' fill='white' font-family='sans-serif' font-weight='400'>JC</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23ea5b26'/><text y='.72em' x='50%' text-anchor='middle' font-size='50' fill='white' font-family='sans-serif' font-weight='400'>JC</text></svg>" />
 
-  <!-- Google Fonts: DM Sans (Titulares y Prioridades) + Instrument Sans (Textos Largos y Lectura) -->
+  <!-- Google Fonts: DM Sans (Titulares) + Instrument Sans (Textos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.dmsans.instrumentsans.1" />
+  <link rel="stylesheet" href="css/style.css?v=2026.carousel.drag.1" />
 </head>
 <body class="editorial-portfolio-body">
 
-  <!-- ==================== HEADER (INICIAL MAYÚSCULA, RESTO MINÚSCULA) ==================== -->
+  <!-- ==================== HEADER ==================== -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
       <div class="header-brand-box">
@@ -38,7 +38,7 @@
   </header>
 
   <main>
-    <!-- ==================== HERO SPLIT-SCREEN (DM SANS) ==================== -->
+    <!-- ==================== HERO SPLIT-SCREEN ==================== -->
     <section class="hero-lovers-section" id="hero">
       
       <!-- Columna Izquierda: Tipografía Masiva DM Sans + Bio Instrument Sans -->
@@ -79,7 +79,7 @@
 
     </section>
 
-    <!-- ==================== FOTOGRAFÍA PANORÁMICA GIGANTE ==================== -->
+    <!-- ==================== FOTOGRAFÍA PANORÁMICA GIGANTE (100VW) ==================== -->
     <section class="full-bleed-panorama-section">
       <div class="panorama-wrapper">
         <img 
@@ -91,110 +91,179 @@
       </div>
       <div class="panorama-meta-strip">
         <span>Editorial Nómade — Serie Destacada 2026</span>
-        <span>01 / 04</span>
+        <span>01 / 07</span>
       </div>
     </section>
 
-    <!-- ==================== SELECCIÓN DE TRABAJOS ==================== -->
-    <section class="works-section" id="trabajos">
+    <!-- ==================== SELECCIÓN DE TRABAJOS (CARRUSEL DESLIZABLE / DRAGGABLE) ==================== -->
+    <section class="works-carousel-section" id="trabajos">
       
-      <!-- Filter Bar -->
-      <div class="works-filter-bar">
-        <div class="filter-left">
-          <button type="button" class="filter-btn active" data-filter="all">Todos</button>
-          <button type="button" class="filter-btn" data-filter="moda">Moda</button>
-          <button type="button" class="filter-btn" data-filter="retratos">Retratos</button>
-          <button type="button" class="filter-btn" data-filter="arquitectura">Arquitectura</button>
+      <!-- Header de la sección con indicador de arrastre -->
+      <div class="carousel-section-header">
+        <div class="header-titles">
+          <span class="carousel-kicker">Trabajos seleccionados — 2024 / 2026</span>
+          <h2 class="carousel-heading">Series & Proyectos</h2>
         </div>
-        <div class="filter-right">
-          <span class="series-count">4 series</span>
+
+        <div class="carousel-controls-meta">
+          <div class="filter-pills-row">
+            <button type="button" class="filter-btn active" data-filter="all">Todos</button>
+            <button type="button" class="filter-btn" data-filter="moda">Moda</button>
+            <button type="button" class="filter-btn" data-filter="retratos">Retratos</button>
+            <button type="button" class="filter-btn" data-filter="arquitectura">Arquitectura</button>
+            <button type="button" class="filter-btn" data-filter="eventos">Eventos</button>
+          </div>
+          <span class="drag-hint-label">Arrastrá para explorar ↔</span>
         </div>
       </div>
 
-      <!-- 2-Column Full Bleed Gallery Grid -->
-      <div class="gallery-grid">
-        
-        <!-- Obra 01 -->
-        <article class="gallery-item" data-category="moda">
-          <span class="item-category-tag">Moda & Exteriores — 2026</span>
-          <div class="item-img-box">
-            <img 
-              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85" 
-              alt="Editorial Nómade" 
-              class="item-img"
-              loading="lazy"
-            />
-          </div>
-          <div class="item-footer">
-            <div class="item-title-group">
-              <h3 class="item-title">Editorial Nómade</h3>
-              <span class="item-genre">Moda & Vestuario — 2026</span>
+      <!-- Pista Deslizable Horizontal (Drag-to-Scroll) -->
+      <div class="carousel-viewport" id="worksCarouselViewport">
+        <div class="carousel-track" id="worksCarouselTrack">
+          
+          <!-- Obra 01 -->
+          <article class="carousel-card" data-category="moda">
+            <span class="card-date">1 de Julio, 2026</span>
+            <div class="card-media-box">
+              <img 
+                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85" 
+                alt="Editorial Nómade" 
+                class="card-img"
+                draggable="false"
+                loading="lazy"
+              />
             </div>
-            <span class="item-index">01</span>
-          </div>
-        </article>
-
-        <!-- Obra 02 -->
-        <article class="gallery-item" data-category="arquitectura">
-          <span class="item-category-tag">Arquitectura & Espacios — 2025</span>
-          <div class="item-img-box">
-            <img 
-              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85" 
-              alt="Campaña Casa M" 
-              class="item-img"
-              loading="lazy"
-            />
-          </div>
-          <div class="item-footer">
-            <div class="item-title-group">
-              <h3 class="item-title">Campaña Casa M</h3>
-              <span class="item-genre">Diseño & Espacios — 2025</span>
+            <div class="card-body">
+              <h3 class="card-title">Editorial Nómade</h3>
+              <p class="card-desc">
+                Serie editorial capturada en exteriores y luz natural. Exploración de texturas, movimiento y prendas de autor.
+              </p>
             </div>
-            <span class="item-index">02</span>
-          </div>
-        </article>
+          </article>
 
-        <!-- Obra 03 -->
-        <article class="gallery-item" data-category="retratos">
-          <span class="item-category-tag">Estudio & Retratos — 2026</span>
-          <div class="item-img-box">
-            <img 
-              src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85" 
-              alt="Retratos Colección 2026" 
-              class="item-img"
-              loading="lazy"
-            />
-          </div>
-          <div class="item-footer">
-            <div class="item-title-group">
-              <h3 class="item-title">Retratos — Colección 2026</h3>
-              <span class="item-genre">Claroscuro & Gesto — 2026</span>
+          <!-- Obra 02 -->
+          <article class="carousel-card" data-category="arquitectura">
+            <span class="card-date">30 de Junio, 2026</span>
+            <div class="card-media-box">
+              <img 
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=85" 
+                alt="Campaña Casa M" 
+                class="card-img"
+                draggable="false"
+                loading="lazy"
+              />
             </div>
-            <span class="item-index">03</span>
-          </div>
-        </article>
-
-        <!-- Obra 04 -->
-        <article class="gallery-item" data-category="moda">
-          <span class="item-category-tag">Eventos & Cultura — 2025</span>
-          <div class="item-img-box">
-            <img 
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85" 
-              alt="Festival Sur" 
-              class="item-img"
-              loading="lazy"
-            />
-          </div>
-          <div class="item-footer">
-            <div class="item-title-group">
-              <h3 class="item-title">Festival Sur</h3>
-              <span class="item-genre">Música en Vivo & Escenarios — 2025</span>
+            <div class="card-body">
+              <h3 class="card-title">Campaña Casa M</h3>
+              <p class="card-desc">
+                Dirección visual y fotografía arquitectónica para estudio de interiorismo contemporáneo en Rosario.
+              </p>
             </div>
-            <span class="item-index">04</span>
-          </div>
-        </article>
+          </article>
 
+          <!-- Obra 03 -->
+          <article class="carousel-card" data-category="retratos">
+            <span class="card-date">13 de Mayo, 2026</span>
+            <div class="card-media-box">
+              <img 
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85" 
+                alt="Retratos — Colección 2026" 
+                class="card-img"
+                draggable="false"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Retratos — Estudio 2026</h3>
+              <p class="card-desc">
+                Colección de retratos íntimos en estudio con iluminación dramática y enfoque en la honestidad gestual.
+              </p>
+            </div>
+          </article>
+
+          <!-- Obra 04 -->
+          <article class="carousel-card" data-category="eventos">
+            <span class="card-date">Abril 2026</span>
+            <div class="card-media-box">
+              <img 
+                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=85" 
+                alt="Festival Sur" 
+                class="card-img"
+                draggable="false"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Festival Sur</h3>
+              <p class="card-desc">
+                Registro documental del festival de música. Escenarios, backstage y la energía de la música en vivo.
+              </p>
+            </div>
+          </article>
+
+          <!-- Obra 05 -->
+          <article class="carousel-card" data-category="moda">
+            <span class="card-date">Marzo 2026</span>
+            <div class="card-media-box">
+              <img 
+                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=85" 
+                alt="Lookbook Urbano" 
+                class="card-img"
+                draggable="false"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Lookbook Urbano AW26</h3>
+              <p class="card-desc">
+                Producción integral de catálogo y banco visual para marca de indumentaria de diseño independiente.
+              </p>
+            </div>
+          </article>
+
+          <!-- Obra 06 -->
+          <article class="carousel-card" data-category="retratos">
+            <span class="card-date">Febrero 2026</span>
+            <div class="card-media-box">
+              <img 
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=85" 
+                alt="Luz y Sombra 35mm" 
+                class="card-img"
+                draggable="false"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Luz y Sombra — Serie 35mm</h3>
+              <p class="card-desc">
+                Fotografía analógica en película de 35mm capturando contrastes urbanos, texturas y momentos espontáneos.
+              </p>
+            </div>
+          </article>
+
+          <!-- Obra 07 -->
+          <article class="carousel-card" data-category="arquitectura">
+            <span class="card-date">Noviembre 2025</span>
+            <div class="card-media-box">
+              <img 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=85" 
+                alt="Geometría Urbana" 
+                class="card-img"
+                draggable="false"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Geometría Urbana</h3>
+              <p class="card-desc">
+                Estudio visual sobre el hormigón, reflejos de vidrio y el paso de la luz en la arquitectura de la ciudad.
+              </p>
+            </div>
+          </article>
+
+        </div>
       </div>
+
     </section>
 
     <!-- ==================== SOBRE MÍ ==================== -->
@@ -274,7 +343,7 @@
       </div>
     </section>
 
-    <!-- ==================== BANNER DE CONTACTO ==================== -->
+    <!-- ==================== BANNER DE CONTACTO (PLENO DE NARANJA) ==================== -->
     <section class="contact-banner-section" id="contacto">
       <div class="contact-banner-inner">
         <div class="contact-left">
@@ -295,7 +364,7 @@
     </section>
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- ==================== FOOTER (PLENO DE NARANJA) ==================== -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-left">
