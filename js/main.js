@@ -1,10 +1,11 @@
 /**
  * JULIÁN COSTA — PORTFOLIO EDITORIAL
- * Controladores: Carrusel Deslizable Horizontal (Drag-to-Scroll) + Ventana "HABLEMOS"
+ * Controladores: Carrusel Deslizable Horizontal (Drag-to-Scroll) + Parallax de Sobre Mí + Ventana "HABLEMOS"
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initDraggableCarousel();
+  initScrollParallax();
   initFloatingTalkWidget();
 });
 
@@ -24,7 +25,6 @@ function initDraggableCarousel() {
   let scrollLeft;
   let isDragging = false;
 
-  // --- Mouse Drag Events ---
   viewport.addEventListener('mousedown', (e) => {
     isDown = true;
     isDragging = false;
@@ -48,11 +48,10 @@ function initDraggableCarousel() {
     e.preventDefault();
     isDragging = true;
     const x = e.pageX - viewport.offsetLeft;
-    const walk = (x - startX) * 1.8; // Multiplicador de velocidad suave
+    const walk = (x - startX) * 1.8;
     viewport.scrollLeft = scrollLeft - walk;
   });
 
-  // Evitar clicks accidentales durante el arrastre
   cards.forEach(card => {
     card.addEventListener('click', (e) => {
       if (isDragging) {
@@ -61,7 +60,6 @@ function initDraggableCarousel() {
     });
   });
 
-  // --- Filtros por Categoría ---
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.getAttribute('data-filter');
@@ -78,14 +76,34 @@ function initDraggableCarousel() {
         }
       });
 
-      // Reset scroll al inicio suavemente
       viewport.scrollTo({ left: 0, behavior: 'smooth' });
     });
   });
 }
 
 /* =========================================================================
-   2. Ventana Flotante Rectangular "HABLEMOS"
+   2. Efecto de Movimiento Parallax al Scrollear (Sobre Mí Naranja)
+   ========================================================================= */
+function initScrollParallax() {
+  const quoteWrapper = document.getElementById('orangeParallaxQuote');
+  const section = document.getElementById('sobre-mi');
+
+  if (!quoteWrapper || !section) return;
+
+  window.addEventListener('scroll', () => {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+      const translateY = (progress - 0.5) * 60; // Desplazamiento suave hacia abajo
+      quoteWrapper.style.transform = `translateY(${translateY}px)`;
+    }
+  }, { passive: true });
+}
+
+/* =========================================================================
+   3. Ventana Flotante Rectangular "HABLEMOS"
    ========================================================================= */
 function initFloatingTalkWidget() {
   const btnOpen = document.getElementById('btnOpenTalkModal');
