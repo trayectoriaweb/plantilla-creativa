@@ -5,7 +5,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initDraggableCarousel();
-  initCurtainRevealAnimation();
   initFloatingTalkWidget();
 });
 
@@ -82,85 +81,7 @@ function initDraggableCarousel() {
 }
 
 /* =========================================================================
-   2. Experiencia Unveil: Rectángulo Rojo Quieto + Información que sale por detrás
-   ========================================================================= */
-function initCurtainRevealAnimation() {
-  const wrapper = document.querySelector('.unveil-stage-wrapper');
-  const redPanel = document.querySelector('.unveil-red-panel');
-  const tray = document.querySelector('.unveil-content-tray');
-  const header = document.querySelector('.site-header');
-
-  if (!wrapper || !redPanel || !tray) return;
-
-  function calibrate() {
-    const redH = redPanel.offsetHeight;
-    const trayH = tray.offsetHeight;
-    const headerH = header ? header.offsetHeight : 60;
-    const winH = window.innerHeight;
-    const visibleH = winH - headerH - redH;
-
-    document.documentElement.style.setProperty('--red-panel-height', `${redH}px`);
-    document.documentElement.style.setProperty('--tray-height', `${trayH}px`);
-
-    // Altura del wrapper = espacio físico para que la bandeja emerja y se lea completa
-    const scrollTravel = trayH + Math.max(0, trayH - visibleH) + 160;
-    wrapper.style.height = `${winH + scrollTravel}px`;
-  }
-
-  calibrate();
-  window.addEventListener('resize', calibrate, { passive: true });
-  window.addEventListener('load', calibrate);
-  if (document.fonts) document.fonts.ready.then(calibrate);
-
-  let ticking = false;
-
-  function updateUnveil() {
-    const headerH = header ? header.offsetHeight : 60;
-    const winH = window.innerHeight;
-    const redH = redPanel.offsetHeight;
-    const trayH = tray.offsetHeight;
-    const visibleH = winH - headerH - redH;
-
-    const wrapperRect = wrapper.getBoundingClientRect();
-    const wrapperTop = wrapperRect.top - headerH;
-    const wrapperH = wrapper.offsetHeight;
-    const travel = wrapperH - (winH - headerH);
-
-    if (travel <= 0) {
-      ticking = false;
-      return;
-    }
-
-    // scrolled: distancia recorrida desde que el marco se clava en el tope
-    const scrolled = -wrapperTop;
-    const progress = Math.min(Math.max(scrolled / travel, 0), 1);
-
-    // Al inicio (0): la bandeja está 100% metida detrás del panel rojo
-    const yStart = -trayH;
-    // Al final (1): la bandeja bajó y se posiciona para que todo se lea cómodo
-    const yEnd = -(Math.max(0, trayH - visibleH + 40));
-
-    const currentY = yStart + progress * (yEnd - yStart);
-    tray.style.transform = `translateY(${currentY.toFixed(1)}px)`;
-
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateUnveil);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  updateUnveil();
-}
-
-
-
-
-/* =========================================================================
-   3. Ventana Flotante Rectangular "HABLEMOS"
+   2. Ventana Flotante Rectangular "HABLEMOS"
    ========================================================================= */
 function initFloatingTalkWidget() {
   const btnOpen = document.getElementById('btnOpenTalkModal');
