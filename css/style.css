@@ -238,42 +238,135 @@ button {
   transform: scale(1.02);
 }
 
-/* --- 5. Fotografía Panorámica Gigante (100vw) --- */
+/* --- 5. Fotografía Panorámica (Slider de 5 Obras Ultra-Wide) --- */
 .full-bleed-panorama-section {
   width: 100%;
+  position: relative;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.panorama-wrapper {
+.panorama-viewport {
   width: 100%;
   aspect-ratio: 16 / 7.5;
-  min-height: 440px;
+  min-height: 460px;
+  max-height: 80vh;
   overflow: hidden;
   background-color: #000000;
+  position: relative;
+}
+
+.panorama-slider-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panorama-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .panorama-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center 40%;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.panorama-wrapper:hover .panorama-img {
+.panorama-slide:hover .panorama-img {
   transform: scale(1.02);
 }
 
+/* Flechas de navegación panorámica */
+.panorama-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--t-fast), background-color var(--t-fast), color var(--t-fast);
+}
+
+.panorama-viewport:hover .panorama-nav-btn {
+  opacity: 1;
+}
+
+.panorama-nav-btn.prev {
+  left: 24px;
+}
+
+.panorama-nav-btn.next {
+  right: 24px;
+}
+
+.panorama-nav-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .panorama-nav-btn {
+    opacity: 0.85;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  .panorama-nav-btn.prev { left: 12px; }
+  .panorama-nav-btn.next { right: 12px; }
+}
+
+/* Barra Meta debajo de la panorámica */
 .panorama-meta-strip {
   padding: 16px var(--pad-side);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+}
+
+.panorama-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.panorama-meta-title {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.panorama-meta-desc {
   color: var(--text-muted);
-  border-bottom: 1px solid var(--border-light);
-  text-transform: none;
+  font-size: 0.82rem;
+}
+
+.panorama-meta-counter {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-family: var(--font-headline);
+  letter-spacing: 0.05em;
 }
 
 /* ==========================================================================

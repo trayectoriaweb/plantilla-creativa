@@ -4,12 +4,77 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPanoramaSlider();
   initDraggableCarousel();
   initFloatingTalkWidget();
 });
 
 /* =========================================================================
-   1. Carrusel Deslizable Horizontal (Drag to Scroll con Mouse & Touch)
+   1. Slider de Fotografías Panorámicas (Serie Ultra-Wide de 5 Obras)
+   ========================================================================= */
+function initPanoramaSlider() {
+  const track = document.getElementById('panoramaTrack');
+  const slides = document.querySelectorAll('.panorama-slide');
+  const prevBtn = document.getElementById('panoramaPrevBtn');
+  const nextBtn = document.getElementById('panoramaNextBtn');
+  const titleLabel = document.getElementById('panoramaTitleLabel');
+  const descLabel = document.getElementById('panoramaDescLabel');
+  const counterLabel = document.getElementById('panoramaCounterLabel');
+  const viewport = document.getElementById('panoramaViewport');
+
+  if (!track || slides.length === 0) return;
+
+  let currentIndex = 0;
+  const total = slides.length;
+
+  function updateSlide(index) {
+    currentIndex = (index + total) % total;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    const activeSlide = slides[currentIndex];
+    const title = activeSlide.getAttribute('data-title') || '';
+    const desc = activeSlide.getAttribute('data-desc') || '';
+    const num = String(currentIndex + 1).padStart(2, '0');
+    const totalNum = String(total).padStart(2, '0');
+
+    if (titleLabel) titleLabel.textContent = title;
+    if (descLabel) descLabel.textContent = desc;
+    if (counterLabel) counterLabel.textContent = `${num} / ${totalNum}`;
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => updateSlide(currentIndex - 1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => updateSlide(currentIndex + 1));
+  }
+
+  // Swipe táctil en móviles para la panorámica
+  if (viewport) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    viewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) {
+        updateSlide(currentIndex + 1);
+      } else if (touchEndX - touchStartX > 50) {
+        updateSlide(currentIndex - 1);
+      }
+    }, { passive: true });
+  }
+
+  // Inicializar primera slide
+  updateSlide(0);
+}
+
+/* =========================================================================
+   2. Carrusel Deslizable Horizontal (Drag to Scroll con Mouse & Touch)
    ========================================================================= */
 function initDraggableCarousel() {
   const viewport = document.getElementById('worksCarouselViewport');

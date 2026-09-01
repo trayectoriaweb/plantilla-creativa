@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.clean.solid.8" />
+  <link rel="stylesheet" href="css/style.css?v=2026.editorial.concepts.9" />
 </head>
 <body class="editorial-portfolio-body">
 
@@ -79,19 +79,77 @@
 
     </section>
 
-    <!-- ==================== FOTOGRAFÍA PANORÁMICA GIGANTE (100VW) ==================== -->
-    <section class="full-bleed-panorama-section">
-      <div class="panorama-wrapper">
-        <img 
-          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=2200&q=90" 
-          alt="Editorial Nómade — Serie Panorámica" 
-          class="panorama-img"
-          loading="lazy"
-        />
+    <!-- ==================== FOTOGRAFÍA PANORÁMICA (SERIE DE 5 OBRAS ULTRA-WIDE) ==================== -->
+    <section class="full-bleed-panorama-section" id="panoramicas">
+      <div class="panorama-viewport" id="panoramaViewport">
+        <div class="panorama-slider-track" id="panoramaTrack">
+          
+          <!-- Panorámica 1: Moda en Paisaje Urbano Monumental -->
+          <div class="panorama-slide active" data-title="Moda en Paisaje Urbano Monumental" data-desc="Tapado oversized sobre hormigón brutalista y sombras geométricas de media tarde." data-index="01">
+            <img 
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=2400&q=90" 
+              alt="Moda en paisaje urbano monumental — Julián Costa" 
+              class="panorama-img"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Panorámica 2: Interiores Cinematográficos / Backstage -->
+          <div class="panorama-slide" data-title="Interiores Cinematográficos — Backstage" data-desc="Modelos en pasillo de madera oscura y luz cálida rasante. Momento no posado." data-index="02">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=2400&q=90" 
+              alt="Interiores cinematográficos / backstage — Julián Costa" 
+              class="panorama-img"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Panorámica 3: Movimiento y Calle Nocturna -->
+          <div class="panorama-slide" data-title="Movimiento y Calle Nocturna — Flash 35mm" data-desc="Asfalto mojado y vestido fluido con flash frontal crudo y barrido de luces urbanas." data-index="03">
+            <img 
+              src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=2400&q=90" 
+              alt="Movimiento y calle nocturna — Julián Costa" 
+              class="panorama-img"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Panorámica 4: Detalle / Bodegón de Moda Abstracto -->
+          <div class="panorama-slide" data-title="Bodegón de Moda Abstracto & Sombras" data-desc="Calzado escultural, gafas y textiles drapeados sobre superficie de acero y concreto." data-index="04">
+            <img 
+              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=2400&q=90" 
+              alt="Detalle / Bodegón de moda abstracto — Julián Costa" 
+              class="panorama-img"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Panorámica 5: Retrato Doble en Exterior Abierto -->
+          <div class="panorama-slide" data-title="Retrato Doble al Crepúsculo Industrial" data-desc="Siluetas frente a horizonte industrial con luz dorada tardía y espacio negativo." data-index="05">
+            <img 
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2400&q=90" 
+              alt="Retrato doble en exterior abierto — Julián Costa" 
+              class="panorama-img"
+              loading="lazy"
+            />
+          </div>
+
+        </div>
+
+        <!-- Controles de navegación -->
+        <button type="button" class="panorama-nav-btn prev" id="panoramaPrevBtn" aria-label="Panorámica anterior">←</button>
+        <button type="button" class="panorama-nav-btn next" id="panoramaNextBtn" aria-label="Panorámica siguiente">→</button>
       </div>
+
+      <!-- Barra Meta Panorámica -->
       <div class="panorama-meta-strip">
-        <span>Editorial Nómade — Serie Destacada 2026</span>
-        <span>01 / 07</span>
+        <div class="panorama-meta-info">
+          <span class="panorama-meta-title" id="panoramaTitleLabel">Moda en Paisaje Urbano Monumental</span>
+          <span class="panorama-meta-desc" id="panoramaDescLabel">Tapado oversized sobre hormigón brutalista y sombras geométricas de media tarde.</span>
+        </div>
+        <div class="panorama-meta-counter">
+          <span id="panoramaCounterLabel">01 / 05</span>
+        </div>
       </div>
     </section>
 
@@ -103,8 +161,8 @@
         <div class="filter-pills-row">
           <button type="button" class="filter-btn active" data-filter="all">Todos</button>
           <button type="button" class="filter-btn" data-filter="moda">Moda</button>
-          <button type="button" class="filter-btn" data-filter="retratos">Retratos</button>
           <button type="button" class="filter-btn" data-filter="arquitectura">Arquitectura</button>
+          <button type="button" class="filter-btn" data-filter="retratos">Retratos</button>
           <button type="button" class="filter-btn" data-filter="eventos">Eventos</button>
         </div>
         <span class="drag-hint-label">Arrastrá para explorar ↔</span>
@@ -114,142 +172,142 @@
       <div class="carousel-viewport" id="worksCarouselViewport">
         <div class="carousel-track" id="worksCarouselTrack">
           
-          <!-- Obra 01 -->
+          <!-- Obra 01 (Moda) -->
           <article class="carousel-card" data-category="moda">
-            <span class="card-date">1 de Julio, 2026</span>
+            <span class="card-date">Julio 2026</span>
             <div class="card-media-box">
               <img 
-                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85" 
-                alt="Editorial Nómade" 
+                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85" 
+                alt="Texturas & Perfil — Moda" 
                 class="card-img"
                 draggable="false"
                 loading="lazy"
               />
             </div>
             <div class="card-body">
-              <h3 class="card-title">Editorial Nómade</h3>
+              <h3 class="card-title">Texturas & Perfil</h3>
               <p class="card-desc">
-                Serie editorial capturada en exteriores y luz natural. Exploración de texturas, movimiento y prendas de autor.
+                Encuadre cerrado y textil. Cuello de lana gruesa y vinilo; la luz lateral modela el tejido sobre fondo neutro.
               </p>
             </div>
           </article>
 
-          <!-- Obra 02 -->
+          <!-- Obra 02 (Arquitectura) -->
           <article class="carousel-card" data-category="arquitectura">
-            <span class="card-date">30 de Junio, 2026</span>
+            <span class="card-date">Junio 2026</span>
             <div class="card-media-box">
               <img 
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=85" 
-                alt="Campaña Casa M" 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85" 
+                alt="Geometría & Sombra — Arquitectura" 
                 class="card-img"
                 draggable="false"
                 loading="lazy"
               />
             </div>
             <div class="card-body">
-              <h3 class="card-title">Campaña Casa M</h3>
+              <h3 class="card-title">Geometría & Sombra</h3>
               <p class="card-desc">
-                Dirección visual y fotografía arquitectónica para estudio de interiorismo contemporáneo en Rosario.
+                Fachada contemporánea en hormigón visto y cristal cortada por una sombra diagonal escultórica.
               </p>
             </div>
           </article>
 
-          <!-- Obra 03 -->
+          <!-- Obra 03 (Retratos) -->
           <article class="carousel-card" data-category="retratos">
-            <span class="card-date">13 de Mayo, 2026</span>
+            <span class="card-date">Mayo 2026</span>
             <div class="card-media-box">
               <img 
-                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85" 
-                alt="Retratos — Colección 2026" 
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85" 
+                alt="Primer Plano Directo — Retrato" 
                 class="card-img"
                 draggable="false"
                 loading="lazy"
               />
             </div>
             <div class="card-body">
-              <h3 class="card-title">Retratos — Estudio 2026</h3>
+              <h3 class="card-title">Primer Plano Directo</h3>
               <p class="card-desc">
-                Colección de retratos íntimos en estudio con iluminación dramática y enfoque en la honestidad gestual.
+                Retrato frontal con flash nítido, textura de piel real sin artificios y mirada penetrante.
               </p>
             </div>
           </article>
 
-          <!-- Obra 04 -->
+          <!-- Obra 04 (Eventos) -->
           <article class="carousel-card" data-category="eventos">
             <span class="card-date">Abril 2026</span>
             <div class="card-media-box">
               <img 
-                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=85" 
-                alt="Festival Sur" 
+                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=85" 
+                alt="After-Party de Galería — Eventos" 
                 class="card-img"
                 draggable="false"
                 loading="lazy"
               />
             </div>
             <div class="card-body">
-              <h3 class="card-title">Festival Sur</h3>
+              <h3 class="card-title">After-Party de Galería</h3>
               <p class="card-desc">
-                Registro documental del festival de música. Escenarios, backstage y la energía de la música en vivo.
+                Atmósfera documental en penumbra, copas, humo sutil y luz puntual de tungsteno cálida.
               </p>
             </div>
           </article>
 
-          <!-- Obra 05 -->
+          <!-- Obra 05 (Moda) -->
           <article class="carousel-card" data-category="moda">
             <span class="card-date">Marzo 2026</span>
             <div class="card-media-box">
               <img 
-                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=85" 
-                alt="Lookbook Urbano" 
+                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1000&q=85" 
+                alt="Tailoring Oversized — Moda" 
                 class="card-img"
                 draggable="false"
                 loading="lazy"
               />
             </div>
             <div class="card-body">
-              <h3 class="card-title">Lookbook Urbano AW26</h3>
+              <h3 class="card-title">Tailoring Oversized</h3>
               <p class="card-desc">
-                Producción integral de catálogo y banco visual para marca de indumentaria de diseño independiente.
+                Sastrería masculina sobre cuerpo femenino y pose desgarbada contra azulejos industriales.
               </p>
             </div>
           </article>
 
-          <!-- Obra 06 -->
+          <!-- Obra 06 (Retratos) -->
           <article class="carousel-card" data-category="retratos">
             <span class="card-date">Febrero 2026</span>
             <div class="card-media-box">
               <img 
-                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=85" 
-                alt="Luz y Sombra 35mm" 
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" 
+                alt="Luz a través del Cristal — Retrato" 
                 class="card-img"
                 draggable="false"
                 loading="lazy"
               />
             </div>
             <div class="card-body">
-              <h3 class="card-title">Luz y Sombra — Serie 35mm</h3>
+              <h3 class="card-title">Luz a través del Cristal</h3>
               <p class="card-desc">
-                Fotografía analógica en película de 35mm capturando contrastes urbanos, texturas y momentos espontáneos.
+                Retrato contemplativo en película de 35mm con reflejos tenues de la ciudad fundidos en el rostro.
               </p>
             </div>
           </article>
 
-          <!-- Obra 07 -->
+          <!-- Obra 07 (Arquitectura) -->
           <article class="carousel-card" data-category="arquitectura">
             <span class="card-date">Noviembre 2025</span>
             <div class="card-media-box">
               <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=85" 
-                alt="Geometría Urbana" 
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=85" 
+                alt="Interiorismo Bauhaus — Espacio" 
                 class="card-img"
                 draggable="false"
                 loading="lazy"
               />
             </div>
             <div class="card-body">
-              <h3 class="card-title">Geometría Urbana</h3>
+              <h3 class="card-title">Interiorismo Bauhaus</h3>
               <p class="card-desc">
-                Estudio visual sobre el hormigón, reflejos de vidrio y el paso de la luz en la arquitectura de la ciudad.
+                Sala de diseño sobrio con sillón tubular de cuero, vegetación escultórica y haz de sol rasante.
               </p>
             </div>
           </article>
