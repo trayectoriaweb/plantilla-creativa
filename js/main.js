@@ -1,11 +1,11 @@
 /**
  * JULIÁN COSTA — PORTFOLIO EDITORIAL
- * Controladores: Carrusel Deslizable Horizontal (Drag-to-Scroll) + Parallax de Sobre Mí + Ventana "HABLEMOS"
+ * Controladores: Carrusel Deslizable + Efecto Telón Rojo (Curtain Reveal) + Ventana "HABLEMOS"
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initDraggableCarousel();
-  initScrollParallax();
+  initCurtainRevealAnimation();
   initFloatingTalkWidget();
 });
 
@@ -82,22 +82,37 @@ function initDraggableCarousel() {
 }
 
 /* =========================================================================
-   2. Efecto de Movimiento Parallax al Scrollear (Sobre Mí Rojo)
+   2. Efecto Telón Rojo (Curtain Reveal / Capa Subyacente al Deslizar)
    ========================================================================= */
-function initScrollParallax() {
-  const quoteWrapper = document.getElementById('redParallaxQuote') || document.getElementById('orangeParallaxQuote');
-  const section = document.getElementById('sobre-mi');
+function initCurtainRevealAnimation() {
+  const container = document.getElementById('sobre-mi');
+  const underneathStrip = document.getElementById('aboutUnderneathStrip');
+  const quoteWrapper = document.getElementById('redParallaxQuote');
 
-  if (!quoteWrapper || !section) return;
+  if (!container || !underneathStrip) return;
 
   window.addEventListener('scroll', () => {
-    const rect = section.getBoundingClientRect();
+    const rect = container.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
+    // Cuando el contenedor entra en pantalla
     if (rect.top < windowHeight && rect.bottom > 0) {
-      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-      const translateY = (progress - 0.5) * 60; // Desplazamiento suave hacia abajo
-      quoteWrapper.style.transform = `translateY(${translateY}px)`;
+      // Progreso de scroll sobre la sección (0 = entrando, 1 = completamente en foco)
+      const progress = Math.min(Math.max((windowHeight - rect.top) / (windowHeight * 0.75), 0), 1);
+      
+      // La sub-sección blanca emerge desde abajo del telón rojo (-35px -> 0px)
+      const translateY = (1 - progress) * -35;
+      const opacity = 0.2 + (progress * 0.8);
+
+      underneathStrip.style.transform = `translateY(${translateY}px)`;
+      underneathStrip.style.opacity = `${opacity}`;
+
+      // Parallax sutil del titular principal
+      if (quoteWrapper) {
+        const quoteProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+        const quoteOffset = (quoteProgress - 0.5) * 30;
+        quoteWrapper.style.transform = `translateY(${quoteOffset}px)`;
+      }
     }
   }, { passive: true });
 }
