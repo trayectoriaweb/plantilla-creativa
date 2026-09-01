@@ -9,7 +9,7 @@
   --bg-main: #ffffff;
   --bg-subtle: #fafafa;
   --bg-blue-studio: #0b3d7d;
-  --orange-warm: #ea5b26; /* Naranja cálido y acogedor */
+  --red-editorial: #e51d1d; /* Rojo editorial vibrante de autor */
   
   --text-dark: #000000;
   --text-body: #333336;
@@ -105,7 +105,7 @@ button {
   font-weight: 500;
   font-size: 1.05rem;
   letter-spacing: -0.01em;
-  color: var(--orange-warm); /* Naranja cálido */
+  color: var(--red-editorial); /* Rojo editorial */
   text-transform: none;
   display: inline-block;
   padding: 4px 0;
@@ -415,11 +415,11 @@ button {
 }
 
 /* ==========================================================================
-   7. SOBRE MÍ — ESPACIO DE COLOR NARANJA INMERSIVO CON PARALLAX
+   7. SOBRE MÍ — ESPACIO DE COLOR ROJO INMERSIVO CON PARALLAX
    ========================================================================== */
 .about-orange-stage {
   width: 100%;
-  background-color: var(--orange-warm);
+  background-color: var(--red-editorial);
   color: #000000;
   padding: clamp(100px, 14vw, 180px) var(--pad-side);
   position: relative;
@@ -612,11 +612,11 @@ button {
   text-decoration: underline;
 }
 
-/* --- 9. Banner de Contacto (Pleno de Naranja Cálido & Acogedor) --- */
+/* --- 9. Banner de Contacto (Pleno de Rojo Editorial) --- */
 .contact-banner-section {
   width: 100%;
   padding: clamp(90px, 12vw, 160px) var(--pad-side);
-  background-color: var(--orange-warm);
+  background-color: var(--red-editorial);
   color: #000000;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
@@ -667,11 +667,11 @@ button {
   color: #ffffff;
 }
 
-/* --- 10. Footer (Continuación del Pleno de Naranja) --- */
+/* --- 10. Footer (Continuación del Pleno de Rojo) --- */
 .site-footer {
   width: 100%;
   padding: 40px var(--pad-side);
-  background-color: var(--orange-warm);
+  background-color: var(--red-editorial);
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   font-family: var(--font-body);
   font-size: 0.88rem;
@@ -748,7 +748,7 @@ button {
 .talk-pulse-indicator {
   width: 6px;
   height: 6px;
-  background-color: var(--orange-warm);
+  background-color: var(--red-editorial);
   display: inline-block;
 }
 
