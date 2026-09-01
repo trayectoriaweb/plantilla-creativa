@@ -1,6 +1,7 @@
 /* ==========================================================================
    JULIÁN COSTA — PORTFOLIO EDITORIAL
-   Tipografía DM SANS (Titulares & Prioridades) + INSTRUMENT SANS (Textos & Menú)
+   Tipografía DM SANS (Titulares & Prioridades en Peso Liviano 400/500)
+   INSTRUMENT SANS (Textos & Menú en Peso Liviano 400)
    Inicial mayúscula, resto minúscula en navegación y metadatos
    ========================================================================== */
 
@@ -75,7 +76,7 @@ button {
   cursor: pointer;
 }
 
-/* --- 3. Header (Inicial mayúscula, texto limpio sin caja negra) --- */
+/* --- 3. Header --- */
 .site-header {
   position: sticky;
   top: 0;
@@ -101,11 +102,11 @@ button {
 
 .brand-text-label {
   font-family: var(--font-headline);
-  font-weight: 600;
+  font-weight: 500; /* Peso liviano */
   font-size: 1.05rem;
   letter-spacing: -0.01em;
   color: var(--text-dark);
-  text-transform: none; /* Inicial mayúscula */
+  text-transform: none;
   display: inline-block;
   padding: 4px 0;
 }
@@ -133,7 +134,7 @@ button {
   font-size: 0.95rem;
   font-weight: 400; /* Peso fino y limpio */
   letter-spacing: 0.01em;
-  text-transform: none; /* Inicial mayúscula, resto minúscula */
+  text-transform: none;
   color: var(--text-dark);
   transition: opacity var(--t-fast);
 }
@@ -142,7 +143,7 @@ button {
   opacity: 0.5;
 }
 
-/* --- 4. Hero Split-Screen (DM SANS MASIVO) --- */
+/* --- 4. Hero Split-Screen (DM SANS EN PESO LIVIANO 400) --- */
 .hero-lovers-section {
   width: 100%;
   display: grid;
@@ -169,13 +170,13 @@ button {
   max-width: 760px;
 }
 
-/* Titular Masivo en DM Sans */
+/* Titular Masivo en DM Sans con PESO LIVIANO (400) */
 .hero-giant-name {
   font-family: var(--font-headline);
   font-size: clamp(4.8rem, 13vw, 10.5rem);
-  font-weight: 700;
+  font-weight: 400; /* PESO LIVIANO / NO BOLD */
   line-height: 0.88;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   color: #000000;
   margin-bottom: clamp(32px, 5vw, 48px);
@@ -206,7 +207,7 @@ button {
   font-family: var(--font-body);
   font-size: 0.9rem;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 400;
   text-transform: none;
 }
 
@@ -269,7 +270,7 @@ button {
   align-items: center;
   font-family: var(--font-body);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-muted);
   border-bottom: 1px solid var(--border-light);
   text-transform: none;
@@ -307,8 +308,8 @@ button {
 
 .filter-btn.active, .filter-btn:hover {
   color: var(--text-dark);
-  font-weight: 600;
-  border-bottom: 2px solid var(--text-dark);
+  font-weight: 500;
+  border-bottom: 1px solid var(--text-dark);
 }
 
 .series-count {
@@ -339,7 +340,7 @@ button {
 .item-category-tag {
   font-family: var(--font-body);
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-light);
   text-transform: none;
 }
@@ -373,9 +374,9 @@ button {
 .item-title {
   font-family: var(--font-headline);
   font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-  font-weight: 700;
+  font-weight: 400; /* Peso liviano */
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin-bottom: 4px;
   text-transform: none;
 }
@@ -392,7 +393,7 @@ button {
   font-family: var(--font-headline);
   font-size: 0.95rem;
   color: var(--text-light);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* --- 7. Sobre Mí --- */
@@ -406,7 +407,7 @@ button {
 .about-kicker {
   font-family: var(--font-body);
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-light);
   display: block;
   margin-bottom: 32px;
@@ -428,7 +429,7 @@ button {
 .about-giant-quote {
   font-family: var(--font-headline);
   font-size: clamp(2.6rem, 5vw, 4.4rem);
-  font-weight: 700;
+  font-weight: 400; /* Peso liviano */
   line-height: 1.05;
   letter-spacing: -0.03em;
   text-transform: none;
@@ -468,7 +469,7 @@ button {
 .spec-chip {
   font-family: var(--font-body);
   font-size: 0.84rem;
-  font-weight: 500;
+  font-weight: 400;
   padding: 8px 16px;
   border: 1px solid var(--border-light);
   text-transform: none;
@@ -484,7 +485,7 @@ button {
 .services-kicker {
   font-family: var(--font-body);
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-light);
   display: block;
   margin-bottom: 40px;
@@ -519,14 +520,14 @@ button {
 .s-num {
   font-family: var(--font-headline);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-light);
 }
 
 .s-title {
   font-family: var(--font-headline);
   font-size: clamp(1.5rem, 2.2vw, 1.9rem);
-  font-weight: 700;
+  font-weight: 400; /* Peso liviano */
   letter-spacing: -0.02em;
   margin-bottom: 4px;
   text-transform: none;
@@ -543,7 +544,7 @@ button {
 .s-link {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.01em;
   text-transform: none;
   white-space: nowrap;
@@ -570,7 +571,7 @@ button {
 .contact-giant-title {
   font-family: var(--font-headline);
   font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 700;
+  font-weight: 400; /* Peso liviano */
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: 16px;
@@ -591,7 +592,7 @@ button {
   border: 1px solid var(--border-dark);
   font-family: var(--font-body);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-dark);
   background-color: transparent;
   text-transform: none;
@@ -628,7 +629,7 @@ button {
 }
 
 .footer-right a {
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-dark);
 }
 
@@ -656,9 +657,9 @@ button {
   padding: 14px 22px;
   font-family: var(--font-body);
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.01em;
-  text-transform: none; /* Inicial mayúscula */
+  text-transform: none;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform var(--t-fast), box-shadow var(--t-fast), background-color var(--t-fast), color var(--t-fast);
@@ -725,7 +726,7 @@ button {
 .talk-kicker {
   font-family: var(--font-body);
   font-size: 0.76rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-light);
   display: block;
   margin-bottom: 4px;
@@ -735,7 +736,7 @@ button {
 .talk-title {
   font-family: var(--font-headline);
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 500; /* Peso liviano */
   letter-spacing: -0.02em;
   color: var(--text-dark);
   text-transform: none;
@@ -773,7 +774,7 @@ button {
 .form-label {
   font-family: var(--font-body);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-dark);
   text-transform: none;
 }
@@ -810,7 +811,7 @@ button {
   padding: 15px 20px;
   font-family: var(--font-body);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: none;
   margin-top: 6px;
   transition: opacity var(--t-fast);
@@ -836,7 +837,7 @@ button {
 .sep-text {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-light);
   text-transform: none;
 }
@@ -853,7 +854,7 @@ button {
   color: #000000;
   font-family: var(--font-body);
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: none;
   transition: all var(--t-fast);
 }
