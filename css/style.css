@@ -1,31 +1,33 @@
 /* ==========================================================================
-   JULIÁN COSTA — PORTFOLIO EDITORIAL (ESTILO EXACTO LOVERS MAGAZINE)
-   Tipografía Neo-Grotesca Archivo 900 + Inter, Full Viewport Edge-to-Edge
+   JULIÁN COSTA — PORTFOLIO EDITORIAL (CAJA ALTA & PESO LIVIANO ESCULTÓRICO)
+   Tipografía Syne (Light 400) + Plus Jakarta Sans + Inter 300
    ========================================================================== */
 
 /* --- 1. Variables de Diseño --- */
 :root {
   --bg-main: #ffffff;
-  --bg-subtle: #f8f8f9;
+  --bg-subtle: #fafafa;
   --bg-blue-studio: #0b3d7d;
   
   --text-dark: #000000;
-  --text-muted: #555555;
-  --text-light: #888888;
+  --text-body: #3a3a3c;
+  --text-muted: #666668;
+  --text-light: #99999c;
   
-  --border-light: #e5e5e5;
+  --border-light: #ebebeb;
   --border-dark: #000000;
   
-  /* Typography: Exact Lovers Magazine aesthetic */
-  --font-headline: 'Archivo', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  /* Typography */
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-meta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Layout */
+  /* Layout: Edge-to-Edge */
   --pad-side: clamp(24px, 4.5vw, 64px);
   --header-height: 76px;
   
   /* Transitions */
-  --t-fast: 0.18s ease;
+  --t-fast: 0.2s ease;
   --t-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -37,7 +39,7 @@
   border-radius: 0 !important;
 }
 
-/* Permitir redondeado únicamente en el pill badge de marca */
+/* Pill badge superior con redondeado */
 .brand-pill-btn {
   border-radius: 9999px !important;
 }
@@ -78,7 +80,7 @@ button {
   cursor: pointer;
 }
 
-/* --- 3. Header (Estilo Lovers Magazine) --- */
+/* --- 3. Header --- */
 .site-header {
   position: sticky;
   top: 0;
@@ -109,10 +111,11 @@ button {
   background-color: #000000;
   color: #ffffff;
   padding: 8px 18px;
-  font-family: var(--font-headline);
-  font-weight: 700;
-  font-size: 0.88rem;
-  letter-spacing: -0.01em;
+  font-family: var(--font-meta);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   transition: opacity var(--t-fast);
 }
 
@@ -121,7 +124,7 @@ button {
 }
 
 .pill-arrow {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   opacity: 0.8;
 }
 
@@ -140,17 +143,20 @@ button {
 }
 
 .nav-link {
-  font-size: 0.94rem;
-  font-weight: 400; /* Peso fino y limpio */
+  font-family: var(--font-meta);
+  font-size: 0.8rem;
+  font-weight: 500; /* Peso liviano y nítido */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--text-dark);
   transition: opacity var(--t-fast);
 }
 
 .nav-link:hover {
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
-/* --- 4. Hero Split-Screen (Exacto Lovers Magazine) --- */
+/* --- 4. Hero Split-Screen (Caja Alta + Escala Masiva + Peso Liviano) --- */
 .hero-lovers-section {
   width: 100%;
   display: grid;
@@ -174,18 +180,19 @@ button {
 }
 
 .hero-left-content {
-  max-width: 720px;
+  max-width: 760px;
 }
 
+/* Titular Masivo en Caja Alta con Peso 400 (Liviano y Escultórico) */
 .hero-giant-name {
-  font-family: var(--font-headline);
-  font-size: clamp(4.2rem, 11vw, 9.5rem);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  font-size: clamp(4.8rem, 13vw, 11rem);
+  font-weight: 400; /* PESO LIVIANO */
+  line-height: 0.9;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: clamp(32px, 5vw, 48px);
+  margin-bottom: clamp(36px, 5vw, 52px);
 }
 
 .name-row {
@@ -193,24 +200,30 @@ button {
 }
 
 .hero-bio-card {
-  max-width: 580px;
-  margin-bottom: 32px;
+  max-width: 620px;
+  margin-bottom: 36px;
 }
 
 .hero-bio-text {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  color: var(--text-dark);
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: var(--font-meta);
+  font-size: clamp(0.92rem, 1.25vw, 1.1rem);
+  color: var(--text-body);
+  line-height: 1.65;
+  font-weight: 400; /* Peso liviano */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .hero-location-meta {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  font-weight: 500;
+  gap: 12px;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 /* Columna Derecha: Fotografía Vertical a Borde Completo */
@@ -232,7 +245,7 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  filter: contrast(1.06) brightness(0.98);
+  filter: contrast(1.04) brightness(0.98);
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -270,12 +283,16 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.82rem;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
   border-bottom: 1px solid var(--border-light);
+  text-transform: uppercase;
 }
 
-/* --- 6. Trabajos Seleccionados (Grilla de 2 Columnas) --- */
+/* --- 6. Trabajos Seleccionados --- */
 .works-section {
   width: 100%;
   padding-top: clamp(60px, 8vw, 100px);
@@ -287,8 +304,11 @@ button {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-light);
-  font-size: 0.86rem;
+  font-family: var(--font-meta);
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .filter-left {
@@ -305,7 +325,7 @@ button {
 .filter-btn.active, .filter-btn:hover {
   color: var(--text-dark);
   font-weight: 600;
-  border-bottom: 2px solid var(--text-dark);
+  border-bottom: 1px solid var(--text-dark);
 }
 
 .series-count {
@@ -333,10 +353,12 @@ button {
 }
 
 .item-category-tag {
+  font-family: var(--font-meta);
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   color: var(--text-light);
+  text-transform: uppercase;
 }
 
 .item-img-box {
@@ -366,25 +388,29 @@ button {
 }
 
 .item-title {
-  font-family: var(--font-headline);
-  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  font-weight: 400; /* Peso liviano */
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin-bottom: 4px;
 }
 
 .item-genre {
-  font-size: 0.84rem;
-  color: var(--text-muted);
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
   display: block;
+  text-transform: uppercase;
 }
 
 .item-index {
-  font-family: var(--font-headline);
-  font-size: 0.9rem;
+  font-family: var(--font-meta);
+  font-size: 0.85rem;
   color: var(--text-light);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 /* --- 7. Sobre Mí --- */
@@ -396,9 +422,10 @@ button {
 }
 
 .about-kicker {
+  font-family: var(--font-meta);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: var(--text-light);
   display: block;
   margin-bottom: 32px;
@@ -407,7 +434,7 @@ button {
 
 .about-split-grid {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: clamp(40px, 6vw, 80px);
 }
 
@@ -418,11 +445,12 @@ button {
 }
 
 .about-giant-quote {
-  font-family: var(--font-headline);
-  font-size: clamp(2.6rem, 5vw, 4.4rem);
-  font-weight: 900;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  font-weight: 400; /* Peso liviano y escultórico */
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .about-right-prose {
@@ -432,15 +460,17 @@ button {
 }
 
 .about-p-lead {
-  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-  line-height: 1.6;
-  color: var(--text-dark);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--text-body);
+  font-weight: 300;
 }
 
 .about-p-secondary {
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: var(--text-muted);
   line-height: 1.65;
+  font-weight: 300;
 }
 
 .specialties-chips-row {
@@ -453,8 +483,11 @@ button {
 }
 
 .spec-chip {
-  font-size: 0.82rem;
+  font-family: var(--font-meta);
+  font-size: 0.76rem;
   font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   padding: 8px 16px;
   border: 1px solid var(--border-light);
 }
@@ -467,9 +500,10 @@ button {
 }
 
 .services-kicker {
+  font-family: var(--font-meta);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: var(--text-light);
   display: block;
   margin-bottom: 40px;
@@ -502,30 +536,34 @@ button {
 }
 
 .s-num {
-  font-family: var(--font-headline);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: var(--font-meta);
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--text-light);
 }
 
 .s-title {
-  font-family: var(--font-headline);
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 400; /* Peso liviano */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin-bottom: 4px;
 }
 
 .s-desc {
   font-size: 0.95rem;
+  font-weight: 300;
   color: var(--text-muted);
   max-width: 600px;
 }
 
 .s-link {
-  font-size: 0.88rem;
+  font-family: var(--font-meta);
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -548,17 +586,21 @@ button {
 }
 
 .contact-giant-title {
-  font-family: var(--font-headline);
+  font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  font-weight: 400; /* Peso liviano */
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin-bottom: 16px;
 }
 
 .contact-sub-text {
-  font-size: 1rem;
+  font-family: var(--font-meta);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 .btn-touch-outline {
@@ -566,8 +608,11 @@ button {
   align-items: center;
   padding: 18px 36px;
   border: 1px solid var(--border-dark);
-  font-size: 0.88rem;
+  font-family: var(--font-meta);
+  font-size: 0.82rem;
   font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--text-dark);
   background-color: transparent;
   transition: all var(--t-fast);
@@ -583,8 +628,11 @@ button {
   width: 100%;
   padding: 40px var(--pad-side);
   border-top: 1px solid var(--border-light);
-  font-size: 0.84rem;
-  color: var(--text-muted);
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .footer-inner {
@@ -601,7 +649,7 @@ button {
 }
 
 .footer-right a {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-dark);
 }
 
