@@ -1,31 +1,31 @@
 /* ==========================================================================
-   JULIÁN COSTA — PORTFOLIO EDITORIAL MINIMALISTA (ESTILO ÉLODIE MOREAU)
-   De Punta a Punta (100vw / Full Bleed), Tipografía Serif de Autor & Inter
+   JULIÁN COSTA — PORTFOLIO EDITORIAL (ESTILO EXACTO LOVERS MAGAZINE)
+   Tipografía Neo-Grotesca Archivo 900 + Inter, Full Viewport Edge-to-Edge
    ========================================================================== */
 
 /* --- 1. Variables de Diseño --- */
 :root {
   --bg-main: #ffffff;
-  --bg-banner: #e8e8e8;
-  --bg-subtle: #f7f7f7;
+  --bg-subtle: #f8f8f9;
+  --bg-blue-studio: #0b3d7d;
   
   --text-dark: #000000;
-  --text-muted: #666666;
-  --text-light: #999999;
+  --text-muted: #555555;
+  --text-light: #888888;
   
   --border-light: #e5e5e5;
   --border-dark: #000000;
   
-  /* Typography */
-  --font-serif: 'DM Serif Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography: Exact Lovers Magazine aesthetic */
+  --font-headline: 'Archivo', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Layout: Edge-to-edge padding */
-  --pad-side: clamp(24px, 4vw, 56px);
-  --header-height: 72px;
+  /* Layout */
+  --pad-side: clamp(24px, 4.5vw, 64px);
+  --header-height: 76px;
   
   /* Transitions */
-  --t-fast: 0.2s ease;
+  --t-fast: 0.18s ease;
   --t-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -34,7 +34,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border-radius: 0 !important; /* 0px border-radius total */
+  border-radius: 0 !important;
+}
+
+/* Permitir redondeado únicamente en el pill badge de marca */
+.brand-pill-btn {
+  border-radius: 9999px !important;
 }
 
 html {
@@ -46,7 +51,7 @@ html {
 }
 
 body.editorial-portfolio-body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background-color: var(--bg-main);
   color: var(--text-dark);
   line-height: 1.5;
@@ -73,16 +78,16 @@ button {
   cursor: pointer;
 }
 
-/* --- 3. Header Minimalista de Punta a Punta --- */
+/* --- 3. Header (Estilo Lovers Magazine) --- */
 .site-header {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
   border-bottom: 1px solid var(--border-light);
   display: flex;
@@ -97,11 +102,29 @@ button {
   justify-content: space-between;
 }
 
-.brand-logo {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--text-dark);
+.brand-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 8px 18px;
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: -0.01em;
+  transition: opacity var(--t-fast);
+}
+
+.brand-pill-btn:hover {
+  opacity: 0.85;
+}
+
+.pill-arrow {
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
 .nav-list {
   list-style: none !important;
   list-style-type: none !important;
@@ -109,102 +132,140 @@ button {
   padding: 0;
   display: flex;
   align-items: center;
-  gap: clamp(24px, 3.5vw, 48px);
+  gap: clamp(24px, 3.5vw, 44px);
 }
 
 .nav-item {
   list-style: none !important;
-  list-style-type: none !important;
 }
 
 .nav-link {
-  font-size: 0.92rem;
-  font-weight: 400; /* Peso más fino y elegante */
-  letter-spacing: 0.01em;
+  font-size: 0.94rem;
+  font-weight: 400; /* Peso fino y limpio */
   color: var(--text-dark);
-  text-transform: none; /* Inicial mayúscula, resto minúscula */
   transition: opacity var(--t-fast);
 }
 
 .nav-link:hover {
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
-/* --- 4. Hero: Tipografía Gigante + Fotografía 100vw --- */
-.hero-section {
+/* --- 4. Hero Split-Screen (Exacto Lovers Magazine) --- */
+.hero-lovers-section {
   width: 100%;
-  padding-top: clamp(40px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: calc(100vh - var(--header-height));
+  border-bottom: 1px solid var(--border-light);
 }
 
-.hero-top-stage {
-  padding: 0 var(--pad-side);
+@media (max-width: 960px) {
+  .hero-lovers-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+.hero-left-column {
+  padding: clamp(40px, 6vw, 80px) var(--pad-side);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: clamp(40px, 6vw, 70px);
-  gap: 30px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.hero-display-name {
-  font-family: var(--font-serif);
-  font-size: clamp(4.2rem, 11vw, 12rem);
+.hero-left-content {
+  max-width: 720px;
+}
+
+.hero-giant-name {
+  font-family: var(--font-headline);
+  font-size: clamp(4.2rem, 11vw, 9.5rem);
+  font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: clamp(32px, 5vw, 48px);
 }
 
-.name-regular {
+.name-row {
   display: block;
-  font-weight: 400;
+}
+
+.hero-bio-card {
+  max-width: 580px;
+  margin-bottom: 32px;
+}
+
+.hero-bio-text {
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   color: var(--text-dark);
-}
-
-.name-italic {
-  display: block;
-  font-style: italic;
+  line-height: 1.5;
   font-weight: 400;
-  color: var(--text-dark);
-  margin-left: clamp(10px, 2vw, 30px);
 }
 
-.hero-bio-short {
-  max-width: 360px;
-  padding-bottom: clamp(10px, 2vw, 24px);
-}
-
-.hero-bio-short p {
-  font-size: 0.95rem;
+.hero-location-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
   color: var(--text-muted);
-  line-height: 1.55;
-  font-weight: 400;
+  font-weight: 500;
 }
 
-/* Full Width Imagery (100vw Edge-to-Edge) */
-.hero-full-imagery {
-  width: 100%;
-}
-
-.hero-img-wrap {
-  width: 100%;
-  aspect-ratio: 16 / 7.8;
-  min-height: 440px;
+/* Columna Derecha: Fotografía Vertical a Borde Completo */
+.hero-right-column {
+  position: relative;
+  background-color: var(--bg-blue-studio);
   overflow: hidden;
-  background-color: var(--bg-banner);
+  display: flex;
 }
 
-.hero-img-full {
+.portrait-container {
+  width: 100%;
+  height: 100%;
+  min-height: 550px;
+}
+
+.portrait-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center top;
+  filter: contrast(1.06) brightness(0.98);
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-img-wrap:hover .hero-img-full {
+.hero-right-column:hover .portrait-img {
   transform: scale(1.02);
 }
 
-.hero-caption-strip {
+/* --- 5. Fotografía Panorámica Gigante (100vw Full Bleed) --- */
+.full-bleed-panorama-section {
+  width: 100%;
+}
+
+.panorama-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 7.5;
+  min-height: 440px;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.panorama-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panorama-wrapper:hover .panorama-img {
+  transform: scale(1.02);
+}
+
+.panorama-meta-strip {
   padding: 16px var(--pad-side);
   display: flex;
   justify-content: space-between;
@@ -214,47 +275,20 @@ button {
   border-bottom: 1px solid var(--border-light);
 }
 
-/* --- 5. Sección Obras & Series (Estilo Élodie Moreau) --- */
+/* --- 6. Trabajos Seleccionados (Grilla de 2 Columnas) --- */
 .works-section {
   width: 100%;
   padding-top: clamp(60px, 8vw, 100px);
 }
 
-.works-banner {
-  background-color: var(--bg-banner);
-  width: 100%;
-  padding: clamp(60px, 8vw, 100px) var(--pad-side);
-  margin-bottom: 0;
-}
-
-.banner-kicker {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  display: block;
-  margin-bottom: 12px;
-}
-
-.banner-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3.2rem, 7vw, 6.5rem);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--text-dark);
-  letter-spacing: -0.03em;
-}
-
-/* Filter Bar */
 .works-filter-bar {
-  padding: 24px var(--pad-side);
+  padding: 20px var(--pad-side);
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-light);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.86rem;
+  font-weight: 500;
 }
 
 .filter-left {
@@ -270,6 +304,7 @@ button {
 
 .filter-btn.active, .filter-btn:hover {
   color: var(--text-dark);
+  font-weight: 600;
   border-bottom: 2px solid var(--text-dark);
 }
 
@@ -300,9 +335,8 @@ button {
 .item-category-tag {
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--text-light);
-  text-transform: uppercase;
 }
 
 .item-img-box {
@@ -332,30 +366,28 @@ button {
 }
 
 .item-title {
-  font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 400;
+  font-family: var(--font-headline);
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   margin-bottom: 4px;
 }
 
 .item-genre {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--text-light);
+  font-size: 0.84rem;
+  color: var(--text-muted);
   display: block;
 }
 
 .item-index {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
+  font-family: var(--font-headline);
+  font-size: 0.9rem;
   color: var(--text-light);
-  font-weight: 500;
+  font-weight: 700;
 }
 
-/* --- 6. Sección Sobre Mí --- */
+/* --- 7. Sobre Mí --- */
 .about-section {
   width: 100%;
   padding: clamp(80px, 10vw, 140px) var(--pad-side);
@@ -366,10 +398,11 @@ button {
 .about-kicker {
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--text-light);
   display: block;
   margin-bottom: 32px;
+  text-transform: uppercase;
 }
 
 .about-split-grid {
@@ -385,21 +418,11 @@ button {
 }
 
 .about-giant-quote {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-}
-
-.q-regular {
-  display: block;
-  font-weight: 400;
-}
-
-.q-italic {
-  display: block;
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-headline);
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
 }
 
 .about-right-prose {
@@ -409,7 +432,7 @@ button {
 }
 
 .about-p-lead {
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   line-height: 1.6;
   color: var(--text-dark);
 }
@@ -430,15 +453,13 @@ button {
 }
 
 .spec-chip {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 8px 16px;
   border: 1px solid var(--border-light);
-  text-transform: uppercase;
 }
 
-/* --- 7. Sección Servicios Minimalista --- */
+/* --- 8. Servicios --- */
 .services-section {
   width: 100%;
   padding: clamp(80px, 10vw, 140px) var(--pad-side);
@@ -448,10 +469,11 @@ button {
 .services-kicker {
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--text-light);
   display: block;
   margin-bottom: 40px;
+  text-transform: uppercase;
 }
 
 .services-table {
@@ -466,7 +488,6 @@ button {
   gap: 30px;
   padding: 32px 0;
   border-top: 1px solid var(--border-light);
-  transition: padding-left var(--t-fast);
 }
 
 @media (max-width: 768px) {
@@ -481,15 +502,17 @@ button {
 }
 
 .s-num {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.85rem;
+  font-family: var(--font-headline);
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--text-light);
 }
 
 .s-title {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 400;
+  font-family: var(--font-headline);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   margin-bottom: 4px;
 }
 
@@ -500,9 +523,9 @@ button {
 }
 
 .s-link {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
@@ -510,7 +533,7 @@ button {
   text-decoration: underline;
 }
 
-/* --- 8. Banner de Contacto (Available for Commissions) --- */
+/* --- 9. Banner de Contacto --- */
 .contact-banner-section {
   width: 100%;
   padding: clamp(90px, 12vw, 160px) var(--pad-side);
@@ -525,22 +548,12 @@ button {
 }
 
 .contact-giant-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem, 6.5vw, 6rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  font-family: var(--font-headline);
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
   margin-bottom: 16px;
-}
-
-.c-regular {
-  display: block;
-  font-weight: 400;
-}
-
-.c-italic {
-  display: block;
-  font-style: italic;
-  font-weight: 400;
 }
 
 .contact-sub-text {
@@ -548,27 +561,13 @@ button {
   color: var(--text-muted);
 }
 
-.contact-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
-}
-
-@media (max-width: 768px) {
-  .contact-right {
-    align-items: flex-start;
-  }
-}
-
 .btn-touch-outline {
   display: inline-flex;
   align-items: center;
   padding: 18px 36px;
   border: 1px solid var(--border-dark);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 0.88rem;
+  font-weight: 600;
   color: var(--text-dark);
   background-color: transparent;
   transition: all var(--t-fast);
@@ -579,21 +578,12 @@ button {
   color: #ffffff;
 }
 
-.contact-email-link {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.contact-email-link:hover {
-  color: var(--text-dark);
-}
-
-/* --- 9. Footer Minimalista --- */
+/* --- 10. Footer --- */
 .site-footer {
   width: 100%;
   padding: 40px var(--pad-side);
   border-top: 1px solid var(--border-light);
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
 }
 
@@ -611,11 +601,10 @@ button {
 }
 
 .footer-right a {
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 500;
   color: var(--text-dark);
 }
 
 .footer-right a:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
