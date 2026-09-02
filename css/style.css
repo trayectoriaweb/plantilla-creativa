@@ -122,7 +122,7 @@ button {
   padding: 0;
   display: flex;
   align-items: center;
-  gap: clamp(24px, 3.5vw, 44px);
+  gap: clamp(16px, 3.5vw, 44px);
 }
 
 .nav-item {
@@ -142,6 +142,22 @@ button {
 .nav-link:hover {
   color: var(--red-editorial);
   opacity: 1;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 64px;
+    --pad-side: 18px;
+  }
+  .brand-text-label {
+    font-size: 0.95rem;
+  }
+  .nav-list {
+    gap: 12px;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+  }
 }
 
 /* --- 4. Hero Split-Screen (DM SANS MASIVO LIVIANO) --- */
@@ -174,13 +190,13 @@ button {
 /* Titular Masivo en DM Sans con PESO LIVIANO (400) */
 .hero-giant-name {
   font-family: var(--font-headline);
-  font-size: clamp(4.8rem, 13vw, 10.5rem);
+  font-size: clamp(3.2rem, 13.5vw, 10.5rem);
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: clamp(32px, 5vw, 48px);
+  margin-bottom: clamp(24px, 4vw, 48px);
 }
 
 .name-row {
@@ -194,7 +210,7 @@ button {
 
 .hero-bio-text {
   font-family: var(--font-body);
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-size: clamp(1.02rem, 1.4vw, 1.25rem);
   color: var(--text-dark);
   line-height: 1.55;
   font-weight: 400;
@@ -206,7 +222,7 @@ button {
   align-items: center;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   font-weight: 400;
   text-transform: none;
@@ -224,6 +240,16 @@ button {
   width: 100%;
   height: 100%;
   min-height: 550px;
+}
+
+@media (max-width: 960px) {
+  .hero-left-column {
+    padding: clamp(36px, 6vw, 60px) var(--pad-side) clamp(24px, 4vw, 36px);
+  }
+  .portrait-container {
+    min-height: 420px;
+    max-height: 65vh;
+  }
 }
 
 .portrait-img {
@@ -327,6 +353,14 @@ button {
 }
 
 @media (max-width: 768px) {
+  .panorama-viewport {
+    aspect-ratio: 16 / 10;
+    min-height: 280px;
+  }
+  .panorama-meta-strip {
+    padding: 12px var(--pad-side);
+    gap: 8px;
+  }
   .panorama-nav-btn {
     opacity: 0.85;
     width: 40px;
@@ -433,6 +467,7 @@ button {
   -webkit-user-select: none;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .carousel-viewport::-webkit-scrollbar {
@@ -458,6 +493,15 @@ button {
   gap: 12px;
   pointer-events: auto;
   transition: opacity var(--t-fast);
+}
+
+@media (max-width: 768px) {
+  .carousel-card {
+    flex: 0 0 clamp(240px, 76vw, 320px);
+  }
+  .works-carousel-section {
+    padding: clamp(56px, 8vw, 90px) 0 clamp(30px, 5vw, 50px);
+  }
 }
 
 .carousel-card.is-hidden {
@@ -920,6 +964,45 @@ button {
 .reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .interactive-canvas-section {
+    min-height: clamp(480px, 75vh, 720px);
+  }
+  .canvas-monumental-name {
+    font-size: clamp(3rem, 13vw, 5.5rem);
+  }
+  .contact-monumental-section {
+    min-height: 80vh;
+    padding: 60px var(--pad-side) 36px;
+  }
+  .contact-monumental-title {
+    font-size: clamp(2.3rem, 10vw, 4.2rem);
+    line-height: 1.0;
+  }
+  .btn-monumental-touch {
+    width: 100%;
+    justify-content: space-between;
+    padding: 16px 24px;
+  }
+  .contact-footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .contact-footer-social {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .floating-talk-wrapper {
+    bottom: 20px;
+    right: 18px;
+  }
+  .floating-talk-panel {
+    width: calc(100vw - 36px);
+    right: 0;
+  }
 }
 
 /* ==========================================================================
