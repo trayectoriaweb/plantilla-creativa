@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.mobile.perfection.26" />
+  <link rel="stylesheet" href="css/style.css?v=2026.mobile.menu.footer.27" />
 </head>
 <body class="editorial-portfolio-body">
 
@@ -26,7 +26,8 @@
         <a href="#hero" class="brand-text-label">Fotógrafo</a>
       </div>
 
-      <nav class="nav-menu">
+      <!-- Menú Desktop -->
+      <nav class="nav-menu" id="navMenu">
         <ul class="nav-list">
           <li class="nav-item"><a href="#trabajos" class="nav-link">Trabajos</a></li>
           <li class="nav-item"><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
@@ -34,6 +35,31 @@
           <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </nav>
+
+      <!-- Botón Hamburguesa Mobile -->
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="burger-bar bar-1"></span>
+        <span class="burger-bar bar-2"></span>
+      </button>
+    </div>
+
+    <!-- Menú Desplegable Minimalista Mobile -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+      <div class="mobile-nav-inner">
+        <span class="mobile-nav-kicker">Menú</span>
+        <ul class="mobile-nav-list">
+          <li><a href="#trabajos" class="mobile-nav-link"><span>01</span> Trabajos</a></li>
+          <li><a href="#sobre-mi" class="mobile-nav-link"><span>02</span> Sobre mí</a></li>
+          <li><a href="#servicios" class="mobile-nav-link"><span>03</span> Servicios</a></li>
+          <li><a href="#contacto" class="mobile-nav-link"><span>04</span> Contacto</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+          <span class="mobile-loc-tag">Rosario · Argentina</span>
+          <button type="button" class="mobile-talk-btn open-talk-trigger">
+            <span>Hablemos ↗</span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 

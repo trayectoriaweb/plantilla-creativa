@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingTalkWidget();
   initScrollReveal();
   initImageTrail();
+  initMobileMenu();
+  initFloatingWidgetVisibility();
 });
 
 /* =========================================================================
@@ -401,4 +403,64 @@ function initImageTrail() {
       }
     }
   }, { passive: true });
+}
+
+/* =========================================================================
+   5. Menú Hamburguesa & Navegación Móvil
+   ========================================================================= */
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const overlay = document.getElementById('mobileNavOverlay');
+  const links = document.querySelectorAll('.mobile-nav-link');
+  const talkBtn = document.querySelector('.mobile-talk-btn');
+
+  if (!toggleBtn || !overlay) return;
+
+  function toggleMenu() {
+    const isOpen = overlay.classList.toggle('is-open');
+    toggleBtn.classList.toggle('is-active', isOpen);
+    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('is-open');
+    toggleBtn.classList.remove('is-active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  links.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  talkBtn?.addEventListener('click', () => {
+    closeMenu();
+  });
+}
+
+/* =========================================================================
+   6. Ocultar Widget Flotante al Llegar al Bloque de Contacto / Footer
+   ========================================================================= */
+function initFloatingWidgetVisibility() {
+  const widget = document.getElementById('floatingTalkWidget');
+  const contactSection = document.getElementById('contacto');
+
+  if (!widget || !contactSection) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        widget.classList.add('is-hidden');
+      } else {
+        widget.classList.remove('is-hidden');
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  observer.observe(contactSection);
 }
