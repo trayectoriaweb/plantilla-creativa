@@ -238,7 +238,7 @@ button {
   transform: scale(1.02);
 }
 
-/* --- 5. Fotografía Panorámica (Slider de 5 Obras Ultra-Wide) --- */
+/* --- 5. Fotografía Panorámica (Secuencia Rápida / Hard Cut cada 1s) --- */
 .full-bleed-panorama-section {
   width: 100%;
   position: relative;
@@ -256,18 +256,26 @@ button {
 }
 
 .panorama-slider-track {
-  display: flex;
+  position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .panorama-slide {
-  flex: 0 0 100%;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  position: relative;
-  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  transition: none !important; /* Cambio instantáneo de golpe, sin deslizar */
+}
+
+.panorama-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
 }
 
 .panorama-img {
@@ -275,11 +283,6 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.panorama-slide:hover .panorama-img {
-  transform: scale(1.02);
 }
 
 /* Flechas de navegación panorámica */

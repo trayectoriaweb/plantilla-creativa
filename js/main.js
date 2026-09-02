@@ -10,10 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =========================================================================
-   1. Slider de Fotografías Panorámicas (Serie Ultra-Wide de 5 Obras)
+   1. Secuencia Panorámica Rápida (Corte Secuencial de Golpe cada 1s)
    ========================================================================= */
 function initPanoramaSlider() {
-  const track = document.getElementById('panoramaTrack');
   const slides = document.querySelectorAll('.panorama-slide');
   const prevBtn = document.getElementById('panoramaPrevBtn');
   const nextBtn = document.getElementById('panoramaNextBtn');
@@ -22,14 +21,22 @@ function initPanoramaSlider() {
   const counterLabel = document.getElementById('panoramaCounterLabel');
   const viewport = document.getElementById('panoramaViewport');
 
-  if (!track || slides.length === 0) return;
+  if (slides.length === 0) return;
 
   let currentIndex = 0;
   const total = slides.length;
+  let intervalId = null;
 
-  function updateSlide(index) {
+  function showSlide(index) {
     currentIndex = (index + total) % total;
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    slides.forEach((slide, i) => {
+      if (i === currentIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
 
     const activeSlide = slides[currentIndex];
     const title = activeSlide.getAttribute('data-title') || '';
@@ -42,15 +49,35 @@ function initPanoramaSlider() {
     if (counterLabel) counterLabel.textContent = `${num} / ${totalNum}`;
   }
 
+  function startAutoplay() {
+    stopAutoplay();
+    intervalId = setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, 1000); // Salto instantáneo cada 1 segundo (1000ms)
+  }
+
+  function stopAutoplay() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  }
+
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => updateSlide(currentIndex - 1));
+    prevBtn.addEventListener('click', () => {
+      showSlide(currentIndex - 1);
+      startAutoplay();
+    });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => updateSlide(currentIndex + 1));
+    nextBtn.addEventListener('click', () => {
+      showSlide(currentIndex + 1);
+      startAutoplay();
+    });
   }
 
-  // Swipe táctil en móviles para la panorámica
+  // Swipe táctil en móviles
   if (viewport) {
     let touchStartX = 0;
     let touchEndX = 0;
@@ -62,16 +89,20 @@ function initPanoramaSlider() {
     viewport.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       if (touchStartX - touchEndX > 50) {
-        updateSlide(currentIndex + 1);
+        showSlide(currentIndex + 1);
+        startAutoplay();
       } else if (touchEndX - touchStartX > 50) {
-        updateSlide(currentIndex - 1);
+        showSlide(currentIndex - 1);
+        startAutoplay();
       }
     }, { passive: true });
   }
 
-  // Inicializar primera slide
-  updateSlide(0);
+  // Arrancar inmediatamente
+  showSlide(0);
+  startAutoplay();
 }
+
 
 /* =========================================================================
    2. Carrusel Deslizable Horizontal (Drag to Scroll con Mouse & Touch)
