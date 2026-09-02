@@ -332,11 +332,23 @@ function initImageTrail() {
   const minDistance = 65; // Distancia mínima en píxeles de movimiento para spawnear
   let zCounter = 10;
 
+  const sizePalette = [150, 240, 175, 290, 140, 220, 260, 190];
+  let sizeIndex = 0;
+
   function spawnImage(x, y) {
     const img = document.createElement('img');
     img.src = images[currentIndex];
     img.alt = 'Fotografía de archivo';
     img.className = 'trail-image-item';
+
+    // Tamaño variable único por imagen
+    const isMobile = window.innerWidth <= 768;
+    const baseSize = sizePalette[sizeIndex % sizePalette.length];
+    const finalSize = isMobile ? Math.round(baseSize * 0.65) : baseSize;
+    sizeIndex++;
+
+    img.style.width = `${finalSize}px`;
+    img.style.height = `${finalSize}px`;
 
     // Rotación sutil aleatoria (-6deg a 6deg) para sensación de collage editorial
     const randomRot = (Math.random() * 12 - 6).toFixed(1) + 'deg';
@@ -349,7 +361,7 @@ function initImageTrail() {
     container.appendChild(img);
     currentIndex = (currentIndex + 1) % images.length;
 
-    // Desvanecer después de 1.1s y remover limpiamente del DOM
+    // Desvanecer después de 1.2s y remover limpiamente del DOM
     setTimeout(() => {
       img.classList.add('fading');
       setTimeout(() => {
@@ -357,7 +369,7 @@ function initImageTrail() {
           img.remove();
         }
       }, 700);
-    }, 1100);
+    }, 1200);
   }
 
   canvas.addEventListener('mousemove', (e) => {

@@ -629,11 +629,11 @@ button {
 }
 
 /* ==========================================================================
-   8. ESPACIO EN BLANCO INTERACTIVO (CURSOR IMAGE TRAIL)
+   8. ESPACIO EN BLANCO INTERACTIVO MONUMENTAL (CURSOR IMAGE TRAIL)
    ========================================================================== */
 .interactive-canvas-section {
   width: 100%;
-  min-height: clamp(380px, 52vh, 580px);
+  min-height: clamp(750px, 95vh, 1100px);
   background-color: #ffffff;
   position: relative;
   overflow: hidden;
@@ -648,19 +648,20 @@ button {
 .interactive-canvas-watermark {
   pointer-events: none;
   z-index: 1;
+  padding: 0 var(--pad-side);
+  text-align: center;
 }
 
-.watermark-pill {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: var(--text-light);
-  text-transform: uppercase;
-  padding: 8px 16px;
-  border: 1px dashed rgba(0, 0, 0, 0.18);
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(4px);
+.canvas-monumental-name {
+  font-family: var(--font-headline);
+  font-size: clamp(3.8rem, 11.5vw, 11rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: #000000;
+  text-transform: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .trail-images-container {
@@ -673,14 +674,12 @@ button {
 
 .trail-image-item {
   position: absolute;
-  width: clamp(130px, 15vw, 190px);
-  height: clamp(130px, 15vw, 190px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
   transform: translate(-50%, -50%) scale(0.9) rotate(var(--rot, 0deg));
   opacity: 0;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
+  border: none;
   animation: trailPopIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   pointer-events: none;
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
