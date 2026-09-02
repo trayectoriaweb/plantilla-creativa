@@ -186,7 +186,7 @@ function initFloatingTalkWidget() {
   const backdrop = document.getElementById('talkBackdrop');
   const form = document.getElementById('contactTalkForm');
   const extraTriggers = document.querySelectorAll('.open-talk-trigger');
-  const selectType = document.getElementById('talkType');
+  const inputType = document.getElementById('talkType');
 
   if (!btnOpen || !panel) return;
 
@@ -195,13 +195,8 @@ function initFloatingTalkWidget() {
     panel.setAttribute('aria-hidden', 'false');
     if (backdrop) backdrop.classList.add('open');
 
-    if (prefillService && selectType) {
-      for (let i = 0; i < selectType.options.length; i++) {
-        if (selectType.options[i].text.toLowerCase().includes(prefillService.toLowerCase())) {
-          selectType.selectedIndex = i;
-          break;
-        }
-      }
+    if (prefillService && inputType) {
+      inputType.value = prefillService;
     }
 
     const firstInput = document.getElementById('talkName');
