@@ -239,21 +239,50 @@ function initFloatingTalkWidget() {
     }
   });
 
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
+  const btnMail = document.getElementById('btnSendMail');
+  const btnWa = document.getElementById('btnSendWhatsapp');
+
+  function getFormData() {
     const name = document.getElementById('talkName')?.value.trim() || '';
     const email = document.getElementById('talkEmail')?.value.trim() || '';
-    const type = document.getElementById('talkType')?.value || 'Fotografía';
+    const type = document.getElementById('talkType')?.value.trim() || 'Fotografía';
     const message = document.getElementById('talkMessage')?.value.trim() || '';
+    return { name, email, type, message };
+  }
 
+  btnWa?.addEventListener('click', () => {
+    const { name, email, type, message } = getFormData();
+    if (!name || !message) {
+      if (!name) document.getElementById('talkName')?.focus();
+      else document.getElementById('talkMessage')?.focus();
+      return;
+    }
     const text = encodeURIComponent(
-      `Hola Julián, mi nombre es ${name} (${email}). Te escribo para consultar por un proyecto de ${type}:\n\n"${message}"`
+      `Hola Julián, mi nombre es ${name}${email ? ' (' + email + ')' : ''}. Te escribo para consultar por un proyecto de ${type}:\n\n"${message}"`
     );
-    const waUrl = `https://wa.me/5493410000000?text=${text}`;
-
-    window.open(waUrl, '_blank');
+    window.open(`https://wa.me/5493410000000?text=${text}`, '_blank');
     form.reset();
     closePanel();
+  });
+
+  btnMail?.addEventListener('click', () => {
+    const { name, email, type, message } = getFormData();
+    if (!name || !message) {
+      if (!name) document.getElementById('talkName')?.focus();
+      else document.getElementById('talkMessage')?.focus();
+      return;
+    }
+    const subject = encodeURIComponent(`Consulta de Proyecto: ${type} - ${name}`);
+    const body = encodeURIComponent(
+      `Hola Julián,\n\nMi nombre es ${name}.\nEmail de contacto: ${email}\nTipo de proyecto: ${type}\n\nMensaje:\n${message}\n\nEnviado desde portfolio editorial.`
+    );
+    window.location.href = `mailto:contacto@juliancosta.com?subject=${subject}&body=${body}`;
+    form.reset();
+    closePanel();
+  });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
   });
 }
 

@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.monumental.black.21" />
+  <link rel="stylesheet" href="css/style.css?v=2026.modal.square.white.22" />
 </head>
 <body class="editorial-portfolio-body">
 
@@ -452,7 +452,7 @@
       <span class="talk-pill-icon">↗</span>
     </button>
 
-    <!-- Ventana Desplegable Idéntica a Referencia -->
+    <!-- Ventana Desplegable Minimalista Blanca y Cuadrada -->
     <div class="floating-talk-panel" id="floatingTalkPanel" aria-hidden="true">
       <button type="button" class="talk-close-btn" id="btnCloseTalkModal" aria-label="Cerrar ventana">✕</button>
 
@@ -473,9 +473,14 @@
           <textarea id="talkMessage" name="message" class="minimal-textarea" rows="2" placeholder="Mensaje" required></textarea>
         </div>
 
-        <button type="submit" class="btn-whatsapp-submit">
-          <span>Enviar por WhatsApp</span>
-        </button>
+        <div class="modal-buttons-stack">
+          <button type="button" class="btn-modal-action btn-mail-action" id="btnSendMail">
+            <span>Enviar mail</span>
+          </button>
+          <button type="button" class="btn-modal-action btn-wa-action" id="btnSendWhatsapp">
+            <span>Contactar por WhatsApp</span>
+          </button>
+        </div>
       </form>
     </div>
 
