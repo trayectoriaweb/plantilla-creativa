@@ -9,7 +9,7 @@
   --bg-main: #ffffff;
   --bg-subtle: #fafafa;
   --bg-blue-studio: #0b3d7d;
-  --red-editorial: #e51d1d; /* Rojo editorial vibrante de autor */
+  --red-editorial: #301135; /* Ciruela profundo / Midnight Plum (#301135) */
   
   --text-dark: #000000;
   --text-body: #333336;
@@ -513,9 +513,9 @@ button {
 .about-red-section {
   width: 100%;
   background-color: var(--red-editorial);
-  color: #000000;
+  color: #ffffff;
   padding: clamp(52px, 7vw, 88px) var(--pad-side) clamp(44px, 6vw, 76px);
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .about-red-inner {
@@ -534,7 +534,7 @@ button {
   font-size: clamp(1.05rem, 1.35vw, 1.25rem);
   font-weight: 400;
   line-height: 1.55;
-  color: #000000;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .about-quote-wrapper {
@@ -547,7 +547,7 @@ button {
   font-weight: 400;
   line-height: 1.0;
   letter-spacing: -0.032em;
-  color: #000000;
+  color: #ffffff;
   max-width: 1240px;
   text-transform: none;
 }
