@@ -245,10 +245,10 @@ function initFloatingTalkWidget() {
 
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('talkName')?.value || '';
-    const email = document.getElementById('talkEmail')?.value || '';
-    const type = document.getElementById('talkType')?.value || '';
-    const message = document.getElementById('talkMessage')?.value || '';
+    const name = document.getElementById('talkName')?.value.trim() || '';
+    const email = document.getElementById('talkEmail')?.value.trim() || '';
+    const type = document.getElementById('talkType')?.value || 'Fotografía';
+    const message = document.getElementById('talkMessage')?.value.trim() || '';
 
     const text = encodeURIComponent(
       `Hola Julián, mi nombre es ${name} (${email}). Te escribo para consultar por un proyecto de ${type}:\n\n"${message}"`
@@ -256,8 +256,6 @@ function initFloatingTalkWidget() {
     const waUrl = `https://wa.me/5493410000000?text=${text}`;
 
     window.open(waUrl, '_blank');
-
-    alert(`¡Gracias ${name}! Tu consulta fue preparada para enviar.`);
     form.reset();
     closePanel();
   });

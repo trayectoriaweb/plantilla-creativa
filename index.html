@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.strobe.cut.13" />
+  <link rel="stylesheet" href="css/style.css?v=2026.talk.minimal.14" />
 </head>
 <body class="editorial-portfolio-body">
 
@@ -449,59 +449,43 @@
       <span class="talk-pill-icon">↗</span>
     </button>
 
-    <!-- Ventana Desplegable -->
+    <!-- Ventana Desplegable Minimalista -->
     <div class="floating-talk-panel" id="floatingTalkPanel" aria-hidden="true">
       <div class="talk-panel-header">
-        <div class="talk-header-titles">
-          <span class="talk-kicker">Contacto directo</span>
-          <h3 class="talk-title">Hablemos sobre tu proyecto</h3>
-        </div>
+        <span class="talk-title">Hablemos</span>
         <button type="button" class="talk-close-btn" id="btnCloseTalkModal" aria-label="Cerrar ventana">✕</button>
       </div>
 
       <div class="talk-panel-body">
-        <form class="talk-form" id="contactTalkForm">
-          <div class="form-field">
-            <label for="talkName" class="form-label">Tu nombre</label>
-            <input type="text" id="talkName" name="name" class="form-input" placeholder="Ej. Valentina Rossi" required />
+        <form class="talk-form-minimal" id="contactTalkForm">
+          <div class="minimal-field">
+            <input type="text" id="talkName" name="name" class="minimal-input" placeholder="Nombre" required />
           </div>
 
-          <div class="form-field">
-            <label for="talkEmail" class="form-label">Email</label>
-            <input type="email" id="talkEmail" name="email" class="form-input" placeholder="tu@email.com" required />
+          <div class="minimal-field">
+            <input type="email" id="talkEmail" name="email" class="minimal-input" placeholder="Email" required />
           </div>
 
-          <div class="form-field">
-            <label for="talkType" class="form-label">Tipo de proyecto</label>
-            <select id="talkType" name="projectType" class="form-select">
-              <option value="Retratos">Retratos de autor</option>
-              <option value="Moda">Moda & lookbook</option>
-              <option value="Fotografía Editorial">Fotografía editorial</option>
-              <option value="Campañas">Producción de campañas</option>
-              <option value="Eventos">Cobertura de eventos</option>
+          <div class="minimal-field">
+            <select id="talkType" name="projectType" class="minimal-select">
+              <option value="" disabled selected>Tipo de proyecto</option>
+              <option value="Retratos">Retratos</option>
+              <option value="Moda">Moda & Lookbook</option>
+              <option value="Arquitectura">Arquitectura & Espacios</option>
+              <option value="Campañas">Producción de Campañas</option>
+              <option value="Eventos">Cobertura de Eventos</option>
               <option value="Otro">Otro proyecto</option>
             </select>
           </div>
 
-          <div class="form-field">
-            <label for="talkMessage" class="form-label">Mensaje</label>
-            <textarea id="talkMessage" name="message" class="form-textarea" rows="3" placeholder="Contame sobre las fechas, locación o ideas..." required></textarea>
+          <div class="minimal-field">
+            <textarea id="talkMessage" name="message" class="minimal-textarea" rows="2" placeholder="Mensaje / Fechas / Locación..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-send-message">
-            <span>Enviar consulta</span>
+          <button type="submit" class="btn-whatsapp-submit">
+            <span>Enviar por WhatsApp →</span>
           </button>
         </form>
-
-        <div class="talk-separator">
-          <span class="sep-line"></span>
-          <span class="sep-text">O directo por WhatsApp</span>
-          <span class="sep-line"></span>
-        </div>
-
-        <a href="https://wa.me/5493410000000?text=Hola%20Juli%C3%A1n,%20te%20escribo%20desde%20tu%20web%20para%20consultar%20por%20un%20proyecto." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-direct">
-          <span>Hablame por WhatsApp ↗</span>
-        </a>
       </div>
     </div>
 
