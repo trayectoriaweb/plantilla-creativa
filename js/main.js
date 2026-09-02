@@ -412,7 +412,6 @@ function initMobileMenu() {
   const toggleBtn = document.getElementById('mobileMenuToggle');
   const overlay = document.getElementById('mobileNavOverlay');
   const links = document.querySelectorAll('.mobile-nav-link');
-  const talkBtn = document.querySelector('.mobile-talk-btn');
 
   if (!toggleBtn || !overlay) return;
 
@@ -420,6 +419,7 @@ function initMobileMenu() {
     const isOpen = overlay.classList.toggle('is-open');
     toggleBtn.classList.toggle('is-active', isOpen);
     toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.classList.toggle('mobile-menu-open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }
 
@@ -427,6 +427,7 @@ function initMobileMenu() {
     overlay.classList.remove('is-open');
     toggleBtn.classList.remove('is-active');
     toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('mobile-menu-open');
     document.body.style.overflow = '';
   }
 
@@ -434,10 +435,6 @@ function initMobileMenu() {
 
   links.forEach(link => {
     link.addEventListener('click', closeMenu);
-  });
-
-  talkBtn?.addEventListener('click', () => {
-    closeMenu();
   });
 }
 

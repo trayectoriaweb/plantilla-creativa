@@ -185,9 +185,10 @@ button {
   left: 0;
   width: 100%;
   height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
   background-color: #ffffff;
   z-index: 999;
-  padding: 28px var(--pad-side) 36px;
+  padding: 36px var(--pad-side) 48px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -204,8 +205,6 @@ button {
 .mobile-nav-inner {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: calc(100vh - var(--header-height) - 64px);
   gap: 28px;
 }
 
@@ -257,35 +256,12 @@ button {
   transform: translateX(4px);
 }
 
-.mobile-nav-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 16px;
-  border-top: 1px solid var(--border-light);
-}
-
-.mobile-loc-tag {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.mobile-talk-btn {
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  font-weight: 500;
-  padding: 10px 18px;
-  background-color: #000000;
-  color: #ffffff;
-  border: 1px solid #000000;
-  cursor: pointer;
-  transition: background-color var(--t-fast);
-}
-
-.mobile-talk-btn:hover {
-  background-color: var(--red-editorial);
-  border-color: var(--red-editorial);
+/* Ocultar botón flotante Hablemos cuando el menú mobile está abierto */
+body.mobile-menu-open .floating-talk-wrapper {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 @media (max-width: 768px) {
