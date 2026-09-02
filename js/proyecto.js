@@ -1,4 +1,4 @@
-﻿/**
+/**
  * JULIÁN COSTA — PROYECTO DETALLE
  * Controlador dinámico para renderizar proyectos y galería completa
  */
@@ -108,7 +108,7 @@ function renderProjectDetail() {
   const currentProject = PROJECTS_DATA.find(p => p.id === idParam) || PROJECTS_DATA[0];
 
   // Actualizar Título de pestaña
-  document.title = ${currentProject.title} — Julián Costa · Fotógrafo;
+  document.title = currentProject.title + ' — Julián Costa · Fotógrafo';
 
   // Elementos DOM
   const catDateEl = document.getElementById('projectCategoryDate');
@@ -118,7 +118,7 @@ function renderProjectDetail() {
   const gridEl = document.getElementById('projectMosaicGrid');
   const countLabel = document.getElementById('galleryCountLabel');
 
-  if (catDateEl) catDateEl.textContent = ${currentProject.category} · ;
+  if (catDateEl) catDateEl.textContent = currentProject.category + ' · ' + currentProject.date;
   if (titleEl) titleEl.textContent = currentProject.title;
   if (descEl) descEl.textContent = currentProject.description;
   if (featuredImgEl) {
@@ -139,12 +139,12 @@ function renderProjectDetail() {
   const nextTitle = document.getElementById('nextProjectTitle');
 
   if (prevLink && prevProject) {
-    prevLink.href = proyecto.html?id=;
+    prevLink.href = 'proyecto.html?id=' + prevProject.id;
     if (prevTitle) prevTitle.textContent = prevProject.title;
   }
 
   if (nextLink && nextProject) {
-    nextLink.href = proyecto.html?id=;
+    nextLink.href = 'proyecto.html?id=' + nextProject.id;
     if (nextTitle) nextTitle.textContent = nextProject.title;
   }
 
@@ -153,26 +153,40 @@ function renderProjectDetail() {
     gridEl.innerHTML = '';
     
     if (countLabel) {
-      countLabel.textContent = ${ALL_GALLERY_PHOTOS.length} Fotografías en archivo;
+      countLabel.textContent = ALL_GALLERY_PHOTOS.length + ' Fotografías en archivo';
     }
 
-    ALL_GALLERY_PHOTOS.forEach((item, index) => {
+    ALL_GALLERY_PHOTOS.forEach(function(item) {
       const card = document.createElement('article');
-      card.className = gallery-mosaic-card ;
-      card.innerHTML = 
-        <div class="mosaic-img-box">
-          <img 
-            src="" 
-            alt="" 
-            class="mosaic-img" 
-            loading="lazy" 
-          />
-          <div class="mosaic-overlay">
-            <span class="mosaic-tag"></span>
-            <h4 class="mosaic-title"></h4>
-          </div>
-        </div>
-      ;
+      card.className = 'gallery-mosaic-card ' + item.span;
+      
+      const box = document.createElement('div');
+      box.className = 'mosaic-img-box';
+
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = item.title;
+      img.className = 'mosaic-img';
+      img.loading = 'lazy';
+
+      const overlay = document.createElement('div');
+      overlay.className = 'mosaic-overlay';
+
+      const tag = document.createElement('span');
+      tag.className = 'mosaic-tag';
+      tag.textContent = item.tag;
+
+      const heading = document.createElement('h4');
+      heading.className = 'mosaic-title';
+      heading.textContent = item.title;
+
+      overlay.appendChild(tag);
+      overlay.appendChild(heading);
+
+      box.appendChild(img);
+      box.appendChild(overlay);
+
+      card.appendChild(box);
       gridEl.appendChild(card);
     });
   }
