@@ -518,12 +518,32 @@ button {
 .editorial-bio-services-section {
   width: 100%;
   background-color: #ffffff;
-  padding: clamp(70px, 9vw, 120px) var(--pad-side);
+  padding: clamp(80px, 10vw, 150px) var(--pad-side);
   border-bottom: 1px solid var(--border-light);
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+@media (max-width: 900px) {
+  .editorial-bio-services-section {
+    grid-template-columns: 1fr;
+    padding: clamp(60px, 8vw, 90px) var(--pad-side);
+  }
+}
+
+.editorial-bio-spacer {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .editorial-bio-spacer {
+    display: none;
+  }
 }
 
 .editorial-bio-inner {
-  max-width: 780px;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   gap: clamp(48px, 6vw, 70px);
