@@ -513,142 +513,80 @@ button {
 }
 
 /* ==========================================================================
-   7. FRANJA DE ESPECIALIDADES & SERVICIOS
+   7. SOBRE MÍ & SERVICIOS (DISEÑO EDITORIAL MINIMALISTA)
    ========================================================================== */
-.about-statement-strip {
+.editorial-bio-services-section {
   width: 100%;
   background-color: #ffffff;
-  padding: clamp(38px, 4.8vw, 56px) var(--pad-side);
+  padding: clamp(70px, 9vw, 120px) var(--pad-side);
   border-bottom: 1px solid var(--border-light);
 }
 
-.statement-strip-inner {
+.editorial-bio-inner {
+  max-width: 780px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: clamp(48px, 6vw, 70px);
 }
 
-.statement-subtext {
-  max-width: 500px;
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.25vw, 1.12rem);
-  line-height: 1.55;
-  color: var(--text-dark);
-  font-weight: 400;
-}
-
-.statement-chips-cloud {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.red-chip {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 8px 18px;
-  border: 1px solid var(--red-editorial);
-  color: var(--red-editorial);
-  background-color: transparent;
-  transition: all var(--t-fast);
-  cursor: default;
-}
-
-.red-chip:hover {
-  background-color: var(--red-editorial);
-  color: #ffffff;
-}
-
-/* Sección Servicios */
-.services-section {
-  width: 100%;
-  background-color: #ffffff;
-  padding: clamp(60px, 8vw, 110px) var(--pad-side);
-  border-bottom: 1px solid var(--border-light);
-}
-
-.services-inner {
-  width: 100%;
-}
-
-.services-kicker {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text-light);
-  display: block;
-  margin-bottom: 36px;
-  text-transform: none;
-}
-
-
-
-
-
-.services-table {
+.editorial-block {
   display: flex;
   flex-direction: column;
 }
 
-.service-row {
-  display: grid;
-  grid-template-columns: 80px 1fr auto;
-  align-items: center;
-  gap: 30px;
-  padding: 32px 0;
-  border-top: 1px solid var(--border-light);
-}
-
-@media (max-width: 768px) {
-  .service-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-}
-
-.service-row:last-child {
-  border-bottom: 1px solid var(--border-light);
-}
-
-.s-num {
+.editorial-section-title {
   font-family: var(--font-headline);
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: var(--text-light);
-}
-
-.s-title {
-  font-family: var(--font-headline);
-  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-  text-transform: none;
-}
-
-.s-desc {
-  font-family: var(--font-body);
-  font-size: 0.98rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  max-width: 600px;
-}
-
-.s-link {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin-bottom: 24px;
   text-transform: none;
-  white-space: nowrap;
 }
 
-.s-link:hover {
+.editorial-prose {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.editorial-prose p {
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #1a1a1c;
+}
+
+.editorial-services-list {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editorial-service-item {
+  list-style: none !important;
+}
+
+.editorial-service-btn {
+  font-family: var(--font-body);
+  font-size: clamp(1.02rem, 1.28vw, 1.15rem);
+  font-weight: 500;
+  color: #000000;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  transition: color var(--t-fast);
+}
+
+.editorial-service-btn:hover {
   color: var(--red-editorial);
-  text-decoration: underline;
 }
 
 /* --- 9. Banner de Contacto (Negro con letra blanca) --- */
