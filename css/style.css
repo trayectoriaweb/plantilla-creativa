@@ -628,6 +628,80 @@ button {
   color: var(--red-editorial);
 }
 
+/* ==========================================================================
+   8. ESPACIO EN BLANCO INTERACTIVO (CURSOR IMAGE TRAIL)
+   ========================================================================== */
+.interactive-canvas-section {
+  width: 100%;
+  min-height: clamp(380px, 52vh, 580px);
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-light);
+  user-select: none;
+}
+
+.interactive-canvas-watermark {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.watermark-pill {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.trail-images-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.trail-image-item {
+  position: absolute;
+  width: clamp(130px, 15vw, 190px);
+  height: clamp(130px, 15vw, 190px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transform: translate(-50%, -50%) scale(0.9) rotate(var(--rot, 0deg));
+  opacity: 0;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  animation: trailPopIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trail-image-item.fading {
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) scale(0.85) rotate(var(--rot, 0deg)) !important;
+}
+
+@keyframes trailPopIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.65) rotate(var(--rot, 0deg));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(var(--rot, 0deg));
+  }
+}
+
 /* --- 9. Cierre y Banner de Contacto Monumental (Negro Cinemático) --- */
 .contact-monumental-section {
   width: 100%;

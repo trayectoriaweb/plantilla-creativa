@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDraggableCarousel();
   initFloatingTalkWidget();
   initScrollReveal();
+  initImageTrail();
 });
 
 /* =========================================================================
@@ -305,4 +306,87 @@ function initScrollReveal() {
   });
 
   elements.forEach((el) => observer.observe(el));
+}
+
+/* =========================================================================
+   4. Rastro de Imágenes Interactivo con Cursor (Image Trail)
+   ========================================================================= */
+function initImageTrail() {
+  const canvas = document.getElementById('canvasTrail');
+  const container = document.getElementById('trailContainer');
+  if (!canvas || !container) return;
+
+  const images = [
+    'img/obra1.webp',
+    'img/obra2.webp',
+    'img/obra3.webp',
+    'img/obra4.webp',
+    'img/obra5.webp',
+    'img/obra6.webp',
+    'img/obra7.webp'
+  ];
+
+  let currentIndex = 0;
+  let lastX = -9999;
+  let lastY = -9999;
+  const minDistance = 65; // Distancia mínima en píxeles de movimiento para spawnear
+  let zCounter = 10;
+
+  function spawnImage(x, y) {
+    const img = document.createElement('img');
+    img.src = images[currentIndex];
+    img.alt = 'Fotografía de archivo';
+    img.className = 'trail-image-item';
+
+    // Rotación sutil aleatoria (-6deg a 6deg) para sensación de collage editorial
+    const randomRot = (Math.random() * 12 - 6).toFixed(1) + 'deg';
+    img.style.setProperty('--rot', randomRot);
+
+    img.style.left = `${x}px`;
+    img.style.top = `${y}px`;
+    img.style.zIndex = ++zCounter;
+
+    container.appendChild(img);
+    currentIndex = (currentIndex + 1) % images.length;
+
+    // Desvanecer después de 1.1s y remover limpiamente del DOM
+    setTimeout(() => {
+      img.classList.add('fading');
+      setTimeout(() => {
+        if (img.parentNode) {
+          img.remove();
+        }
+      }, 700);
+    }, 1100);
+  }
+
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const dist = Math.hypot(x - lastX, y - lastY);
+    if (dist > minDistance) {
+      lastX = x;
+      lastY = y;
+      spawnImage(x, y);
+    }
+  });
+
+  // Soporte para dispositivos táctiles (Touch)
+  canvas.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+
+      const dist = Math.hypot(x - lastX, y - lastY);
+      if (dist > minDistance) {
+        lastX = x;
+        lastY = y;
+        spawnImage(x, y);
+      }
+    }
+  }, { passive: true });
 }
