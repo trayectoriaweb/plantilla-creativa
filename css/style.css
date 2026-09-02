@@ -655,9 +655,9 @@ button {
 .canvas-monumental-name {
   font-family: var(--font-headline);
   font-size: clamp(3.8rem, 11.5vw, 11rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
   color: #000000;
   text-transform: none;
   user-select: none;
