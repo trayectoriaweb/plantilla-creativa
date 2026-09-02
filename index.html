@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.asymmetric.right.18" />
+  <link rel="stylesheet" href="css/style.css?v=2026.swiss.grid.19" />
 </head>
 <body class="editorial-portfolio-body">
 
@@ -317,48 +317,66 @@
 
     </section>
 
-    <!-- ==================== SOBRE MÍ & SERVICIOS (DISEÑO EDITORIAL MINIMALISTA) ==================== -->
-    <section class="editorial-bio-services-section" id="sobre-mi">
-      <!-- Espacio en blanco a la izquierda para respiración editorial -->
-      <div class="editorial-bio-spacer" aria-hidden="true"></div>
-
-      <div class="editorial-bio-inner">
+    <!-- ==================== SOBRE MÍ & SERVICIOS (GRILLA EDITORIAL SUIZA 3 COLUMNAS) ==================== -->
+    <section class="editorial-grid-section" id="sobre-mi">
+      <div class="editorial-grid-container">
         
-        <!-- Bloque Sobre Mí -->
-        <div class="editorial-block">
-          <h2 class="editorial-section-title">Sobre mí</h2>
-          <div class="editorial-prose">
-            <p>Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad en Rosario y todo el país.</p>
-            <p>Mi trabajo parte de una idea simple: una buena fotografía no solo muestra, también comunica una mirada. Busco construir imágenes que tengan carácter, cuidando la luz, la composición, los gestos y el contexto de cada persona o proyecto. Me interesa trabajar de manera cercana y explorar en cada sesión una estética que se sienta auténtica, contemporánea y propia.</p>
-            <p>A lo largo de mi trayectoria trabajé en proyectos editoriales, campañas y retratos, colaborando con personas y marcas que entienden la fotografía como una herramienta para construir identidad.</p>
+        <!-- Fila 1: Manifiesto Principal -->
+        <div class="editorial-grid-row row-statement">
+          <div class="grid-col col-tag">
+            <span class="editorial-label">Sobre mi</span>
+          </div>
+          <div class="grid-col col-sub"></div>
+          <div class="grid-col col-main">
+            <h2 class="editorial-headline-statement">Cada disparo es una búsqueda de carácter.</h2>
           </div>
         </div>
 
-        <!-- Bloque Servicios -->
-        <div class="editorial-block" id="servicios">
-          <h2 class="editorial-section-title">Servicios</h2>
-          <ul class="editorial-services-list">
-            <li class="editorial-service-item">
-              <button type="button" class="editorial-service-btn open-talk-trigger" data-service="Sesiones fotográficas">
-                <span>Sesiones fotográficas</span>
-              </button>
-            </li>
-            <li class="editorial-service-item">
-              <button type="button" class="editorial-service-btn open-talk-trigger" data-service="Producción de campañas">
-                <span>Producción de campañas</span>
-              </button>
-            </li>
-            <li class="editorial-service-item">
-              <button type="button" class="editorial-service-btn open-talk-trigger" data-service="Fotografía para marcas">
-                <span>Fotografía para marcas</span>
-              </button>
-            </li>
-            <li class="editorial-service-item">
-              <button type="button" class="editorial-service-btn open-talk-trigger" data-service="Cobertura de eventos">
-                <span>Cobertura de eventos</span>
-              </button>
-            </li>
-          </ul>
+        <!-- Fila 2: Biografía de Autor -->
+        <div class="editorial-grid-row row-bio">
+          <div class="grid-col col-tag"></div>
+          <div class="grid-col col-sub">
+            <h3 class="editorial-author-name">Julian Costa</h3>
+          </div>
+          <div class="grid-col col-main">
+            <div class="editorial-bio-text-block">
+              <p>Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad en Rosario y todo el país.</p>
+              <p>Mi trabajo parte de una idea simple: una buena fotografía no solo muestra, también comunica una mirada. Busco construir imágenes que tengan carácter, cuidando la luz, la composición, los gestos y el contexto de cada persona o proyecto. Me interesa trabajar de manera cercana y explorar en cada sesión una estética que se sienta auténtica, contemporánea y propia.</p>
+              <p>A lo largo de mi trayectoria trabajé en proyectos editoriales, campañas y retratos, colaborando con personas y marcas que entienden la fotografía como una herramienta para construir identidad.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila 3: Servicios -->
+        <div class="editorial-grid-row row-services" id="servicios">
+          <div class="grid-col col-tag"></div>
+          <div class="grid-col col-sub">
+            <h3 class="editorial-author-name">Servicios</h3>
+          </div>
+          <div class="grid-col col-main">
+            <ul class="editorial-services-clean-list">
+              <li>
+                <button type="button" class="editorial-srv-item-btn open-talk-trigger" data-service="Sesiones fotográficas">
+                  <span>Sesiones fotográficas</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="editorial-srv-item-btn open-talk-trigger" data-service="Producción de campañas">
+                  <span>Producción de campañas</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="editorial-srv-item-btn open-talk-trigger" data-service="Fotografía para marcas">
+                  <span>Fotografía para marcas</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="editorial-srv-item-btn open-talk-trigger" data-service="Cobertura de eventos">
+                  <span>Cobertura de eventos</span>
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
 
       </div>
