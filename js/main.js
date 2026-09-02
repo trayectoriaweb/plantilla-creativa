@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPanoramaSlider();
   initDraggableCarousel();
   initFloatingTalkWidget();
+  initScrollReveal();
 });
 
 /* =========================================================================
@@ -254,4 +255,25 @@ function initFloatingTalkWidget() {
     form.reset();
     closePanel();
   });
+}
+
+/* =========================================================================
+   3. Animación de Entrada Suave (Scroll Reveal con IntersectionObserver)
+   ========================================================================= */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.reveal-on-scroll');
+  if (elements.length === 0) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  elements.forEach((el) => observer.observe(el));
 }

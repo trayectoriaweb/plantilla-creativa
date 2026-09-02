@@ -628,95 +628,225 @@ button {
   color: var(--red-editorial);
 }
 
-/* --- 9. Banner de Contacto (Negro con letra blanca) --- */
-.contact-banner-section {
+/* --- 9. Cierre y Banner de Contacto Monumental (Negro Cinemático) --- */
+.contact-monumental-section {
   width: 100%;
-  padding: clamp(90px, 12vw, 160px) var(--pad-side);
+  min-height: 90vh;
   background-color: #000000;
   color: #ffffff;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: clamp(70px, 9vw, 120px) var(--pad-side) clamp(36px, 4vw, 50px);
 }
 
-.contact-banner-inner {
+.contact-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(500px, 65vw, 950px);
+  height: clamp(500px, 65vw, 950px);
+  background: radial-gradient(circle, rgba(48, 17, 53, 0.42) 0%, rgba(18, 18, 24, 0.22) 50%, transparent 75%);
+  pointer-events: none;
+  filter: blur(80px);
+  transform: translate(-50%, -50%);
+  animation: ambientFloat 9s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-45%, -55%) scale(1.18);
+    opacity: 0.9;
+  }
+}
+
+.contact-monumental-inner {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 75vh;
+  gap: clamp(48px, 6vw, 80px);
+  position: relative;
+  z-index: 2;
+}
+
+/* Fila Superior */
+.contact-meta-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 24px;
 }
 
-.contact-giant-title {
-  font-family: var(--font-headline);
-  font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
-  color: #ffffff;
-  text-transform: none;
-}
-
-.contact-sub-text {
-  font-family: var(--font-body);
-  font-size: 1.02rem;
-  color: rgba(255, 255, 255, 0.65);
-  text-transform: none;
-}
-
-.btn-touch-outline {
+.contact-status-badge {
   display: inline-flex;
   align-items: center;
-  padding: 18px 36px;
-  border: 1px solid #ffffff;
+  gap: 10px;
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 500;
-  color: #ffffff;
-  background-color: transparent;
-  text-transform: none;
-  transition: all var(--t-fast);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.btn-touch-outline:hover {
+.status-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50% !important;
+  display: inline-block;
+  box-shadow: 0 0 10px #22c55e;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.35); opacity: 0.45; }
+}
+
+.contact-location-tag {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Centro: Titular Monumental y Botón */
+.contact-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 32px);
+  max-width: 1100px;
+}
+
+.contact-monumental-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2.8rem, 6.8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+.contact-monumental-desc {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.68);
+  max-width: 600px;
+  line-height: 1.55;
+}
+
+.contact-action-box {
+  margin-top: 10px;
+}
+
+.btn-monumental-touch {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: clamp(16px, 2vw, 22px) clamp(28px, 3vw, 44px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-monumental-touch:hover {
   background-color: var(--red-editorial);
   border-color: var(--red-editorial);
   color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(48, 17, 53, 0.45);
 }
 
-/* --- 10. Footer (Negro, continuación del banner) --- */
-.site-footer {
-  width: 100%;
-  padding: 40px var(--pad-side);
-  background-color: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: none;
+.btn-arrow-diag {
+  font-size: 1.15rem;
+  transition: transform 0.3s ease;
 }
 
-.footer-inner {
+.btn-monumental-touch:hover .btn-arrow-diag {
+  transform: translate(3px, -3px);
+}
+
+/* Fila Inferior: Footer Integrado */
+.contact-footer-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 28px;
 }
 
-.footer-right {
+.contact-footer-brand {
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.footer-right a {
+.footer-name {
+  font-family: var(--font-headline);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.footer-tagline {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-footer-social {
+  display: flex;
+  gap: 24px;
+}
+
+.social-link {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.75);
   transition: color var(--t-fast);
 }
 
-.footer-right a:hover {
+.social-link:hover {
   color: var(--red-editorial);
+}
+
+.contact-footer-copy {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Animación de entrada suave con scroll */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-revealed {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================================================================
