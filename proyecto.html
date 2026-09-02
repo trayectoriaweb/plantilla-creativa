@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto — Julián Costa · Fotógrafo Editorial</title>
+  <meta name="description" content="Detalle de proyecto fotográfico editorial de Julián Costa. Retratos, moda, arquitectura y eventos." />
+
+  <!-- Google Fonts: DM Sans + Instrument Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="css/style.css?v=2026.project.detail.30" />
+</head>
+<body class="editorial-portfolio-body project-detail-body">
+
+  <!-- ==================== HEADER (IDÉNTICO AL HOME) ==================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-brand-box">
+        <a href="index.html" class="brand-text-label">Fotógrafo</a>
+      </div>
+
+      <!-- Menú Desktop -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html#trabajos" class="nav-link">Trabajos</a></li>
+          <li class="nav-item"><a href="index.html#sobre-mi" class="nav-link">Sobre mí</a></li>
+          <li class="nav-item"><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+          <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botón Hamburguesa Mobile -->
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="burger-bar bar-1"></span>
+        <span class="burger-bar bar-2"></span>
+      </button>
+    </div>
+
+    <!-- Menú Desplegable Minimalista Mobile -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+      <div class="mobile-nav-inner">
+        <span class="mobile-nav-kicker">Menú</span>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html#trabajos" class="mobile-nav-link"><span>01</span> Trabajos</a></li>
+          <li><a href="index.html#sobre-mi" class="mobile-nav-link"><span>02</span> Sobre mí</a></li>
+          <li><a href="index.html#servicios" class="mobile-nav-link"><span>03</span> Servicios</a></li>
+          <li><a href="#contacto" class="mobile-nav-link"><span>04</span> Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== ENCABEZADO DE PROYECTO ==================== -->
+    <section class="project-hero-header">
+      <div class="project-hero-inner">
+        
+        <div class="project-top-nav-bar">
+          <a href="index.html#trabajos" class="project-back-link">
+            <span>← Volver a Trabajos</span>
+          </a>
+          <span class="project-meta-pill" id="projectCategoryDate">Arquitectura · Julio 2026</span>
+        </div>
+
+        <div class="project-title-block">
+          <h1 class="project-main-title" id="projectTitle">Silla & Silencio</h1>
+          <p class="project-lead-desc" id="projectDescription">
+            Composición minimalista de interior. El sillón tubular de cuero y el haz de luz solar sobre el parquet crean un espacio de calma.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== FOTO PRINCIPAL EN ALTA RESOLUCIÓN ==================== -->
+    <section class="project-featured-media-section">
+      <div class="project-featured-container">
+        <div class="featured-img-frame">
+          <img 
+            id="projectFeaturedImg" 
+            src="img/obra1.webp" 
+            alt="Fotografía principal del proyecto" 
+            class="project-featured-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== GRILLA EDITORIAL DE TODAS LAS FOTOS ==================== -->
+    <section class="project-archive-gallery-section">
+      <div class="project-gallery-inner">
+        
+        <div class="gallery-header-row">
+          <span class="gallery-section-kicker">Archivo visual · Galería completa</span>
+          <span class="gallery-count-tag" id="galleryCountLabel">13 Fotografías</span>
+        </div>
+
+        <div class="project-mosaic-grid" id="projectMosaicGrid">
+          <!-- Renderizado dinámico de todas las fotografías del catálogo -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== NAVEGACIÓN ENTRE PROYECTOS ==================== -->
+    <nav class="project-pagination-section" aria-label="Navegación de proyectos">
+      <div class="pagination-inner">
+        <a href="#" id="prevProjectLink" class="pagination-btn prev-btn">
+          <span class="pag-dir">← Anterior</span>
+          <span class="pag-title" id="prevProjectTitle">Proyecto</span>
+        </a>
+        <a href="index.html#trabajos" class="pagination-grid-btn">
+          <span>Ver todos los trabajos</span>
+        </a>
+        <a href="#" id="nextProjectLink" class="pagination-btn next-btn">
+          <span class="pag-dir">Siguiente →</span>
+          <span class="pag-title" id="nextProjectTitle">Proyecto</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- ==================== BANNER DE CONTACTO & CIERRE MONUMENTAL (NEGRO CINEMÁTICO) ==================== -->
+    <section class="contact-monumental-section" id="contacto">
+      <!-- Glow ambiental dinámico de fondo -->
+      <div class="contact-ambient-glow" aria-hidden="true"></div>
+
+      <div class="contact-monumental-inner">
+        
+        <!-- Fila Superior: Ubicación -->
+        <div class="contact-meta-row reveal-on-scroll">
+          <span class="contact-location-tag">Rosario · Proyectos en todo el país</span>
+        </div>
+
+        <!-- Centro: Titular Monumental y Botón Interactivo -->
+        <div class="contact-hero-content reveal-on-scroll">
+          <h2 class="contact-monumental-title">
+            ¿Tenés una idea para fotografiar?
+          </h2>
+          <p class="contact-monumental-desc">
+            Trabajo con personas, marcas y proyectos en sesiones de autor, campañas y fotografía editorial.
+          </p>
+          <div class="contact-action-box">
+            <button type="button" class="btn-monumental-touch open-talk-trigger">
+              <span>Hablemos sobre tu proyecto</span>
+              <span class="btn-arrow-diag">↗</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Fila Inferior: Footer Integrado -->
+        <div class="contact-footer-row reveal-on-scroll">
+          <div class="contact-footer-brand">
+            <span class="footer-name">JULIÁN COSTA</span>
+            <span class="footer-tagline">Fotografía de autor & editorial</span>
+          </div>
+
+          <div class="contact-footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link">Instagram ↗</a>
+            <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="social-link">Behance ↗</a>
+            <a href="https://wa.me/5493410000000" target="_blank" rel="noopener noreferrer" class="social-link">WhatsApp ↗</a>
+          </div>
+
+          <div class="contact-footer-copy">
+            <span>© 2026 · Rosario, Argentina</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RECTÁNGULO FLOTANTE BLANCO "HABLEMOS" ==================== -->
+  <div class="floating-talk-wrapper" id="floatingTalkWidget">
+    
+    <!-- Botón Flotante -->
+    <button type="button" class="floating-talk-pill" id="btnOpenTalkModal" aria-label="Abrir formulario de contacto">
+      <span class="talk-pulse-indicator"></span>
+      <span class="talk-pill-text">Hablemos</span>
+      <span class="talk-pill-icon">↗</span>
+    </button>
+
+    <!-- Ventana Desplegable Minimalista Blanca y Cuadrada -->
+    <div class="floating-talk-panel" id="floatingTalkPanel" aria-hidden="true">
+      <button type="button" class="talk-close-btn" id="btnCloseTalkModal" aria-label="Cerrar ventana">✕</button>
+
+      <form class="talk-form-minimal" id="contactTalkForm">
+        <div class="minimal-field">
+          <input type="text" id="talkName" name="name" class="minimal-input" placeholder="Nombre" required />
+        </div>
+
+        <div class="minimal-field">
+          <input type="email" id="talkEmail" name="email" class="minimal-input" placeholder="Email" required />
+        </div>
+
+        <div class="minimal-field">
+          <input type="text" id="talkType" name="projectType" class="minimal-input" placeholder="Tipo de proyecto" />
+        </div>
+
+        <div class="minimal-field message-field">
+          <textarea id="talkMessage" name="message" class="minimal-textarea" rows="2" placeholder="Mensaje" required></textarea>
+        </div>
+
+        <div class="modal-buttons-stack">
+          <button type="button" class="btn-modal-action btn-mail-action" id="btnSendMail">
+            <span>Enviar mail</span>
+          </button>
+          <button type="button" class="btn-modal-action btn-wa-action" id="btnSendWhatsapp">
+            <span>Contactar por WhatsApp</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="talk-backdrop" id="talkBackdrop"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=2026.project.detail.30"></script>
+  <script src="js/proyecto.js?v=2026.project.detail.30"></script>
+</body>
+</html>
