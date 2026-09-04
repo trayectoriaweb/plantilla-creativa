@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.gallery.curated.33" />
+  <link rel="stylesheet" href="css/style.css?v=2026.lightbox.1x1.34" />
 </head>
 <body class="editorial-portfolio-body project-detail-body">
 
@@ -219,8 +219,28 @@
     <div class="talk-backdrop" id="talkBackdrop"></div>
   </div>
 
+  <!-- ==================== LIGHTBOX VISUALIZADOR 1:1 ==================== -->
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Visualizador de fotografía">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Cerrar imagen">✕</button>
+    
+    <!-- Flechas de navegación del lightbox -->
+    <button type="button" class="lightbox-nav-btn prev" id="lightboxPrevBtn" aria-label="Foto anterior">‹</button>
+    <button type="button" class="lightbox-nav-btn next" id="lightboxNextBtn" aria-label="Foto siguiente">›</button>
+
+    <div class="lightbox-content-box">
+      <div class="lightbox-img-wrapper">
+        <img id="lightboxImg" src="" alt="Fotografía ampliada" class="lightbox-active-img" />
+      </div>
+      <div class="lightbox-caption-bar">
+        <span class="lightbox-title" id="lightboxTitle"></span>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
-  <script src="js/main.js?v=2026.gallery.curated.33"></script>
-  <script src="js/proyecto.js?v=2026.gallery.curated.33"></script>
+  <script src="js/main.js?v=2026.lightbox.1x1.34"></script>
+  <script src="js/proyecto.js?v=2026.lightbox.1x1.34"></script>
 </body>
 </html>
