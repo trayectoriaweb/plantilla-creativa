@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2026.lightbox.1x1.34" />
+  <link rel="stylesheet" href="css/style.css?v=2026.hero.panorama.35" />
 </head>
 <body class="editorial-portfolio-body">
 
@@ -58,49 +58,8 @@
   </header>
 
   <main>
-    <!-- ==================== HERO SPLIT-SCREEN ==================== -->
-    <section class="hero-lovers-section" id="hero">
-      
-      <!-- Columna Izquierda: Tipografía Masiva DM Sans + Bio Instrument Sans -->
-      <div class="hero-left-column">
-        <div class="hero-left-content">
-          
-          <h1 class="hero-giant-name">
-            <span class="name-row">JULIÁN</span>
-            <span class="name-row">COSTA</span>
-          </h1>
-
-          <div class="hero-bio-card">
-            <p class="hero-bio-text">
-              Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad en Rosario y todo el país.
-            </p>
-          </div>
-
-          <div class="hero-location-meta">
-            <span class="meta-item">Rosario, Argentina</span>
-            <span class="meta-item">·</span>
-            <span class="meta-item">Disponible 2026</span>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Columna Derecha: Retrato Vertical a Borde Completo -->
-      <div class="hero-right-column">
-        <div class="portrait-container">
-          <img 
-            src="img/hero.webp" 
-            alt="Julián Costa — Fotógrafo" 
-            class="portrait-img"
-            loading="eager"
-          />
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ==================== FOTOGRAFÍA PANORÁMICA (SERIE DE 5 OBRAS ULTRA-WIDE) ==================== -->
-    <section class="full-bleed-panorama-section" id="panoramicas">
+    <!-- ==================== HERO: SECUENCIA PANORÁMICA AUTOMATIZADA CON NOMBRE CENTRADO ==================== -->
+    <section class="full-bleed-panorama-section hero-panorama-section" id="hero">
       <div class="panorama-viewport" id="panoramaViewport">
         <div class="panorama-slider-track" id="panoramaTrack">
           
@@ -154,6 +113,15 @@
             />
           </div>
 
+        </div>
+
+        <!-- Capa de oscurecimiento suave para legibilidad cinematográfica -->
+        <div class="panorama-overlay-tint" aria-hidden="true"></div>
+
+        <!-- NOMBRE MONUMENTAL CENTRADO PERMANENTE -->
+        <div class="hero-panorama-center-title">
+          <h1 class="hero-panorama-name">JULIÁN COSTA</h1>
+          <p class="hero-panorama-caption">Fotógrafo · Rosario, Argentina</p>
         </div>
 
         <!-- Controles de navegación -->
@@ -358,7 +326,7 @@
         <!-- Fila 1: Manifiesto Principal -->
         <div class="editorial-grid-row row-statement">
           <div class="grid-col col-tag">
-            <span class="editorial-label">Sobre mi</span>
+            <span class="editorial-label">Sobre mí</span>
           </div>
           <div class="grid-col col-sub"></div>
           <div class="grid-col col-main">
@@ -366,15 +334,35 @@
           </div>
         </div>
 
-        <!-- Fila 2: Biografía de Autor -->
+        <!-- Fila 2: Biografía de Autor con Retrato -->
         <div class="editorial-grid-row row-bio">
-          <div class="grid-col col-tag"></div>
-          <div class="grid-col col-sub">
-            <h3 class="editorial-author-name">Julian Costa</h3>
+          <div class="grid-col col-tag">
+            <span class="editorial-label">Autor</span>
+          </div>
+          <div class="grid-col col-portrait">
+            <div class="about-portrait-card">
+              <div class="about-portrait-box">
+                <img 
+                  src="img/hero.webp" 
+                  alt="Julián Costa — Fotógrafo" 
+                  class="about-portrait-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="about-portrait-info">
+                <h3 class="about-author-name">Julián Costa</h3>
+                <p class="about-author-role">Fotógrafo Editorial, Moda & Retratos</p>
+                <div class="about-author-meta">
+                  <span>Rosario, Argentina</span>
+                  <span>·</span>
+                  <span>Disponible 2026</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="grid-col col-main">
             <div class="editorial-bio-text-block">
-              <p>Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad en Rosario y todo el país.</p>
+              <p class="editorial-lead-bio">Fotógrafo especializado en retratos, moda y fotografía editorial. Trabajo con personas, marcas y proyectos que buscan imágenes con identidad en Rosario y todo el país.</p>
               <p>Mi trabajo parte de una idea simple: una buena fotografía no solo muestra, también comunica una mirada. Busco construir imágenes que tengan carácter, cuidando la luz, la composición, los gestos y el contexto de cada persona o proyecto. Me interesa trabajar de manera cercana y explorar en cada sesión una estética que se sienta auténtica, contemporánea y propia.</p>
               <p>A lo largo de mi trayectoria trabajé en proyectos editoriales, campañas y retratos, colaborando con personas y marcas que entienden la fotografía como una herramienta para construir identidad.</p>
             </div>
@@ -383,9 +371,11 @@
 
         <!-- Fila 3: Servicios -->
         <div class="editorial-grid-row row-services" id="servicios">
-          <div class="grid-col col-tag"></div>
+          <div class="grid-col col-tag">
+            <span class="editorial-label">Servicios</span>
+          </div>
           <div class="grid-col col-sub">
-            <h3 class="editorial-author-name">Servicios</h3>
+            <h3 class="editorial-author-name">Especialidades</h3>
           </div>
           <div class="grid-col col-main">
             <ul class="editorial-services-clean-list">
@@ -408,6 +398,7 @@
                 <button type="button" class="editorial-srv-item-btn open-talk-trigger" data-service="Cobertura de eventos">
                   <span>Cobertura de eventos</span>
                 </button>
+              </li>
             </ul>
           </div>
         </div>

@@ -385,21 +385,68 @@ body.mobile-menu-open .floating-talk-wrapper {
   transform: scale(1.02);
 }
 
-/* --- 5. Fotografía Panorámica (Secuencia Rápida / Hard Cut cada 1s) --- */
+/* --- 5. Fotografía Panorámica Hero (Secuencia Rápida / Hard Cut cada 1s) --- */
 .full-bleed-panorama-section {
   width: 100%;
   position: relative;
   border-bottom: 1px solid var(--border-light);
 }
 
+.hero-panorama-section .panorama-viewport,
 .panorama-viewport {
   width: 100%;
-  aspect-ratio: 16 / 7.5;
-  min-height: 460px;
-  max-height: 80vh;
+  height: calc(100vh - var(--header-height));
+  min-height: 520px;
+  max-height: 860px;
   overflow: hidden;
   background-color: #000000;
   position: relative;
+}
+
+.panorama-overlay-tint {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.52) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-panorama-center-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  text-align: center;
+  width: 100%;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-panorama-name {
+  font-family: var(--font-headline);
+  font-size: clamp(3.2rem, 11.5vw, 9.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 4px 35px rgba(0, 0, 0, 0.7), 0 1px 6px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+.hero-panorama-caption {
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 1.3vw, 1.12rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
 .panorama-slider-track {
@@ -696,14 +743,14 @@ body.mobile-menu-open .floating-talk-wrapper {
 
 .editorial-grid-row {
   display: grid;
-  grid-template-columns: 180px 220px 1fr;
+  grid-template-columns: 140px minmax(260px, 320px) 1fr;
   gap: clamp(24px, 3.5vw, 48px);
   align-items: start;
 }
 
 @media (max-width: 1024px) {
   .editorial-grid-row {
-    grid-template-columns: 140px 180px 1fr;
+    grid-template-columns: 120px 240px 1fr;
     gap: 24px;
   }
 }
@@ -711,7 +758,7 @@ body.mobile-menu-open .floating-talk-wrapper {
 @media (max-width: 768px) {
   .editorial-grid-row {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
   }
   .grid-col:empty {
     display: none;
@@ -733,6 +780,72 @@ body.mobile-menu-open .floating-talk-wrapper {
   font-weight: 500;
   color: #000000;
   letter-spacing: -0.01em;
+}
+
+/* Tarjeta de Retrato en Sobre Mí */
+.about-portrait-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-portrait-box {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+}
+
+.about-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: contrast(1.03) brightness(0.99);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-portrait-card:hover .about-portrait-img {
+  transform: scale(1.03);
+}
+
+.about-portrait-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.about-author-name {
+  font-family: var(--font-headline);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: -0.02em;
+}
+
+.about-author-role {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.about-author-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.editorial-lead-bio {
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  line-height: 1.55 !important;
 }
 
 .editorial-headline-statement {
