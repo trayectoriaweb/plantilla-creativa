@@ -103,16 +103,19 @@ button {
 .brand-text-label {
   font-family: var(--font-headline);
   font-weight: 500;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
-  color: var(--red-editorial); /* Rojo editorial */
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+  color: #000000;
   text-transform: none;
   display: inline-block;
   padding: 4px 0;
+  text-decoration: none;
+  transition: color var(--t-fast);
 }
 
 .brand-text-label:hover {
-  opacity: 0.8;
+  color: var(--red-editorial);
+  opacity: 1;
 }
 
 .nav-list {
